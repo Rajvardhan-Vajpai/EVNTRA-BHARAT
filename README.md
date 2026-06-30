@@ -1,163 +1,362 @@
-# CrowdSafe — Visitor Registration & Management System
+# 🎉 Eventra Bharat
 
-A full-stack visitor management platform built with **FastAPI** and **SQLite**. Organizations can register visitors digitally, generate unique IDs and QR codes, and send automated email/SMS confirmations — replacing paper-based sign-in entirely.
+### *Discover • Book • Experience India's Best Events*
 
----
+Eventra Bharat is a modern event discovery and booking platform built to bring together **concerts, cultural festivals, melas, exhibitions, workshops, sports events, food festivals, travel experiences, and entertainment events** from across India into one seamless platform.
 
-## Features
-
-- **Electronic Registration** — Web form captures name, email, phone, organization, and visit purpose
-- **Unique Visitor IDs** — Auto-generated IDs in the format `VS<alphanumeric>` (e.g. `VS27CB97B723D9`)
-- **QR Code Generation** — Unique PNG QR code per visitor, scannable for instant lookup
-- **Email Notifications** — Automated confirmation emails via Gmail SMTP with visitor ID and QR link
-- **SMS Notifications** — Optional Twilio integration for mobile confirmations
-- **REST API** — Full Swagger-documented API at `/docs`
-- **Visitor Lookup** — Search by ID, list all visitors, retrieve QR codes
+Our vision is to become **India's all-in-one destination** for discovering unforgettable experiences and booking events effortlessly.
 
 ---
 
-## Tech Stack
+## 🌟 Why Eventra Bharat?
 
-| Layer | Technology |
-|---|---|
-| Backend | FastAPI 0.104.1, Uvicorn 0.24.0 |
-| Database | SQLite + SQLAlchemy 2.0.23 |
-| Validation | Pydantic 2.5.0 |
-| QR Codes | qrcode 7.4.2, Pillow 10.1.0 |
-| Email | Gmail SMTP (python-dotenv) |
-| SMS | Twilio (optional) |
-| Migrations | Alembic 1.13.1 |
+Finding events across multiple platforms can be frustrating.
+
+Eventra Bharat solves this by providing one platform where users can:
+
+- 🎟 Discover upcoming events
+- 📍 Explore events city-wise
+- ❤️ Find hand-picked experiences
+- 🔍 Search and filter events easily
+- 🎫 Book tickets online
+- 📱 Receive digital QR tickets
+- 🤖 Get AI-powered recommendations *(Coming Soon)*
 
 ---
 
-## Project Structure
+# ✨ Features
+
+## 🎭 Event Discovery
+
+- Browse thousands of events
+- Trending events
+- Featured events
+- Hand-picked experiences
+- Premium event listings
+
+---
+
+## 🎫 Categories
+
+- 🎤 Concerts
+- 🎪 Melas
+- 🎭 Cultural Festivals
+- 🎨 Exhibitions
+- 🏆 Sports Events
+- 🎓 Workshops
+- 🍴 Food Festivals
+- ✈️ Travel Experiences
+- 🎬 Entertainment Shows
+- 🎉 Community Events
+
+---
+
+## 🔎 Smart Search
+
+- Search by event name
+- Filter by city
+- Filter by category
+- Browse by location
+- Quick event discovery
+
+---
+
+## 📍 Explore India
+
+Discover events happening across major Indian cities including:
+
+- Delhi
+- Mumbai
+- Bengaluru
+- Hyderabad
+- Kolkata
+- Chennai
+- Jaipur
+- Lucknow
+- Pune
+- Ahmedabad
+- Chandigarh
+- Goa
+
+---
+
+## 🎟 Event Details
+
+Every event includes:
+
+- Event description
+- Date & Time
+- Venue
+- Ticket Pricing
+- Organizer Details
+- Event Highlights
+- Gallery
+- Booking Information
+
+---
+
+## 💎 Premium User Experience
+
+- Modern UI
+- Responsive Design
+- Smooth Animations
+- Mobile Friendly
+- Fast Loading
+- Beautiful Cards
+- Professional Layout
+
+---
+
+# 🚀 Planned Features
+
+- ✅ User Authentication
+- ✅ User Dashboard
+- ✅ Organizer Dashboard
+- ✅ Admin Panel
+- ✅ Ticket Booking
+- ✅ QR Code Tickets
+- ✅ Secure Payment Gateway
+- ✅ AI Event Recommendations
+- ✅ Wishlist
+- ✅ Reviews & Ratings
+- ✅ Google Maps Integration
+- ✅ Event Calendar
+- ✅ Email Notifications
+- ✅ Push Notifications
+- ✅ Multi-language Support
+- ✅ Dark Mode
+- ✅ Hotel Recommendations
+- ✅ Travel Assistance
+
+---
+
+# 🛠 Tech Stack
+
+| Category | Technology |
+|------------|------------|
+| Frontend | HTML5 |
+| Styling | CSS3 |
+| Programming | JavaScript |
+| Backend *(Upcoming)* | FastAPI (Python) |
+| Database *(Upcoming)* | MySQL / PostgreSQL |
+| Authentication *(Upcoming)* | JWT |
+| Version Control | Git & GitHub |
+| Deployment | Vercel / Render |
+
+---
+
+# 📁 Project Structure
 
 ```
-Crowdsafe-management/
-├── registration.html              # Visitor registration frontend
-├── .gitignore
-└── crowdsafe-backend/
-    └── backend/
-        ├── main.py                # FastAPI app & route handlers
-        ├── database.py            # SQLite setup & session management
-        ├── models.py              # Pydantic request/response models
-        ├── email_service.py       # Gmail SMTP email sender
-        ├── sms_service.py         # Twilio SMS sender
-        ├── requirements.txt       # Python dependencies
-        ├── EMAIL_SETUP.md         # Email configuration guide
-        ├── test_email.py          # Email integration test
-        ├── test_sms.py            # SMS integration test
-        ├── verify_sms.py          # SMS verification script
-        └── full_system_test.py    # Full system test suite
+Eventra-Bharat/
+│
+├── index.html
+├── css/
+│   ├── style.css
+│   ├── responsive.css
+│   └── animations.css
+│
+├── js/
+│   ├── script.js
+│   ├── slider.js
+│   └── search.js
+│
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   ├── banners/
+│   └── logos/
+│
+├── pages/
+│   ├── events.html
+│   ├── event-details.html
+│   ├── login.html
+│   ├── register.html
+│   ├── contact.html
+│   └── about.html
+│
+├── README.md
+└── LICENSE
 ```
-
-> **Note:** `crowdsafe.db` is excluded from version control. It is created automatically on first run.
 
 ---
 
-## Getting Started
+# ⚙ Installation
 
-### 1. Clone the repository
+## Clone the Repository
 
 ```bash
-git clone https://github.com/Rajvardhan-Vajpai/Crowdsafe-management.git
-cd Crowdsafe-management/crowdsafe-backend/backend
+git clone https://github.com/Rajvardhan-Vajpai/Eventra-Bharat.git
 ```
 
-### 2. Install dependencies
+Move into the project
 
 ```bash
-pip install -r requirements.txt
+cd Eventra-Bharat
 ```
 
-### 3. Configure environment
-
-Create a `.env` file inside `backend/`:
-
-```env
-EMAIL_SMTP_SERVER=smtp.gmail.com
-EMAIL_SMTP_PORT=587
-EMAIL_SENDER=your_email@gmail.com
-EMAIL_PASSWORD=xxxx xxxx xxxx xxxx
-ENABLE_EMAIL=True
-```
-
-> For Gmail, generate an **App Password** from your Google account (requires 2-Step Verification).  
-> See `EMAIL_SETUP.md` for the full guide.
-
-### 4. Run the server
+Open the project
 
 ```bash
-python main.py
+Open index.html
 ```
 
-Server starts at `http://localhost:8000`  
-API docs available at `http://localhost:8000/docs`
-
-### 5. Open the registration form
-
-Open `registration.html` in your browser, or serve it statically.
+Or use **VS Code Live Server** for development.
 
 ---
 
-## API Reference
+# 🎯 Project Vision
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/api/register` | Register a new visitor |
-| `GET` | `/api/visitor/{visitor_id}` | Get visitor details by ID |
-| `GET` | `/api/visitor/{visitor_id}/qrcode` | Get visitor QR code (base64 PNG) |
-| `GET` | `/api/visitors` | List all registered visitors |
-| `POST` | `/api/test-email/{email}` | Send a test email |
-| `POST` | `/api/send-email/{visitor_id}/{email}` | Send confirmation email |
+Eventra Bharat aims to become India's leading event platform by bringing every type of event under one ecosystem.
 
-Full interactive docs at: `http://localhost:8000/docs`
+Whether it's:
 
----
+- A local mela
+- A music concert
+- A cultural festival
+- A startup meetup
+- A sports tournament
+- A food carnival
+- A travel experience
 
-## Visitor Flow
-
-```
-Visitor fills form → Backend validates input
-    → Generates Visitor ID (VS...)
-    → Creates QR code
-    → Saves to database
-    → Sends email confirmation
-    → (Optional) Sends SMS
-```
+Eventra Bharat helps users discover and experience them effortlessly.
 
 ---
 
-## SMS Setup (Optional)
+# 📈 Development Roadmap
 
-1. Create a [Twilio](https://www.twilio.com) account
-2. Add your credentials to `twilio.env`
-3. SMS confirmations will be sent automatically on registration
+## Phase 1
+
+- [x] Landing Page
+- [x] Responsive UI
+- [x] Premium Design
+- [x] Event Cards
+- [x] Featured Experiences
 
 ---
 
-## Running Tests
+## Phase 2
+
+- [ ] User Authentication
+- [ ] Event Database
+- [ ] Search System
+- [ ] Category Filters
+
+---
+
+## Phase 3
+
+- [ ] Booking Engine
+- [ ] Payment Gateway
+- [ ] QR Ticket Generation
+- [ ] Booking Dashboard
+
+---
+
+## Phase 4
+
+- [ ] Organizer Dashboard
+- [ ] Admin Panel
+- [ ] Analytics
+- [ ] Reports
+
+---
+
+## Phase 5
+
+- [ ] AI Recommendation Engine
+- [ ] Personalized Homepage
+- [ ] Chatbot
+- [ ] Mobile App
+
+---
+
+# 📷 Screenshots
+
+Coming Soon...
+
+- Home Page
+- Event Listing
+- Event Details
+- Booking Page
+- User Dashboard
+
+---
+
+# 🤝 Contributing
+
+Contributions are always welcome.
+
+### Steps
+
+1. Fork this repository
+
+2. Create a new branch
 
 ```bash
-python test_email.py        # Verify email config
-python test_sms.py          # Verify SMS config
-python full_system_test.py  # Full system validation
+git checkout -b feature/YourFeature
 ```
 
+3. Commit your changes
+
+```bash
+git commit -m "Added new feature"
+```
+
+4. Push
+
+```bash
+git push origin feature/YourFeature
+```
+
+5. Open a Pull Request
+
 ---
 
-## Deployment
+# 🌍 Future Scope
 
-The backend is deployment-ready. Can be hosted on:
+Eventra Bharat is planned to expand into a complete event ecosystem including:
 
-- **Docker** — containerize `backend/` with a standard Python image
-- **Cloud** — AWS, Azure, GCP, Railway, Render, Heroku
-- **VPS** — any Linux server with Python 3.10+
+- Event Organizer Portal
+- Vendor Marketplace
+- Travel Booking
+- Hotel Booking
+- AI Assistant
+- Personalized Event Feed
+- Business Analytics
+- Event Marketing Tools
+- Sponsorship Platform
+- Mobile Applications
+- Community Features
 
 ---
 
-## Author
+# 👨‍💻 Developer
 
-**Rajvardhan Vajpai**  
-AI/ML Engineering Student, Lovely Professional University  
-[github.com/Rajvardhan-Vajpai](https://github.com/Rajvardhan-Vajpai)
+## Rajvardhan Vajpai
+
+**AI & Machine Learning Engineering Student**
+
+Lovely Professional University
+
+🔗 GitHub
+
+https://github.com/Rajvardhan-Vajpai
+
+---
+
+# ⭐ Show Your Support
+
+If you like this project,
+
+⭐ Star this repository
+
+🍴 Fork it
+
+📢 Share it
+
+Your support motivates future development.
+
+---
+
+## ❤️ Built with passion to transform the way India discovers and experiences events.
