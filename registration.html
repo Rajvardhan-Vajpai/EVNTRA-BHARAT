@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrowdSafe — Visitor Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- QR Code library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Payment is temporarily disabled. The backend's Razorpay flow
+       (/api/payment/create-order, /api/payment/verify) is still built and
+       ready - re-add the checkout.js script tag here and swap submitForm()
+       back to the payment version when you want to turn it back on. -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Vibrant Heritage tokens */
+      --primary:        #8f4e00;
+      --primary-dark:   #693800;
+      --primary-light:  #ff9933;
+      --primary-pale:   #fff1e2;
+      --secondary:      #4755b6;
+      --secondary-dark: #1b2b8c;
+      --secondary-light:#8a99fe;
+      --secondary-pale: #eceeff;
+      --tertiary:       #1b6d24;
+      --tertiary-dark:  #005011;
+      --tertiary-light: #73c46f;
+      --tertiary-pale:  #eaf8e8;
+      --orange:         #ba1a1a;
+
+      --text-primary:   #191c1d;
+      --text-secondary: #554336;
+      --text-muted:     #887364;
+      --border:         #e1e3e4;
+      --border-med:     #dbc2b0;
+      --bg-page:        #f8f9fa;
+      --bg-card:        #ffffff;
+      --bg-field:       #ffffff;
+
+      --radius-sm:    0.5rem;
+      --radius-md:    0.75rem;
+      --radius-lg:    1rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, .brand-name { font-family: 'Montserrat', sans-serif; }
+
+    .topbar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 10px; }
+    .logo {
+      width: 34px; height: 34px;
+      background: var(--primary);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 14px -6px rgba(143,78,0,.5);
+    }
+    .logo svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; margin: 0 auto; }
+    .brand-name  { font-size: 16px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.01em; }
+    .brand-tagline { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+    .lang-btn {
+      font-size: 12px; font-weight: 600; color: var(--secondary);
+      border: 1.5px solid var(--secondary);
+      border-radius: var(--radius-md); padding: 6px 12px;
+      background: none; cursor: pointer; font-family: inherit;
+      display: flex; align-items: center; gap: 5px;
+      transition: background .2s, color .2s;
+    }
+    .lang-btn:hover { background: var(--secondary); color: #fff; }
+
+    .hero {
+      background: linear-gradient(120deg, var(--primary) 0%, #c2701f 100%);
+      padding: 30px 20px 26px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; width: 220px; height: 220px; border-radius: 50%;
+      background: rgba(255,255,255,.08); top: -90px; right: -60px;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      color: #ffe4c2; text-transform: uppercase;
+      margin-bottom: 10px;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .hero-eyebrow::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--tertiary-light); }
+    .hero h1 { font-size: 23px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .hero p  { font-size: 13px; color: #ffe4c2; line-height: 1.65; max-width: 480px; }
+
+    .steps {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+    }
+    .step { display: flex; align-items: center; gap: 8px; flex: 1; }
+    .step-circle {
+      width: 25px; height: 25px; border-radius: 50%;
+      font-size: 11px; font-weight: 700; font-family: 'Montserrat', sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all 0.3s;
+    }
+    .step-circle.done    { background: var(--tertiary); color: #fff; }
+    .step-circle.active  { background: var(--primary);  color: #fff; box-shadow: 0 0 0 4px var(--primary-pale); }
+    .step-circle.pending { background: var(--bg-page); color: var(--text-muted); border: 1.5px solid var(--border-med); }
+    .step-text { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+    .step-text.active { color: var(--text-primary); font-weight: 700; }
+    .step-line { flex: 0 0 24px; height: 1.5px; background: var(--border-med); margin: 0 2px; }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .form-wrap { padding: 20px; max-width: 600px; margin: 0 auto; }
+
+    .section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 18px -12px rgba(46,49,50,.12);
+    }
+    .section-heading {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      color: var(--secondary);
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-heading svg { width: 15px; height: 15px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .field { margin-bottom: 16px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px; }
+    .field label .req { color: var(--orange); }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 14px;
+      border: 1.5px solid var(--border-med);
+      border-radius: var(--radius-md);
+      background: var(--bg-field);
+      color: var(--text-primary);
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      min-height: 48px;
+    }
+    .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23887364' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      border-width: 2px;
+      box-shadow: 0 0 0 4px var(--secondary-pale);
+    }
+    .field textarea { resize: vertical; min-height: 76px; }
+    .field .hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+    .field .error { font-size: 12px; font-weight: 600; color: var(--orange); margin-top: 5px; display: none; }
+    .field.has-error input, .field.has-error select, .field.has-error textarea { border-color: var(--orange); }
+    .field.has-error .error { display: block; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 420px) { .row { grid-template-columns: 1fr; } }
+
+    .photo-drop {
+      border: 2px dashed var(--border-med);
+      border-radius: var(--radius-md);
+      padding: 26px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .photo-drop:hover { border-color: var(--primary); background: var(--primary-pale); }
+    .photo-drop svg { width: 32px; height: 32px; stroke: var(--text-muted); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; display: block; margin: 0 auto 10px; }
+    .photo-drop p { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+    .photo-drop small { font-size: 11px; color: var(--text-muted); }
+    .photo-drop input { display: none; }
+    #photo-preview { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; margin: 0 auto 10px; display: none; border: 3px solid var(--primary-light); }
+
+    .member-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-top: 14px;
+      background: var(--bg-page);
+    }
+    .member-card-title {
+      font-size: 12px; font-weight: 700; color: var(--primary-dark);
+      margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+    }
+
+    .consent {
+      background: var(--tertiary-pale);
+      border: 1.5px solid var(--tertiary-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex; gap: 10px; align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .consent svg { width: 16px; height: 16px; stroke: var(--tertiary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
+    .consent p { font-size: 12px; color: var(--tertiary-dark); line-height: 1.6; }
+    .consent a { color: var(--secondary); text-decoration: underline; font-weight: 600; }
+
+    .btn-primary {
+      width: 100%; padding: 15px;
+      background: var(--primary);
+      color: #fff; border: none;
+      border-radius: var(--radius-md);
+      font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: inherit;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background 0.2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 18px -8px rgba(143,78,0,.5);
+      min-height: 48px;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 10px 22px -6px rgba(143,78,0,.6); }
+    .btn-primary:active { transform: scale(0.99); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-primary svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .btn-secondary {
+      flex: 1; padding: 11px;
+      border: 1.5px solid var(--secondary);
+      border-radius: var(--radius-md);
+      background: none; font-size: 13px; font-weight: 700;
+      color: var(--secondary); cursor: pointer;
+      font-family: inherit;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      transition: background 0.2s, color .2s;
+      min-height: 44px;
+    }
+    .btn-secondary:hover { background: var(--secondary); color: #fff; }
+    .btn-secondary svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .confirm-wrap { padding: 20px; max-width: 600px; margin: 0 auto; }
+    .confirm-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 8px 30px -14px rgba(46,49,50,.2);
+    }
+    .confirm-header {
+      background: linear-gradient(120deg, var(--tertiary) 0%, #2f8d3a 100%);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .check-ring {
+      width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+    }
+    .check-ring svg { width: 30px; height: 30px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .confirm-header h2 { font-size: 21px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+    .confirm-header p  { font-size: 13px; color: #d8f3d4; }
+
+    .id-section { padding: 22px 22px 6px; }
+    .id-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+
+    .id-badge {
+      border: 2px dashed var(--primary-light);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      background: var(--primary-pale);
+      margin-bottom: 14px;
+    }
+    .id-badge:last-child { margin-bottom: 0; }
+    .id-badge-name { font-size: 13px; color: var(--primary-dark); margin-bottom: 4px; font-weight: 700; }
+    .id-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 0.08em;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 6px;
+    }
+    .id-hint { font-size: 12px; font-weight: 600; color: var(--primary); margin-bottom: 14px; }
+    .qrcode-box { display: flex; justify-content: center; }
+    .qrcode-box canvas, .qrcode-box img { border-radius: 10px; }
+
+    .info-table { margin: 6px 22px 18px; border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+    .info-row:last-child { border-bottom: none; }
+    .info-row-label { color: var(--text-secondary); font-weight: 600; display: flex; align-items: center; gap: 7px; }
+    .info-row-label svg { width: 14px; height: 14px; stroke: var(--secondary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .info-row-val { font-weight: 700; color: var(--text-primary); }
+
+    .action-row { display: flex; gap: 10px; padding: 4px 22px 22px; }
+
+    .notice {
+      margin: 0 22px 20px;
+      background: var(--secondary-pale);
+      border: 1.5px solid var(--secondary-light);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 12px; color: var(--secondary-dark); line-height: 1.6;
+    }
+    .notice strong { font-weight: 700; }
+
+    .loading-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(105,56,0,0.93);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      gap: 16px;
+    }
+    .loading-overlay.active { display: flex; }
+    .spinner {
+      width: 46px; height: 46px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-overlay p { font-size: 15px; font-weight: 600; }
+
+    @media print {
+      .topbar, .hero, .steps, .action-row, .notice { display: none !important; }
+      .confirm-wrap { padding: 0; }
+      .confirm-card { border: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="logo">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+    </div>
+    <div>
+      <div class="brand-name">CrowdSafe</div>
+      <div class="brand-tagline">Visitor management system</div>
+    </div>
+  </div>
+  <button class="lang-btn" onclick="toggleLang()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+    <span id="lang-label">हिंदी</span>
+  </button>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow" id="txt-eyebrow">Kumbh Mela 2025 — Prayagraj</div>
+  <h1 id="txt-hero-title">Register before you arrive</h1>
+  <p id="txt-hero-sub">Get your unique visitor ID and wristband — skip the gate queue and stay connected with your group.</p>
+</div>
+
+<div class="steps" id="steps-bar">
+  <div class="step">
+    <div class="step-circle active" id="s1">1</div>
+    <div class="step-text active" id="sl1">Your details</div>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-circle pending" id="s2">2</div>
+    <div class="step-text" id="sl2">Group details</div>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-circle pending" id="s3">3</div>
+    <div class="step-text" id="sl3">Your IDs</div>
+  </div>
+</div>
+
+<div id="screen-1" class="screen active">
+  <div class="form-wrap">
+
+    <div class="section-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        Your information
+      </div>
+
+      <div class="row">
+        <div class="field" id="f-first">
+          <label>First name <span class="req">*</span></label>
+          <input type="text" id="first-name" placeholder="Ramesh" autocomplete="given-name" />
+          <div class="error">Please enter your first name</div>
+        </div>
+        <div class="field" id="f-last">
+          <label>Last name <span class="req">*</span></label>
+          <input type="text" id="last-name" placeholder="Sharma" autocomplete="family-name" />
+          <div class="error">Please enter your last name</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field" id="f-age">
+          <label>Age <span class="req">*</span></label>
+          <input type="number" id="age" placeholder="34" min="1" max="120" />
+          <div class="error">Please enter a valid age</div>
+        </div>
+        <div class="field">
+          <label>Gender</label>
+          <select id="gender">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Photo</label>
+        <div class="photo-drop" onclick="document.getElementById('photo-input').click()">
+          <img id="photo-preview" alt="Preview" />
+          <svg id="photo-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="3"/><path d="M3 9l3-3 3 3M3 15l3 3 3-3"/></svg>
+          <p>Tap to upload a face photo</p>
+          <small>JPG or PNG · Max 5 MB · Used only for lost-person identification</small>
+          <input type="file" id="photo-input" accept="image/*" capture="environment" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Medical condition staff should know about</label>
+        <textarea id="medical" placeholder="E.g. diabetes, heart condition, wheelchair user, hearing impaired…"></textarea>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>
+        Contact &amp; emergency
+      </div>
+
+      <div class="field" id="f-mobile">
+        <label>Mobile number <span class="req">*</span></label>
+        <input type="tel" id="mobile" placeholder="+91 98765 43210" autocomplete="tel" />
+        <div class="hint">Used for SMS confirmation and as the gate contact for your whole group</div>
+        <div class="error">Please enter a valid mobile number</div>
+      </div>
+
+      <div class="field" id="f-email">
+        <label>Email address <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="ramesh@example.com" autocomplete="email" />
+        <div class="hint">Your visitor ID(s) and QR code(s) will be emailed here after payment</div>
+        <div class="error">Please enter a valid email address</div>
+      </div>
+
+      <div class="field">
+        <label>Emergency contact name</label>
+        <input type="text" id="ec-name" placeholder="Sunita Sharma" />
+      </div>
+
+      <div class="field" id="f-ec-mobile">
+        <label>Emergency contact number <span class="req">*</span></label>
+        <input type="tel" id="ec-mobile" placeholder="+91 99999 00000" />
+        <div class="error">Please enter an emergency contact number</div>
+      </div>
+    </div>
+
+    <div class="consent">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <p>Your data is used only for visitor safety and tracking during this event. It will be deleted 30 days after the event ends. <a href="#">Read our privacy policy.</a></p>
+    </div>
+
+    <button class="btn-primary" onclick="goToStep2()">
+      Continue to group &amp; payment
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
+<div id="screen-2" class="screen">
+  <div class="form-wrap">
+
+    <div class="section-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Group details
+      </div>
+
+      <div class="field">
+        <label>Group / family name</label>
+        <input type="text" id="group-name" placeholder="Sharma family" />
+        <div class="hint">Display only, shown on your confirmation screen</div>
+      </div>
+
+      <div class="field" id="f-group-size">
+        <label>How many people, including you? <span class="req">*</span></label>
+        <input type="number" id="group-size" min="1" max="20" value="1" />
+        <div class="hint">Each person gets their own visitor ID and QR code. Max 20 per registration.</div>
+        <div class="error">Group size must be between 1 and 20</div>
+      </div>
+
+      <div id="extra-members"></div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Visit timing
+      </div>
+
+      <div class="row">
+        <div class="field" id="f-arrival">
+          <label>Arrival date <span class="req">*</span></label>
+          <input type="date" id="arrival-date" />
+          <div class="error">Please select a valid arrival date</div>
+        </div>
+        <div class="field">
+          <label>Department date</label>
+          <input type="date" id="departure-date" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+        Where are you coming from?
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>City</label>
+          <input type="text" id="city" placeholder="Lucknow" />
+        </div>
+        <div class="field">
+          <label>State</label>
+          <select id="state">
+            <option value="">Select state</option>
+            <option>Uttar Pradesh</option>
+            <option>Bihar</option>
+            <option>Madhya Pradesh</option>
+            <option>Rajasthan</option>
+            <option>Maharashtra</option>
+            <option>West Bengal</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-bottom:20px">
+      <button class="btn-secondary" onclick="goToStep1()">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </button>
+      <button class="btn-primary" style="flex:2" onclick="submitForm()" id="submit-btn">
+        Generate visitor IDs
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="screen-3" class="screen">
+  <div class="confirm-wrap">
+    <div class="confirm-card">
+
+      <div class="confirm-header">
+        <div class="check-ring">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2 id="confirm-title">Registration complete!</h2>
+        <p>Each person shows their own QR code at the entry gate to collect their wristband</p>
+      </div>
+
+      <div class="id-section">
+        <div class="id-label">Your visitor ID(s)</div>
+        <div id="visitor-cards"></div>
+      </div>
+
+      <div class="info-table">
+        <div class="info-row">
+          <div class="info-row-label">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Arrival
+          </div>
+          <div class="info-row-val" id="conf-arrival">—</div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">
+            <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>
+            Emergency
+          </div>
+          <div class="info-row-val" id="conf-emergency">—</div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-label">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            Group
+          </div>
+          <div class="info-row-val" id="conf-group">—</div>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Next step:</strong> Arrive at the entry gate, each person shows their own QR code, and collects their RFID wristband. Keep this page saved or take a screenshot.
+      </div>
+
+      <div class="action-row">
+        <button class="btn-secondary" onclick="window.print()">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print
+        </button>
+        <button class="btn-secondary" onclick="shareID()">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+          Share
+        </button>
+        <button class="btn-secondary" onclick="registerAnother()">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="loading-overlay" id="loader">
+  <div class="spinner"></div>
+  <p id="loader-text">Generating your visitor ID…</p>
+</div>
+
+<script>
+  const BASE_URL = 'http://localhost:8000';
+  // (no PAYMENT_CONFIG needed right now - registration is free; see comment near the top of <head>)
+
+  function isValidEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  const LANGS = {
+    en: {
+      eyebrow: 'Kumbh Mela 2025 — Prayagraj',
+      heroTitle: 'Register before you arrive',
+      heroSub: 'Get your unique visitor ID and wristband — skip the gate queue and stay connected with your group.',
+      langBtn: 'हिंदी',
+    },
+    hi: {
+      eyebrow: 'कुंभ मेला 2025 — प्रयागराज',
+      heroTitle: 'आने से पहले पंजीकरण करें',
+      heroSub: 'अपना विशिष्ट आगंतुक आईडी और कलाईबैंड पाएं — गेट पर लंबी कतार से बचें और अपने परिवार से जुड़े रहें।',
+      langBtn: 'English',
+    }
+  };
+  let currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'hi' : 'en';
+    const L = LANGS[currentLang];
+    document.getElementById('txt-eyebrow').textContent   = L.eyebrow;
+    document.getElementById('txt-hero-title').textContent = L.heroTitle;
+    document.getElementById('txt-hero-sub').textContent   = L.heroSub;
+    document.getElementById('lang-label').textContent     = L.langBtn;
+  }
+
+  function setStep(n) {
+    [1,2,3].forEach(i => {
+      document.getElementById('screen-'+i).classList.remove('active');
+      const c = document.getElementById('s'+i);
+      const l = document.getElementById('sl'+i);
+      if (i < n)  { c.className = 'step-circle done';    l.className = 'step-text'; }
+      if (i === n){ c.className = 'step-circle active';   l.className = 'step-text active'; }
+      if (i > n)  { c.className = 'step-circle pending';  l.className = 'step-text'; }
+    });
+    document.getElementById('screen-'+n).classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function goToStep1() { setStep(1); }
+
+  function req(id, fieldId) {
+    const v = document.getElementById(id).value.trim();
+    const f = document.getElementById(fieldId);
+    if (!v) { f.classList.add('has-error'); return false; }
+    f.classList.remove('has-error'); return true;
+  }
+
+  function goToStep2() {
+    // Validate personal info: first name, last name, mobile, ec-mobile, email (non-empty)
+    const ok = [
+      req('first-name', 'f-first'),
+      req('last-name',  'f-last'),
+      req('mobile',     'f-mobile'),
+      req('ec-mobile',  'f-ec-mobile'),
+      !!document.getElementById('email').value.trim(),   // email non-empty
+    ].every(Boolean);
+
+    if (!ok) {
+      // For email, if it's empty, we need to set the error class.
+      if (!document.getElementById('email').value.trim()) {
+        document.getElementById('f-email').classList.add('has-error');
+      }
+      return false;
+    }
+
+    // Validate age
+    const ageInput = document.getElementById('age');
+    const ageValue = ageInput.value.trim();
+    if (!/^\d+$/.test(ageValue)) {
+      document.getElementById('f-age').classList.add('has-error');
+      return false;
+    }
+    const age = parseInt(ageValue, 10);
+    if (age < 1 || age > 120) {
+      document.getElementById('f-age').classList.add('has-error');
+      return false;
+    }
+    document.getElementById('f-age').classList.remove('has-error');
+
+    // Validate group-size
+    const groupSizeInput = document.getElementById('group-size');
+    const groupSizeValue = groupSizeInput.value.trim();
+    if (!/^\d+$/.test(groupSizeValue)) {
+      document.getElementById('f-group-size').classList.add('has-error');
+      return false;
+    }
+    const groupSizeVal = parseInt(groupSizeValue, 10);
+    if (groupSizeVal < 1 || groupSizeVal > 20) {
+      document.getElementById('f-group-size').classList.add('has-error');
+      return false;
+    }
+    document.getElementById('f-group-size').classList.remove('has-error');
+
+    setStep(2);
+  }
+
+  function renderExtraMembers() {
+    const n = Math.max(1, Math.min(20, parseInt(document.getElementById('group-size').value) || 1));
+    const container = document.getElementById('extra-members');
+    container.innerHTML = '';
+    for (let i = 2; i <= n; i++) {
+      const card = document.createElement('div');
+      card.className = 'member-card';
+      card.innerHTML =
+        '<div class="member-card-title">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>' +
+          'Member ' + i +
+        '</div>' +
+        '<div class="row">' +
+          '<div class="field" id="f-m' + i + '-first">' +
+            '<label>First name <span class="req">*</span></label>' +
+            '<input type="text" id="m' + i + '-first" placeholder="First name" />' +
+            '<div class="error">Required</div>' +
+          '</div>' +
+          '<div class="field" id="f-m' + i + '-last">' +
+            '<label>Last name <span class="req">*</span></label>' +
+            '<input type="text" id="m' + i + '-last" placeholder="Last name" />' +
+            '<div class="error">Required</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="row">' +
+          '<div class="field" id="f-m' + i + '-age">' +
+            '<label>Age <span class="req">*</span></label>' +
+            '<input type="number" id="m' + i + '-age" placeholder="Age" min="0" max="120" />' +
+            '<div class="error">Required</div>' +
+          '</div>' +
+          '<div class="field">' +
+            '<label>Gender</label>' +
+            '<select id="m' + i + '-gender">' +
+              '<option value="">Select</option>' +
+              '<option>Male</option>' +
+              '<option>Female</option>' +
+              '<option>Other</option>' +
+              '<option>Prefer not to say</option>' +
+            '</select>' +
+          '</div>' +
+        '</div>' +
+        '<div class="field">' +
+          '<label>Medical condition (optional)</label>' +
+          '<input type="text" id="m' + i + '-medical" placeholder="E.g. asthma, allergy…" />' +
+        '</div>';
+      container.appendChild(card);
+    }
+  }
+
+  document.getElementById('group-size').addEventListener('input', () => {
+    renderExtraMembers();
+  });
+
+  function collectMembers() {
+    const n = Math.max(1, Math.min(20, parseInt(document.getElementById('group-size').value) || 1));
+    const members = [{
+      first_name: document.getElementById('first-name').value.trim(),
+      last_name: document.getElementById('last-name').value.trim(),
+      age: parseInt(document.getElementById('age').value),
+      gender: document.getElementById('gender').value || null,
+      medical_condition: document.getElementById('medical').value.trim() || null,
+    }];
+
+    let allValid = true;
+    for (let i = 2; i <= n; i++) {
+      const firstOk = req('m' + i + '-first', 'f-m' + i + '-first');
+      const lastOk  = req('m' + i + '-last',  'f-m' + i + '-last');
+      const ageOk   = req('m' + i + '-age',   'f-m' + i + '-age');
+      if (!firstOk || !lastOk || !ageOk) allValid = false;
+
+      members.push({
+        first_name: document.getElementById('m' + i + '-first').value.trim(),
+        last_name: document.getElementById('m' + i + '-last').value.trim(),
+        age: parseInt(document.getElementById('m' + i + '-age').value),
+        gender: document.getElementById('m' + i + '-gender').value || null,
+        medical_condition: document.getElementById('m' + i + '-medical').value.trim() || null,
+      });
+    }
+
+    return allValid ? members : null;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '—';
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function setLoaderText(msg) { document.getElementById('loader-text').textContent = msg; }
+  function showError(msg) { alert(msg); }
+
+  async function submitForm() {
+    const arrivalOk = req('arrival-date', 'f-arrival');
+    const arrivalDate = document.getElementById('arrival-date').value;
+    const departureDate = document.getElementById('departure-date').value;
+    if (arrivalOk && departureDate && departureDate < arrivalDate) {
+      document.getElementById('f-arrival').classList.add('has-error');
+      document.getElementById('departure-date').focus();
+      return;
+    }
+    if (!arrivalOk) return;
+
+    const groupSizeInput = document.getElementById('group-size');
+    const groupSizeValue = groupSizeInput.value.trim();
+    if (!/^\d+$/.test(groupSizeValue)) {
+      document.getElementById('f-group-size').classList.add('has-error');
+      return;
+    }
+    const groupSizeVal = parseInt(groupSizeValue, 10);
+    if (groupSizeVal < 1 || groupSizeVal > 20) {
+      document.getElementById('f-group-size').classList.add('has-error');
+      return;
+    }
+    document.getElementById('f-group-size').classList.remove('has-error');
+
+    const members = collectMembers();
+    if (!members) {
+      showError('Please fill in first name, last name, and age for every group member.');
+      return;
+    }
+
+    const email    = document.getElementById('email').value.trim();
+    const mobile   = document.getElementById('mobile').value.trim();
+    const ecName   = document.getElementById('ec-name').value.trim();
+    const ecMobile = document.getElementById('ec-mobile').value.trim();
+    const groupName = document.getElementById('group-name').value.trim();
+
+    const registrationPayload = {
+      mobile_number: mobile,
+      email: email,
+      emergency_contact_name: ecName,
+      emergency_contact_number: ecMobile,
+      members: members,
+    };
+
+    document.getElementById('loader').classList.add('active');
+    setLoaderText('Generating your visitor IDs…');
+
+    try {
+      const res = await fetch(BASE_URL + '/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registrationPayload),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || 'Registration failed');
+      }
+      const data = await res.json();
+
+      document.getElementById('confirm-title').textContent =
+        data.visitors.length === 1 ? 'Registration complete!' : ('Registration complete! ' + data.visitors.length + ' IDs issued');
+      document.getElementById('conf-arrival').textContent   = formatDate(arrivalDate);
+      document.getElementById('conf-emergency').textContent = (ecName ? ecName + ' · ' : '') + (ecMobile || '—');
+      document.getElementById('conf-group').textContent     = (groupName || 'Individual') + ' · ' + members.length + (members.length === 1 ? ' person' : ' members');
+
+      const cardsContainer = document.getElementById('visitor-cards');
+      cardsContainer.innerHTML = '';
+      data.visitors.forEach((v, idx) => {
+        const badge = document.createElement('div');
+        badge.className = 'id-badge';
+        const qrId = 'qrcode-' + idx;
+        badge.innerHTML =
+          '<div class="id-badge-name">' + v.first_name + ' ' + v.last_name + '</div>' +
+          '<div class="id-number">' + v.visitor_id + '</div>' +
+          '<div class="id-hint">Scan this QR code at any checkpoint</div>' +
+          '<div class="qrcode-box" id="' + qrId + '"></div>';
+        cardsContainer.appendChild(badge);
+        new QRCode(document.getElementById(qrId), {
+          text: v.visitor_id,
+          width: 110, height: 110,
+          colorDark: '#8f4e00', colorLight: '#fff1e2',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      });
+
+      setStep(3);
+    } catch (e) {
+      showError('Registration failed: ' + e.message + '. Please check your connection and try again.');
+    } finally {
+      document.getElementById('loader').classList.remove('active');
+    }
+  }
+
+  function shareID() {
+    const ids = Array.from(document.querySelectorAll('#visitor-cards .id-number')).map(el => el.textContent);
+    const text = 'My CrowdSafe visitor ID(s): ' + ids.join(', ') + '. Show your QR code at the event gate.';
+    if (navigator.share) {
+      navigator.share({ title: 'CrowdSafe Visitor ID', text });
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert('ID(s) copied to clipboard!'));
+    }
+  }
+
+  function registerAnother() {
+    document.querySelectorAll('input:not([type=file]), select, textarea')
+      .forEach(el => el.value = '');
+    document.getElementById('group-size').value = 1;
+    document.getElementById('extra-members').innerHTML = '';
+    document.getElementById('photo-preview').style.display = 'none';
+    document.getElementById('photo-icon').style.display = 'block';
+    document.getElementById('visitor-cards').innerHTML = '';
+    setStep(1);
+  }
+
+  document.getElementById('photo-input').addEventListener('change', function() {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const prev = document.getElementById('photo-preview');
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+      document.getElementById('photo-icon').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('arrival-date').min   = today;
+  document.getElementById('departure-date').min = today;
+</script>
+</body>
+</html>

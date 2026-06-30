@@ -1,0 +1,39 @@
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    background:#F8F4EC;
+}
+
+.profile-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.profile-card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    width:400px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.profile-image{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+.logout-btn{
+    margin-top:20px;
+    padding:12px 24px;
+    border:none;
+    background:#6D0F13;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+}

@@ -1,0 +1,382 @@
+/* ==========================================
+   EVENTRA BHARAT - NAVBAR
+========================================== */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:18px 7%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:1000;
+
+    transition:.35s ease;
+
+}
+
+/* ==========================
+   Navbar Scroll Effect
+========================== */
+
+.navbar.scrolled{
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+}
+
+/* ==========================
+   Logo
+========================== */
+
+.logo{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--white);
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.navbar.scrolled .logo{
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   Navigation
+========================== */
+
+nav ul{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+    list-style:none;
+
+}
+
+nav ul li a{
+
+    position:relative;
+
+    color:white;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.navbar.scrolled nav ul li a{
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   Hover Underline
+========================== */
+
+nav ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--gold);
+
+    transition:.3s;
+
+}
+
+nav ul li a:hover::after,
+
+nav ul li a.active::after{
+
+    width:100%;
+
+}
+
+/* ==========================
+   Right Side
+========================== */
+
+.nav-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   Search Button
+========================== */
+
+.search-btn{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.navbar.scrolled .search-btn{
+
+    background:var(--ivory);
+
+    color:var(--primary);
+
+}
+
+.search-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================
+   Wishlist
+========================== */
+
+.wishlist-btn{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.navbar.scrolled .wishlist-btn{
+
+    background:var(--ivory);
+
+    color:var(--primary);
+
+}
+
+.wishlist-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================
+   Login Button
+========================== */
+
+.login-btn{
+
+    padding:12px 26px;
+
+    border-radius:50px;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:var(--gold);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.login-btn:hover{
+
+    transform:translateY(-3px);
+
+    background:#b88f15;
+
+}
+
+/* ==========================
+   Hamburger
+========================== */
+
+.menu-toggle{
+
+    display:none;
+
+    flex-direction:column;
+
+    cursor:pointer;
+
+    gap:5px;
+
+}
+
+.menu-toggle span{
+
+    width:28px;
+
+    height:3px;
+
+    border-radius:20px;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+.navbar.scrolled .menu-toggle span{
+
+    background:var(--primary);
+
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:1000px){
+
+    nav{
+
+        position:fixed;
+
+        top:80px;
+
+        right:-100%;
+
+        width:280px;
+
+        height:calc(100vh - 80px);
+
+        background:white;
+
+        transition:.4s;
+
+        box-shadow:-10px 0 30px rgba(0,0,0,.08);
+
+        padding-top:40px;
+
+    }
+
+    nav.active{
+
+        right:0;
+
+    }
+
+    nav ul{
+
+        flex-direction:column;
+
+        gap:30px;
+
+    }
+
+    nav ul li a{
+
+        color:var(--primary);
+
+        font-size:1.1rem;
+
+    }
+
+    .menu-toggle{
+
+        display:flex;
+
+    }
+
+    .search-btn,
+
+    .wishlist-btn{
+
+        display:none;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .logo{
+
+        font-size:1.6rem;
+
+    }
+
+    .login-btn{
+
+        display:none;
+
+    }
+
+}

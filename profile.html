@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Eventra Bharat</title>
+
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <div class="profile-container">
+
+        <div class="profile-card">
+
+            <img
+                id="profileImage"
+                src=""
+                alt="Profile"
+                class="profile-image"
+            >
+
+            <h1 id="profileName">
+                User Name
+            </h1>
+
+            <p id="profileEmail">
+                user@email.com
+            </p>
+
+            <p id="profileRole">
+                User
+            </p>
+
+            <button onclick="logout()" class="logout-btn">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
+
+    <script>
+        loadProfile();
+    </script>
+
+</body>
+</html>

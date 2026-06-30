@@ -1,0 +1,417 @@
+/* =========================
+   EVENTRA BHARAT AUTH CSS
+========================= */
+
+:root{
+    --maroon:#6D0F13;
+    --deep-maroon:#4A0A0D;
+    --gold:#C9A227;
+    --ivory:#F8F4EC;
+    --text:#2A2A2A;
+    --white:#ffffff;
+    --border:#e7e0d5;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--ivory);
+    color:var(--text);
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.auth-container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* =========================
+   LEFT PANEL
+========================= */
+
+.auth-left{
+    width:50%;
+    position:relative;
+    overflow:hidden;
+    background:
+    linear-gradient(
+        rgba(74,10,13,.82),
+        rgba(74,10,13,.92)
+    ),
+    url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.heritage-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        rgba(74,10,13,.78),
+        rgba(74,10,13,.88)
+    );
+    z-index:1;
+}
+
+.left-content{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:80px;
+    color:white;
+}
+
+.brand h1{
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.gold-line{
+    width:90px;
+    height:4px;
+    background:var(--gold);
+    margin-top:15px;
+    margin-bottom:40px;
+}
+
+.left-content h2{
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+    line-height:1.2;
+    margin-bottom:25px;
+}
+
+.left-content p{
+    font-size:1rem;
+    line-height:1.9;
+    max-width:550px;
+    opacity:.95;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.auth-right{
+    width:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:50px;
+    background:var(--ivory);
+}
+
+.form-wrapper{
+    width:100%;
+    max-width:460px;
+}
+
+.welcome-tag{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:50px;
+    background:rgba(201,162,39,.12);
+    color:var(--maroon);
+    font-size:.85rem;
+    font-weight:600;
+}
+
+.form-title{
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+    margin-top:18px;
+    color:var(--deep-maroon);
+}
+
+.form-subtitle{
+    margin-top:10px;
+    margin-bottom:35px;
+    color:#666;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.input-group{
+    margin-bottom:22px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-size:.92rem;
+    font-weight:500;
+}
+
+.input-group input{
+    width:100%;
+    padding:15px 18px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:white;
+    font-size:.95rem;
+    transition:.3s;
+}
+
+.input-group input:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(201,162,39,.12);
+}
+
+.form-options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:.9rem;
+}
+
+.forgot-link{
+    color:var(--maroon);
+    text-decoration:none;
+    font-weight:500;
+}
+
+.forgot-link:hover{
+    color:var(--gold);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    padding:16px;
+    border-radius:14px;
+    font-size:1rem;
+    font-weight:600;
+    background:var(--maroon);
+    color:white;
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    background:var(--deep-maroon);
+    transform:translateY(-2px);
+}
+
+.divider{
+    position:relative;
+    text-align:center;
+    margin:30px 0;
+}
+
+.divider::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    width:100%;
+    height:1px;
+    background:#ddd;
+}
+
+.divider span{
+    position:relative;
+    background:var(--ivory);
+    padding:0 15px;
+    color:#777;
+    font-size:.85rem;
+}
+
+.google-btn{
+    width:100%;
+    padding:15px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    cursor:pointer;
+    font-weight:500;
+    transition:.3s;
+}
+
+.google-btn:hover{
+    border-color:var(--gold);
+    transform:translateY(-2px);
+}
+
+/* =========================
+   FOOT TEXT
+========================= */
+
+.bottom-text{
+    text-align:center;
+    margin-top:28px;
+    color:#666;
+}
+
+.bottom-text a{
+    color:var(--maroon);
+    font-weight:600;
+    text-decoration:none;
+}
+
+.bottom-text a:hover{
+    color:var(--gold);
+}
+
+/* =========================
+   BIRDS
+========================= */
+
+.birds{
+    position:absolute;
+    z-index:3;
+    opacity:.35;
+    pointer-events:none;
+}
+
+.birds-1{
+    top:70px;
+    left:80px;
+    width:160px;
+    animation:floatBird 6s ease-in-out infinite;
+}
+
+.birds-2{
+    bottom:80px;
+    left:180px;
+    width:120px;
+    animation:floatBird 8s ease-in-out infinite;
+}
+
+@keyframes floatBird{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* =========================
+   DECORATIVE GLOW
+========================= */
+
+.auth-right::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:rgba(201,162,39,.08);
+    filter:blur(70px);
+    top:-100px;
+    right:-100px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .left-content{
+        padding:50px;
+    }
+
+    .left-content h2{
+        font-size:2.4rem;
+    }
+}
+
+@media(max-width:900px){
+
+    .auth-container{
+        flex-direction:column;
+    }
+
+    .auth-left{
+        width:100%;
+        height:350px;
+    }
+
+    .auth-right{
+        width:100%;
+        padding:40px 25px;
+    }
+
+    .left-content{
+        padding:35px;
+    }
+
+    .brand h1{
+        font-size:2rem;
+    }
+
+    .left-content h2{
+        font-size:2rem;
+    }
+
+    .birds{
+        display:none;
+    }
+}
+
+@media(max-width:500px){
+
+    .form-title{
+        font-size:2.3rem;
+    }
+
+    .form-options{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .left-content h2{
+        font-size:1.7rem;
+    }
+    
+}
