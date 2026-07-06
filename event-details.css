@@ -1,0 +1,2124 @@
+/* ==========================================================================
+   EVENTRA BHARAT - PREMIUM EVENT DETAILS ENGINE STYLESHEET
+   Architecture: Apple & Airbnb Minimal Luxury Framework
+   Design System: Heritage Maroon, Ancestral Ivory & Polished Gold
+   ========================================================================== */
+
+/* ==========================================
+   CSS Variables
+   ========================================== */
+:root {
+    /* Core Brand Tonalities */
+    --primary: #7C1F23;         /* Deep Imperial Maroon */
+    --primary-deep: #5c1418;
+    --primary-light: #a6383d;
+    --primary-rgb: 124, 31, 35;
+    
+    --accent: #C79A2B;          /* Royal Polished Gold */
+    --accent-light: #d9b876;
+    --accent-hover: #A47E1F;
+    --accent-rgb: 199, 154, 43;
+
+    --bg-main: #FFFDF8;         /* Textured Ancestral Ivory */
+    --bg-subtle: #FDF9F0;       /* Warm Soft Alabaster Sand */
+    --white: #FFFFFF;
+    --white-rgb: 255, 255, 255;
+    
+    --dark-charcoal: #1F1F1F;   /* Obsidian Core Black */
+    --text-muted: #666666;      /* Charcoal Mid-Tone Neutral */
+    --border-color: #EAEAEA;    /* Premium Slate Divider */
+    
+    /* Typography Metric Scale */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-alt: 'Poppins', sans-serif;
+
+    /* Shadows & Glows */
+    --shadow-sm: 0 4px 12px rgba(31, 31, 31, 0.04);
+    --shadow-md: 0 12px 32px rgba(31, 31, 31, 0.08);
+    --shadow-lg: 0 24px 64px rgba(31, 31, 31, 0.12);
+    --shadow-luxury: 0 30px 70px rgba(124, 31, 35, 0.15);
+    --gold-glow: 0 0 20px rgba(199, 154, 43, 0.4);
+
+    /* Structural Radii */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 40px;
+    --radius-round: 60px;
+
+    /* Animation Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-bounce: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Layout Framework Constraints */
+    --max-width: 1440px;
+}
+
+/* ==========================================
+   Reset & Baseline
+   ========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--dark-charcoal);
+    font-family: var(--font-sans);
+    line-height: 1.625;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+hr {
+    border: none;
+    height: 1px;
+}
+
+/* ==========================================
+   Typography Utilities
+   ========================================== */
+h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--dark-charcoal);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.SectionAdaptiveHeading {
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.SectionAdaptiveHeading h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.SectionAdaptiveHeading h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.SectionSubtitle {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    font-weight: 400;
+}
+
+.CenteredHeading {
+    text-align: center;
+}
+
+.CenteredHeading h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ==========================================
+   Global Layout Structure
+   ========================================== */
+.MainContentLayoutWrapper {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.ContainerBoundary {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.5rem, 5vw, 5rem);
+    padding-right: clamp(1.5rem, 5vw, 5rem);
+}
+
+.DualColumnLayoutContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding-top: clamp(3rem, 6vw, 6rem);
+    padding-bottom: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .DualColumnLayoutContainer {
+        grid-template-columns: 1fr 400px;
+    }
+}
+
+.ContentColumnLeftMaster > section {
+    margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.ContentColumnLeftMaster > section:last-child {
+    margin-bottom: 0;
+}
+
+.PremiumDivider {
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+.PremiumDividerSubtle {
+    border-top: 1px dashed var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* ==========================================
+   Sticky Navbar
+   ========================================== */
+.GlobalStickyHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem clamp(1.5rem, 5vw, 5rem);
+    background: rgba(255, 253, 248, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(31, 31, 31, 0.05);
+    transition: var(--transition-smooth);
+}
+
+.GlobalStickyHeader.scrolled {
+    padding: 0.85rem clamp(1.5rem, 5vw, 5rem);
+    background: rgba(255, 253, 248, 0.9);
+    box-shadow: var(--shadow-sm);
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 3rem;
+}
+
+.navbar nav ul a {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--dark-charcoal);
+    position: relative;
+    padding: 0.5rem 0;
+    transition: var(--transition-fast);
+}
+
+.navbar nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition-smooth);
+}
+
+.navbar nav ul a:hover::after,
+.navbar nav ul a.active::after {
+    width: 100%;
+}
+
+.navbar nav ul a:hover {
+    color: var(--primary);
+}
+
+/* ==========================================
+   Hero Banner
+   ========================================== */
+.ExtendedHeroBanner {
+    position: relative;
+    width: 100%;
+    min-height: clamp(500px, 75vh, 800px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-bottom: clamp(3rem, 6vw, 6rem);
+    background-color: #0d0a0a;
+}
+
+.hero-parallax-background-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.HeroFluidAsset {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.02);
+    filter: brightness(0.95);
+    transition: transform var(--transition-smooth);
+}
+
+.hero-vignette-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 10, 10, 0.1) 0%,
+        rgba(13, 10, 10, 0.4) 40%,
+        rgba(13, 10, 10, 0.85) 85%,
+        rgba(13, 10, 10, 0.98) 100__
+    );
+    z-index: 2;
+}
+
+.HeroContentConstrainedContainer {
+    position: relative;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+    z-index: 3;
+}
+
+.HeroContentLayoutGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: flex-end;
+}
+
+@media (min-width: 1024px) {
+    .HeroContentLayoutGrid {
+        grid-template-columns: 1fr auto;
+    }
+}
+
+.HeroLayoutLeftStack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.HeroCategoryBadgeRow {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.LuxuryCategoryBadge {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    background: rgba(199, 154, 43, 0.2);
+    color: var(--accent-light);
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-round);
+    border: 1px solid rgba(199, 154, 43, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.ImperialMainHeadline {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.HeroMetaDetailsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.HeroRatingGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.PremiumStarTone {
+    color: var(--accent);
+}
+
+.RatingValueMetric {
+    font-weight: 600;
+}
+
+.ReviewCountData {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.HeroLocationStamp {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.HeroLocationStamp i {
+    color: var(--accent-light);
+}
+
+.HeroScheduleInlineStrip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.InlineStripMetric {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
+.InlineStripMetric i {
+    color: var(--accent-light);
+    font-size: 1.1rem;
+}
+
+.HeroLayoutRightStack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 280px;
+}
+
+.HeroActionControlGroup {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .HeroActionControlGroup {
+        justify-content: flex-end;
+    }
+}
+
+.HeroPricingValueTier {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+@media (min-width: 1024px) {
+    .HeroPricingValueTier {
+        text-align: right;
+    }
+}
+
+.PriceLabelPrefix {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.PriceMainNumeric {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    color: var(--white);
+    font-weight: 700;
+}
+
+.PriceSuffixUnit {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================
+   Event Information
+   ========================================== */
+.InfoStructuredCardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.SpecPremiumMetricCard {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 1.75rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.SpecPremiumMetricCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.SpecCardIconBox {
+    width: 52px;
+    height: 52px;
+    background-color: var(--bg-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.25rem;
+    border: 1px solid rgba(124, 31, 35, 0.08);
+}
+
+.SpecCardDataStack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.SpecLabel {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+.SpecValue {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--dark-charcoal);
+}
+
+/* ==========================================
+   About Event
+   ========================================== */
+.EditorialTextBlock p {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    color: #333333;
+}
+
+.LeadParagraphText {
+    font-size: clamp(1.15rem, 1.5vw, 1.35rem) !important;
+    line-height: 1.6;
+    color: var(--dark-charcoal) !important;
+    font-weight: 500;
+}
+
+.EditorialHighlightsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+@media (min-width: 640px) {
+    .EditorialHighlightsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.HighlightItemBlock {
+    background-color: var(--bg-subtle);
+    border-left: 4px solid var(--accent);
+    padding: 1.75rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    display: flex;
+    gap: 1.25rem;
+}
+
+.HighlightMarkerIcon {
+    color: var(--accent);
+    font-size: 1.35rem;
+    margin-top: 0.15rem;
+}
+
+.HighlightContentText h3 {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.HighlightContentText p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.TonalSplitInclusionGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .TonalSplitInclusionGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.InclusionListCard, .ExclusionListCard {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.InclusionListCard h3, .ExclusionListCard h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.InclusionPassIcon {
+    color: #2E7D32;
+}
+
+.ExclusionFailIcon {
+    color: #C62828;
+}
+
+.PremiumBulletList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.PremiumBulletList li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.PremiumBulletList li i {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.InclusionListCard .PremiumBulletList i {
+    color: #2E7D32;
+}
+
+.ExclusionListCard .PremiumBulletList i {
+    color: #C62828;
+}
+
+.OperationalGuidelinesContainer {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.OperationalGuidelinesContainer h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--primary);
+}
+
+.GuidelinesTextContent p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.StandardIconizedList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.StandardIconizedList li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--dark-charcoal);
+}
+
+.StandardIconizedList li::before {
+    content: '•';
+    color: var(--accent);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -0.3rem;
+}
+
+/* ==========================================
+   Gallery
+   ========================================== */
+.AssetShowcaseAdaptiveGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .AssetShowcaseAdaptiveGrid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 200px;
+    }
+    
+    .AssetShowcaseAdaptiveGrid > *:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    
+    .AssetShowcaseAdaptiveGrid > *:nth-child(2) {
+        grid-column: span 2;
+    }
+}
+
+.GalleryItemWrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-subtle);
+    aspect-ratio: 4 / 3;
+    min-height: 180px;
+}
+
+.GalleryImageNode {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.GalleryItemWrapper:hover .GalleryImageNode {
+    transform: scale(1.06);
+}
+
+/* ==========================================
+   Timeline
+   ========================================== */
+.InteractiveTimelineWrapper {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-top: 2rem;
+}
+
+.InteractiveTimelineWrapper::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.TimelineNodeRow {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.TimelineNodeRow:last-child {
+    margin-bottom: 0;
+}
+
+.TimelineMarkerAnchor {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.25rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--white);
+    border: 3px solid var(--primary);
+    z-index: 2;
+    transition: background-color var(--transition-fast);
+}
+
+.TimelineNodeRow:hover .TimelineMarkerAnchor {
+    background-color: var(--accent);
+}
+
+.TimelineCardBlock {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.TimelineCardBlock:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.TimelineTimeBadge {
+    display: inline-block;
+    font-family: var(--font-alt);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    background-color: rgba(124, 31, 35, 0.06);
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-round);
+    margin-bottom: 0.75rem;
+}
+
+.TimelineCardBlock h3 {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.TimelineCardBlock p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   Venue
+   ========================================== */
+.VenueLayoutGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .VenueLayoutGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.VenueEditorialCard {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.VenueCardSubText {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.VenueEditorialCard h3 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.VenueAddressLine {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.TransitMetricRow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.TransitNodePoint {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.TransitNodePoint i {
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+    width: 24px;
+    text-align: center;
+}
+
+.TransitNodePoint strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--dark-charcoal);
+}
+
+.TransitNodePoint span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.MapCanvasWrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    min-height: 350px;
+    position: relative;
+    background-color: var(--bg-subtle);
+}
+
+.DynamicMapEmbedSurface {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.MapFallbackPlaceholderGraphic {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.MapLoadingAnimatedIcon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    opacity: 0.6;
+}
+
+/* ==========================================
+   Organizer
+   ========================================== */
+.OrganizerPremiumCard {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.OrganizerBrandProfileHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.OrganizerAvatarFrame {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.CorporateInitialsFallback {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.OrganizerIdentityStack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.VerificationStatusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1565C0;
+}
+
+.OrganizerIdentityStack h3 {
+    font-family: var(--font-sans);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.CorporateMetaSummary {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.OrganizerNarrativeBio {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.OrganizerActionPanelRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.OrganizerSocialLinks {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.OrganizerSocialLinks a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    transition: var(--transition-fast);
+    border: 1px solid var(--border-color);
+}
+
+.OrganizerSocialLinks a:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    transform: scale(1.08);
+}
+
+/* ==========================================
+   Reviews
+   ========================================== */
+.MetricSummaryDashboardGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    background-color: var(--bg-subtle);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
+}
+
+@media (min-width: 640px) {
+    .MetricSummaryDashboardGrid {
+        grid-template-columns: 180px 1fr;
+        align-items: center;
+    }
+}
+
+.GlobalNumericScoreCard {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+@media (min-width: 640px) {
+    .GlobalNumericScoreCard {
+        border-right: 1px solid var(--border-color);
+        padding-right: 2.5rem;
+    }
+}
+
+.LargeScoreDisplay {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.ScoreStarsRow {
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin: 0.25rem 0;
+}
+
+.TotalReviewsLabel {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.RatingHistogramDistributionTray {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.HistogramRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.HistogramLevelLabel {
+    width: 60px;
+    font-weight: 500;
+}
+
+.HistogramBarTrack {
+    flex: 1;
+    height: 6px;
+    background-color: rgba(31, 31, 31, 0.06);
+    border-radius: var(--radius-round);
+    overflow: hidden;
+}
+
+.HistogramBarFill {
+    height: 100%;
+    background-color: var(--accent);
+    border-radius: var(--radius-round);
+}
+
+.HistogramPercentageValue {
+    width: 40px;
+    text-align: right;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.ReviewCardInstance {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+}
+
+.ReviewCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.ReviewerInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ReviewerAvatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--accent-light);
+    color: var(--primary-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.ReviewerMeta h4 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.ReviewDate {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   Sticky Booking Sidebar
+   ========================================== */
+.StickySidebarContainer {
+    position: sticky;
+    top: 120px;
+    z-index: 10;
+}
+
+.GlassmorphicBookingCard {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.GlassmorphicBookingCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+.BookingCardHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.CardHeaderPricingStack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.PricingBadgeContext {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.TierTitleDisplay {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.CardHeaderValueNumerical {
+    text-align: right;
+}
+
+.DisplayPriceFigure {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.TaxationInclusiveDisclaimer {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+}
+
+.BookingFormInternalFlow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.BookingFormInputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.FormInputLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark-charcoal);
+}
+
+.QuantitySelectorInteractiveRow {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.QuantityLabelsStack {
+    display: flex;
+    flex-direction: column;
+}
+
+.InventoryWarningLabel {
+    font-size: 0.75rem;
+    color: #C62828;
+    font-weight: 500;
+    margin-top: 0.15rem;
+}
+
+.DynamicInvoiceSummaryZone {
+    background-color: rgba(31, 31, 31, 0.03);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.InvoiceCalculationLine {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.InvoiceCalculatedValue {
+    font-weight: 600;
+}
+
+.InvoiceTotalMainLine {
+    font-size: 1.15rem;
+    color: var(--dark-charcoal);
+}
+
+.InvoiceTotalLabel {
+    font-weight: 700;
+}
+
+.InvoiceTotalNumerical {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.BookingCardGuaranteesTray {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.GuaranteeItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.GuaranteeItem i {
+    color: #2E7D32;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   Related Events
+   ========================================== */
+.ContextualDiscoveryCarouselSection {
+    padding-top: 2rem;
+    padding-bottom: clamp(4rem, 8vw, 8rem);
+    border-top: 1px solid var(--border-color);
+}
+
+.DiscoveryCarouselDynamicGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.StandardEventModularCard {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.StandardEventModularCard:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.CardImageStructuralFrame {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--bg-subtle);
+}
+
+.CardEmbeddedImageAsset {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-smooth);
+}
+
+.StandardEventModularCard:hover .CardEmbeddedImageAsset {
+    transform: scale(1.05);
+}
+
+.CardFloatingRibbonBadge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    background-color: var(--white);
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-round);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-sm);
+}
+
+.CardDiscoveryContentTray {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.CardDiscoveryContentTray h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.CardMetaLocationLine {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.CardBottomPricingRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.CardPriceLabel {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ==========================================
+   FAQ
+   ========================================== */
+.AccessibleKnowledgeSection {
+    background-color: var(--bg-subtle);
+    padding-top: clamp(4rem, 6vw, 6rem);
+    padding-bottom: clamp(4rem, 6vw, 6rem);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.AccordionLayoutContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.AccordionItemFrame {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast);
+}
+
+.AccordionItemFrame:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.AccordionInteractiveHeader {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-charcoal);
+    transition: color var(--transition-fast);
+}
+
+.AccordionInteractiveHeader:hover {
+    color: var(--primary);
+}
+
+.AccordionStateIcon {
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: transform var(--transition-smooth);
+}
+
+.AccordionInteractiveHeader[aria-expanded="true"] .AccordionStateIcon {
+    transform: rotate(45deg);
+    color: var(--primary);
+}
+
+.AccordionContentDrawer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-smooth) ease-out;
+}
+
+.AccordionContentDrawer:not([hidden]) {
+    max-height: 400px; /* Functional ceiling for pure CSS expansion interpolation */
+}
+
+.AccordionInnerPaddingBox {
+    padding: 0 2rem 1.75rem 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   Newsletter
+   ========================================== */
+.PremiumEngagementNewsletterSection {
+    background: linear-gradient(135deg, var(--primary-deep) 0%, #4a1215 100%);
+    padding-top: clamp(4rem, 6vw, 6rem);
+    padding-bottom: clamp(4rem, 6vw, 6rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.PremiumEngagementNewsletterSection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 80% 20%, rgba(199, 154, 43, 0.15), transparent 50%);
+}
+
+.NewsletterViewportContentBox {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 1024px) {
+    .NewsletterViewportContentBox {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.NewsletterTextLayoutColumn h2 {
+    color: var(--white);
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    margin-bottom: 1rem;
+}
+
+.NewsletterTextLayoutColumn p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.5;
+}
+
+.NewsletterInteractionFormColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.NewsletterPremiumInputBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(10px);
+}
+
+@media (min-width: 640px) {
+    .NewsletterPremiumInputBlock {
+        flex-direction: row;
+        border-radius: var(--radius-round);
+        padding: 0.6rem 0.6rem 0.6rem 1.75rem;
+    }
+}
+
+.NewsletterStructuralInputBox {
+    flex: 1;
+    padding: 1rem 0;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.NewsletterStructuralInputBox::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.FormPrivacyDisclaimer {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4) !important;
+    padding-left: 0.5rem;
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+.EnterpriseSystemFooter {
+    background-color: var(--dark-charcoal);
+    color: rgba(255, 255, 255, 0.7);
+    padding-top: clamp(4rem, 6vw, 6rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.FooterInternalDirectoryGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+@media (min-width: 640px) {
+    .FooterInternalDirectoryGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .FooterInternalDirectoryGrid {
+        grid-template-columns: 2.2fr repeat(4, 1fr);
+    }
+}
+
+.CorporateIdentityBrandBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.FooterLogoMark {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+}
+
+.CorporateMottoPara {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.CorporateOfficeAddress {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4) !important;
+    line-height: 1.4;
+}
+
+.CorporateOfficeAddress i {
+    margin-top: 0.2rem;
+}
+
+.FooterDirectoryLinksColumn h4 {
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+.FooterDirectoryLinksColumn ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.FooterDirectoryLinksColumn ul a {
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+}
+
+.FooterDirectoryLinksColumn ul a:hover {
+    color: var(--accent-light);
+    transform: translateX(3px);
+    display: inline-block;
+}
+
+.CorporateFooterSocialIcons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.CorporateFooterSocialIcons a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.CorporateFooterSocialIcons a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.CorporateCertificationLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.FooterCopyrightBaselinePanel {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 2rem 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.BaselinePanelContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .BaselinePanelContainer {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+.SystemComplianceStampsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+/* ==========================================
+   Buttons
+   ========================================== */
+.LuxuryCtaPrimary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    padding: 1.15rem 2.5rem;
+    border-radius: var(--radius-round);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), background-color var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.ButtonFillMaroon {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.ButtonFillMaroon:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-luxury);
+}
+
+.LuxuryCtaSecondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius-round);
+    transition: var(--transition-smooth);
+}
+
+.ActionButtonBordered {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.ActionButtonBordered:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.ActionButtonSubtle {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--dark-charcoal);
+}
+
+.ActionButtonSubtle:hover {
+    background-color: var(--white);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-luxury-text {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-fast);
+}
+
+.btn-luxury-text:hover {
+    color: var(--accent-hover);
+}
+
+.btn-luxury-text i {
+    transition: transform var(--transition-fast);
+}
+
+.btn-luxury-text:hover i {
+    transform: translateX(4px);
+}
+
+.GlassmorphicIconButton {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-bounce);
+}
+
+.GlassmorphicIconButton:hover {
+    background: var(--white);
+    color: var(--primary);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+.GlassmorphicIconButton[data-favorited="true"] {
+    background: var(--white);
+    color: #C62828;
+}
+
+.NewsletterActionSubmitBtn {
+    background-color: var(--accent);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-round);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    transition: var(--transition-smooth);
+}
+
+.NewsletterActionSubmitBtn:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-deep);
+    box-shadow: var(--gold-glow);
+}
+
+.ActionButtonPrimary {
+    background-color: var(--primary);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: var(--radius-round);
+    transition: var(--transition-smooth);
+}
+
+.ActionButtonPrimary:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+/* Structural Layout Helpers for Buttons */
+.full-width-center-button {
+    width: 100%;
+    margin-top: auto;
+}
+
+.full-width-cta-button {
+    width: 100%;
+    padding: 1.25rem 2rem;
+}
+
+/* ==========================================
+   Forms & Controls
+   ========================================== */
+.CustomSelectFieldContainer {
+    position: relative;
+    width: 100%;
+}
+
+.CustomSelectFieldContainer::after {
+    content: '\f107';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+.PremiumFormSelectControlElement {
+    width: 100%;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 1rem 2.5rem 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    appearance: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark-charcoal);
+    box-shadow: var(--shadow-sm);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.PremiumFormSelectControlElement:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(124, 31, 35, 0.08);
+}
+
+.QuantityControlWidgetEngine {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-round);
+    padding: 0.25rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.QuantityWidgetButton {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--bg-subtle);
+    color: var(--dark-charcoal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.QuantityWidgetButton:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.QuantityNumericInputField {
+    width: 44px;
+    text-align: center;
+    font-family: var(--font-alt);
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+}
+
+/* ==========================================
+   Animations & Loaders
+   ========================================== */
+@keyframes skeletonPulse {
+    0% { background-color: rgba(31, 31, 31, 0.04); }
+    50% { background-color: rgba(31, 31, 31, 0.09); }
+    100% { background-color: rgba(31, 31, 31, 0.04); }
+}
+
+.StructuralSkeletonLoaderContainer .SkeletonElement,
+.InfrastructurePipelineNode .SkeletonElement,
+.MatrixDynamicLayout .SkeletonElement,
+.CardAdaptiveStructureMatrix .SkeletonElement {
+    animation: skeletonPulse 1.8s infinite ease-in-out;
+    border-radius: var(--radius-md);
+    width: 100%;
+}
+
+.NodeImageAspectRatio {
+    aspect-ratio: 4 / 3;
+}
+
+.NodeTimelineRowHeight {
+    height: 120px;
+}
+
+.NodeReviewRowHeight {
+    height: 160px;
+}
+
+.NodeCardStandardHeight {
+    height: 380px;
+}
+
+/* Visibility classes for Scroll-Reveal hooks */
+.interaction-reveal-node {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interaction-reveal-node.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Accessibility utility */
+.VisuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================================
+   Responsive Adaptations
+   ========================================== */
+@media (max-width: 1023px) {
+    .navbar nav {
+        display: none; /* Architectural fallback layout configuration for mobile viewports */
+    }
+    
+    .StickySidebarContainer {
+        position: static;
+        width: 100%;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .HeroScheduleInlineStrip {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .MetricSummaryDashboardGrid {
+        padding: 1.5rem;
+    }
+    
+    .InclusionListCard, .ExclusionListCard, .OperationalGuidelinesContainer, .VenueEditorialCard, .OrganizerPremiumCard {
+        padding: 1.75rem;
+    }
+}
