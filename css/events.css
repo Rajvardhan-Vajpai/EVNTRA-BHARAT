@@ -1,0 +1,1287 @@
+/* ==========================================================================
+   EVENTRA BHARAT - PREMIUM PRODUCTION CORE DESCRIPTOR
+   Architecture: Apple & Airbnb Minimal Luxury Design Framework
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Core Design Tokens & Variables
+   -------------------------------------------------------------------------- */
+:root {
+    /* Core Brand Tonalities */
+    --primary: #7C1F23;         /* Deep Imperial Maroon */
+    --primary-rgb: 124, 31, 35;
+    --accent: #C79A2B;          /* Royal Polished Gold */
+    --accent-rgb: 199, 154, 43;
+    --accent-hover: #A47E1F;
+    --bg-main: #FFFDF8;         /* Textured Ancestral Ivory */
+    --bg-subtle: #FDF9F0;       /* Warm Soft Alabaster Sand */
+    --white: #FFFFFF;
+    --dark-charcoal: #1E1515;   /* Obsidian Core Black */
+    --light-gray: #EFECE6;      /* Premium Slate Divider Color */
+    --text-muted: #665C5C;      /* Charcoal Mid-Tone Neutral */
+
+    /* Typography Metric Scale */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+
+    /* Layout Boundaries */
+    --max-width: 1440px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-full: 100px;
+
+    /* Motion Mechanics */
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-fast: all 0.3s ease;
+
+    /* Elevation Design Profiles */
+    --shadow-sm: 0 4px 20px rgba(30, 21, 21, 0.02);
+    --shadow-md: 0 12px 36px rgba(30, 21, 21, 0.05);
+    --shadow-lg: 0 40px 80px rgba(124, 31, 35, 0.08);
+    --shadow-glass: 0 8px 32px 0 rgba(30, 21, 21, 0.06);
+    --border-glass: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Resets & Base Elements
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--dark-charcoal);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
+}
+
+button, input, select, textarea {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   3. Unified Layout Structural Elements & Typography
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, .logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--dark-charcoal);
+}
+
+section {
+    padding: clamp(4rem, 6vw, 6rem) 5% clamp(2rem, 4vw, 4rem) 5%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.section-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 5vw, 5rem);
+}
+
+.section-header, .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    gap: 2rem;
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+}
+
+.section-header.center-align {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: none;
+    padding-left: 0;
+}
+
+.section-badge, .section-tag {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 800;
+    font-size: clamp(0.75rem, 1vw, 0.85rem);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.75rem;
+}
+
+section h2 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--primary);
+    margin: 0 0 8px 0;
+}
+
+.section-desc, section p {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: var(--text-muted);
+    max-width: 520px;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. Navigation Framework
+   -------------------------------------------------------------------------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    background: rgba(255, 253, 248, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(124, 31, 35, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    box-sizing: border-box;
+    transition: var(--transition-smooth);
+}
+
+.nav-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.brand-accent {
+    color: var(--accent);
+}
+
+.nav-menu ul, nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a, nav ul li a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    position: relative;
+    padding: 0.5rem 0;
+    transition: var(--transition-fast);
+}
+
+.nav-menu a:hover,
+.nav-menu a.active,
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--primary);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: var(--transition-smooth);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+.login-btn {
+    background: var(--dark-charcoal);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+.login-btn:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124, 31, 35, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero & Search Control Systems
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    min-height: 95vh;
+    padding-top: 140px;
+    padding-bottom: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(30, 21, 21, 0.88) 0%, rgba(18, 12, 12, 0.98) 100%),
+                url('../assets/images/placeholder-landscape.svg') center center / cover no-repeat;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-tag-wrapper {
+    margin-bottom: 1.75rem;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 5.5vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.75rem;
+    color: var(--white);
+    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #FFFFFF 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 400;
+    line-height: 1.7;
+    animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.search-panel {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+    border: var(--border-glass);
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto 4rem;
+    text-align: left;
+    animation: slideUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.search-grid-inputs {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 0.75rem;
+    background: var(--bg-subtle);
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(124, 31, 35, 0.04);
+}
+
+.search-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+}
+
+.search-item:focus-within {
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.search-item label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--primary);
+    letter-spacing: 0.8px;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.search-item input, 
+.search-item select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--dark-charcoal);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.search-item input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.advanced-filters-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+    gap: 2.5rem;
+}
+
+.filter-subset {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filter-subset label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.filter-subset select {
+    border: 1px solid rgba(30, 21, 21, 0.15);
+    background: var(--white);
+    padding: 0.5rem 1.25rem;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark-charcoal);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.filter-subset select:hover,
+.filter-subset select:focus {
+    border-color: var(--primary);
+}
+
+.sorting-subset {
+    margin-left: auto;
+}
+
+.sorting-subset select {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-full);
+}
+
+.sorting-subset select:hover {
+    background: var(--dark-charcoal);
+}
+
+/* --------------------------------------------------------------------------
+   6. Metrics & Auxiliary Navigation (Pills Track)
+   -------------------------------------------------------------------------- */
+.stats-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    margin-top: 2rem;
+    animation: fadeIn 1.6s ease-out;
+}
+
+.stat-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.stat-node:hover {
+    transform: translateY(-4px);
+}
+
+.stat-node strong {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.stat-node span {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 0.35rem;
+    font-weight: 600;
+}
+
+.category-track-section {
+    background-color: var(--white);
+    border-bottom: 1px solid rgba(124, 31, 35, 0.05);
+    padding: 1.5rem 0;
+}
+
+.track-wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+.category-pills-slider {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.category-pills-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.pill-node {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.6rem;
+    background-color: var(--bg-subtle);
+    border: 1px solid rgba(30, 21, 21, 0.04);
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--dark-charcoal);
+    cursor: pointer;
+    transition: var(--transition-bounce);
+}
+
+.pill-node:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(199, 154, 43, 0.1);
+}
+
+.pill-node.active {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 8px 20px rgba(124, 31, 35, 0.2);
+}
+
+.pill-node-icon {
+    font-size: 1.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Premium Card & Grid Architectures
+   -------------------------------------------------------------------------- */
+.premium-layout-grid, .cards-grid, .experience-grid, .festival-grid, .hidden-grid, .state-grid {
+    display: grid;
+    gap: 2.5rem 2rem;
+    width: 100%;
+}
+
+.premium-layout-grid.cols-4, .state-grid {
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+}
+
+.cards-grid, .experience-grid, .festival-grid, .hidden-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    margin-top: 40px;
+    padding: 10px 0;
+}
+
+.premium-event-card, .discover-item-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(30, 21, 21, 0.03);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    transition: var(--transition-bounce);
+}
+
+.premium-event-card:hover, .discover-item-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(199, 154, 43, 0.3);
+}
+
+.card-media-shell, .discover-card-media {
+    position: relative;
+    padding-top: 68%;
+    height: 210px;
+    overflow: hidden;
+    background-color: var(--light-gray);
+}
+
+.card-media-shell img, .discover-card-media img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-event-card:hover .card-media-shell img,
+.discover-item-card:hover .discover-card-media img {
+    transform: scale(1.08);
+}
+
+.discover-card-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 65%, rgba(43,28,20,0.3) 100%);
+    pointer-events: none;
+}
+
+.card-floating-badge, .discover-card-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 2;
+    background: rgba(30, 21, 21, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.discover-card-badge {
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card-fav-trigger, .discover-heart-trigger, .discover-heart-toggle {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    background: var(--white);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-charcoal);
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+}
+
+.card-fav-trigger:hover, .discover-heart-trigger:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.discover-heart-toggle:active {
+    transform: scale(0.85);
+}
+
+.card-core-content, .discover-card-meta {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-context-row, .meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.card-context-row span i {
+    color: var(--accent);
+    margin-right: 0.4rem;
+}
+
+.card-rating-metric, .rating-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--dark-charcoal);
+    font-weight: 700;
+}
+
+.card-rating-metric i {
+    color: var(--accent);
+}
+
+.premium-event-card h3, .discover-card-meta h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark-charcoal);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 3.5rem;
+}
+
+.card-billing-row, .pricing-row {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(30, 21, 21, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-stack .lbl {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.15rem;
+}
+
+.price-stack .val, .cost-indicator {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.card-cta-btn, .discover-cta-btn {
+    background-color: var(--dark-charcoal);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.88rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+.card-cta-btn:hover {
+    background-color: var(--primary);
+    box-shadow: 0 8px 20px rgba(124, 31, 35, 0.15);
+}
+
+.discover-cta-btn {
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    border-radius: 30px;
+    font-size: 0.8rem;
+}
+
+.discover-cta-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* --------------------------------------------------------------------------
+   8. Bento Box Architectural Matrix (Cities Grid)
+   -------------------------------------------------------------------------- */
+.bento-grid-blueprint {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 260px;
+    gap: 1.75rem;
+    width: 100%;
+}
+
+.bento-city-cell {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    background-color: var(--light-gray);
+}
+
+.bento-city-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-city-cell:hover img {
+    transform: scale(1.06);
+}
+
+.bento-city-cell.span-2 { grid-column: span 2; }
+.bento-city-cell.row-2 { grid-row: span 2; }
+
+.bento-city-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18, 12, 12, 0.92) 0%, rgba(0, 0, 0, 0.25) 55%, transparent 100%);
+    z-index: 2;
+}
+
+.bento-city-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.75rem;
+    z-index: 3;
+    color: var(--white);
+    transform: translateY(0);
+    transition: var(--transition-smooth);
+}
+
+.bento-city-cell:hover .bento-city-info {
+    transform: translateY(-4px);
+}
+
+.bento-city-info h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.bento-city-info p {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Fallbacks, Structural Notices & Pagination
+   -------------------------------------------------------------------------- */
+.empty-results-notice {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 6rem 2rem;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 2px dashed rgba(30, 21, 21, 0.08);
+}
+
+.empty-results-notice i {
+    font-size: 3.5rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+}
+
+.empty-results-notice h4 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.empty-results-notice p {
+    color: var(--text-muted);
+}
+
+.view-toggle-context {
+    display: flex;
+    align-items: center;
+}
+
+.results-counter {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(124, 31, 35, 0.06);
+    padding: 0.5rem 1.4rem;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.5px;
+}
+
+.pagination-orchestrator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    gap: 2.5rem;
+}
+
+.load-more-btn {
+    background-color: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 1rem 2.5rem;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.95rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+.load-more-btn:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    box-shadow: 0 12px 28px rgba(124, 31, 35, 0.2);
+}
+
+.load-more-btn i {
+    font-size: 0.9rem;
+    transition: transform 0.6s ease;
+}
+
+.load-more-btn:hover i {
+    transform: rotate(180deg);
+}
+
+.pagination-stepper {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.step-node {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background-color: var(--white);
+    border: 1px solid rgba(30, 21, 21, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark-charcoal);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.step-node:hover,
+.step-node.active {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 8px 16px rgba(124, 31, 35, 0.15);
+}
+
+.step-node.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    background-color: rgba(30, 21, 21, 0.01);
+    box-shadow: none;
+    border-color: rgba(30, 21, 21, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   10. Unified Premium Newsletter Section
+   -------------------------------------------------------------------------- */
+.newsletter-section, .newsletter {
+    padding: 0 clamp(1.5rem, 5vw, 5rem) clamp(4rem, 8vw, 8rem);
+    max-width: 100%;
+    margin: 60px auto 0;
+    box-sizing: border-box;
+}
+
+.newsletter {
+    background: linear-gradient(rgba(18, 9, 10, 0.94), rgba(18, 9, 10, 0.94)),
+                url('../assets/images/placeholder-landscape.svg') center center / cover no-repeat;
+    border-radius: var(--radius-xl);
+    padding: clamp(3rem, 6vw, 6rem) 2rem;
+    text-align: center;
+}
+
+.newsletter-wrapper, .newsletter-content {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--white);
+}
+
+.newsletter h2, .newsletter-inner h2 {
+    color: var(--white);
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    margin-bottom: 1.25rem;
+}
+
+.newsletter p, .newsletter-inner p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    margin-bottom: 2.75rem;
+    line-height: 1.65;
+}
+
+.newsletter-form, #newsletterForm {
+    display: flex;
+    background: var(--white);
+    padding: 0.5rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.input-field-group {
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    flex-grow: 1;
+    gap: 0.75rem;
+}
+
+.input-field-group i {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.input-field-group input, #newsletterEmail {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--dark-charcoal);
+    font-weight: 600;
+    background: transparent;
+}
+
+.input-field-group input::placeholder, #newsletterEmail::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    opacity: 0.6;
+}
+
+.subscribe-btn, #subscribeBtn {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 1.1rem 2.25rem;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.95rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 4px 14px rgba(124, 31, 35, 0.3);
+    transition: var(--transition-smooth);
+}
+
+#subscribeBtn {
+    background: var(--accent);
+}
+
+.subscribe-btn:hover, #subscribeBtn:hover {
+    background-color: var(--accent);
+    color: var(--dark-charcoal);
+    box-shadow: 0 6px 20px rgba(199, 154, 43, 0.4);
+    opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   11. Elegant Footer Architecture
+   -------------------------------------------------------------------------- */
+.professional-footer, footer {
+    background-color: #0F0A0A;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.92rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-top-tier {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 6rem clamp(1.5rem, 5vw, 5rem) 4rem;
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 4rem 2.5rem;
+}
+
+.footer-brand-column .footer-logo {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--white);
+    display: block;
+    margin-bottom: 1.25rem;
+}
+
+.footer-brand-column .footer-logo span {
+    color: var(--accent);
+}
+
+.footer-brand-pitch {
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+    max-width: 320px;
+}
+
+.social-links-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links-row a {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+.social-links-row a:hover {
+    background-color: var(--accent);
+    color: var(--dark-charcoal);
+    transform: translateY(-3px);
+}
+
+.footer-links-column h4 {
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links-column ul {
+    list-style: none;
+}
+
+.footer-links-column li {
+    margin-bottom: 0.85rem;
+}
+
+.footer-links-column a {
+    position: relative;
+}
+
+.footer-links-column a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom-tier {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2.25rem clamp(1.5rem, 5vw, 5rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.3px;
+}
+
+/* --------------------------------------------------------------------------
+   12. Motion & Animation Mechanics
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   13. Responsive Micro-Layout Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 1120px) {
+    .search-grid-inputs {
+        grid-template-columns: 1.4fr 1fr;
+        gap: 1rem;
+    }
+    .sorting-subset {
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .sorting-subset select {
+        width: auto;
+    }
+    .bento-grid-blueprint {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 240px;
+    }
+    .footer-top-tier {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-brand-column {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu, nav ul {
+        display: none;
+    }
+    .section-header, .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+    .search-grid-inputs {
+        grid-template-columns: 1fr;
+    }
+    .advanced-filters-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+    .newsletter-form, #newsletterForm {
+        flex-direction: column;
+        background: transparent;
+        padding: 0;
+        gap: 1rem;
+        box-shadow: none;
+        border: none;
+    }
+    .input-field-group, #newsletterEmail {
+        background: var(--white);
+        padding: 1.1rem 1.5rem;
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .subscribe-btn, #subscribeBtn {
+        width: 100%;
+        justify-content: center;
+        padding: 1.1rem;
+    }
+    .bento-grid-blueprint {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
+    .bento-city-cell.span-2 {
+        grid-column: span 1;
+    }
+    .bento-city-cell.row-2 {
+        grid-row: span 1;
+    }
+    .stats-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-top-tier {
+        grid-template-columns: 1fr;
+    }
+    .footer-brand-column {
+        grid-column: span 1;
+    }
+    .hero-tag {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.72rem;
+    }
+    .search-panel {
+        padding: 1rem;
+    }
+}

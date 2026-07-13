@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Incredible India | Eventra Bharat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/discover.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="brand-accent">EVENTRA</span> BHARAT
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="discover.html" class="active">Discover</a></li>
+                    <li><a href="#featuredGrid">Events</a></li>
+                    <li><a href="#destinationGrid">Destinations</a></li>
+                    <li><a href="#experienceGrid">Experiences</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <button class="login-btn">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-tag-wrapper">
+                    <span class="hero-tag">âœ¨ Explore India Like Never Before</span>
+                </div>
+                <h1>Discover Incredible <br><span class="text-gradient">Events & Experiences</span></h1>
+                <p class="hero-subtitle">Find premium concerts, traditional melas, heritage walks, spiritual journeys, food festivals, and curated hidden gems across Bharat.</p>
+                
+                <div class="search-box">
+                    <div class="search-item">
+                        <label for="searchInput"><i class="fa-solid fa-magnifying-glass"></i> Search</label>
+                        <input type="text" id="searchInput" placeholder="Concerts, festivals, gems...">
+                    </div>
+                    <div class="search-item">
+                        <label for="locationSelect"><i class="fa-solid fa-location-dot"></i> Location</label>
+                        <select id="locationSelect">
+                            <option value="Anywhere">Anywhere</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Varanasi">Varanasi</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                        </select>
+                    </div>
+                    <div class="search-item">
+                        <label for="dateInput"><i class="fa-solid fa-calendar-days"></i> Date</label>
+                        <input type="date" id="dateInput">
+                    </div>
+                    <div class="search-item">
+                        <label for="categorySelect"><i class="fa-solid fa-layer-group"></i> Category</label>
+                        <select id="categorySelect">
+                            <option value="All">All Categories</option>
+                            <option value="Concerts">Concerts</option>
+                            <option value="Festivals">Festivals</option>
+                            <option value="Melas">Melas</option>
+                            <option value="Food Festivals">Food Festivals</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Heritage">Heritage</option>
+                            <option value="Spiritual">Spiritual</option>
+                        </select>
+                    </div>
+                    <button id="exploreBtn" class="explore-btn">
+                        <span>Search Experiences</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse-wheel"></div>
+            </div>
+        </section>
+
+        <section class="section-container" id="trending">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Curated Trendline</span>
+                    <h2>ðŸ”¥ Trending This Week</h2>
+                </div>
+                <p class="section-desc">Highly coveted experiences captivating thousands of travelers and culture seekers right now.</p>
+            </div>
+            <div id="trendingGrid" class="premium-grid cards-4-cols"></div>
+        </section>
+
+        <section class="section-container bg-subtle" id="categories">
+            <div class="section-header center-align">
+                <span class="section-badge">Tailor Your Journey</span>
+                <h2>Explore by Category</h2>
+                <p class="section-desc">Immerse yourself deep into the dimensions of luxury entertainment, historic heritage, and cultural epics.</p>
+            </div>
+            <div id="categoryGrid" class="category-flex-container"></div>
+        </section>
+
+        <section class="section-container" id="states">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Regional Epics</span>
+                    <h2>Explore by State</h2>
+                </div>
+                <p class="section-desc">Uncover regional legacies, festive traditions, and geographical wonders state by state.</p>
+            </div>
+            <div id="stateGrid" class="premium-grid cards-3-cols"></div>
+        </section>
+
+        <section class="section-container bg-subtle" id="featured">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Elite Collection</span>
+                    <h2>Featured Events</h2>
+                </div>
+                <p class="section-desc">Handpicked headline galas, major tours, and exclusive access gatherings happening across the sub-continent.</p>
+            </div>
+            <div id="featuredGrid" class="premium-grid cards-4-cols"></div>
+        </section>
+
+        <section class="section-container" id="destinations">
+            <div class="section-header center-align">
+                <span class="section-badge">Wanderlust Horizons</span>
+                <h2>Popular Destinations</h2>
+                <p class="section-desc">Timeless geographical hubs presenting an unparalleled blend of legacy, heritage, and scenery.</p>
+            </div>
+            <div id="destinationGrid" class="premium-grid bento-layout"></div>
+        </section>
+
+        <section class="section-container bg-subtle" id="festivals">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Cultural Core</span>
+                    <h2>Upcoming Festivals</h2>
+                </div>
+                <p class="section-desc">Celebrate India's heritage with iconic communal milestones, ancestral celebrations, and massive regional carnivals.</p>
+            </div>
+            <div id="festivalGrid" class="premium-grid cards-3-cols"></div>
+        </section>
+
+        <section class="section-container" id="hidden-gems">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Off the Beaten Path</span>
+                    <h2>Hidden Gems</h2>
+                </div>
+                <p class="section-desc">Secret enclaves, micro-festivals, and untamed destinations unknown to the mainstream traveler.</p>
+            </div>
+            <div id="hiddenGrid" class="premium-grid cards-4-cols"></div>
+        </section>
+
+        <section class="section-container bg-subtle" id="experiences">
+            <div class="section-header center-align">
+                <span class="section-badge">Artisanal Outings</span>
+                <h2>Hand Picked Experiences</h2>
+                <p class="section-desc">Bespoke ultra-premium paths engineered by destination maestros for deep storytelling interactions.</p>
+            </div>
+            <div id="experienceGrid" class="premium-grid cards-3-cols"></div>
+        </section>
+
+        <section class="section-container" id="offers">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Exclusive Privileges</span>
+                    <h2>Offers & Deals</h2>
+                </div>
+                <p class="section-desc">Unlock luxury tier bookings, seasonal vouchers, and concierge passes curated for our members.</p>
+            </div>
+            <div id="offerGrid" class="premium-grid cards-2-cols"></div>
+        </section>
+
+        <section class="section-container value-proposition-section">
+            <div class="section-header center-align">
+                <span class="section-badge">The Eventra Standard</span>
+                <h2>Why Choose Eventra Bharat</h2>
+                <p class="section-desc">Redefining high-end experiential discovery through precision architecture and uncompromised reliance.</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon-wrapper"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Verified Events</h3>
+                    <p>Every single listing goes through rigorous safety, logistical, and reality background verification protocols.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon-wrapper"><i class="fa-solid fa-crown"></i></div>
+                    <h3>Trusted Organizers</h3>
+                    <p>Collaborating exclusively with certified premium local hosts, legendary guides, and global entertainment houses.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon-wrapper"><i class="fa-solid fa-credit-card"></i></div>
+                    <h3>Secure Booking</h3>
+                    <p>State-of-the-art tokenized multi-gateway protocols keeping your transactions and privacy metrics flawlessly guarded.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon-wrapper"><i class="fa-solid fa-headset"></i></div>
+                    <h3>24Ã—7 Support</h3>
+                    <p>A round-the-clock dedicated elite customer lifestyle desk standing by to orchestrate on-ground resolutions instantly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section">
+            <div class="newsletter-wrapper">
+                <div class="newsletter-inner">
+                    <h2>Stay Updated</h2>
+                    <p>Join our priority broadcast to receive private invitations to seasonal galas, secret festival tickets, and luxury travel insights direct to your inbox.</p>
+                    <form id="newsletterForm" class="newsletter-form" onsubmit="return false;">
+                        <div class="input-field-group">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="newsletterEmail" placeholder="Enter your premium email address" required>
+                        </div>
+                        <button type="submit" id="subscribeBtn" class="subscribe-btn">
+                            <span>Subscribe</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="professional-footer">
+        <div class="footer-top-tier">
+            <div class="footer-brand-column">
+                <a href="#" class="footer-logo"><span>EVENTRA</span> BHARAT</a>
+                <p class="footer-brand-pitch">Crafting elite pathways into the heart of Incredible India's celebrations, cultural systems, and unexplored geographical luxuries.</p>
+                <div class="social-links-row">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Room</a></li>
+                    <li><a href="#">Our Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Concierge Help Desk</a></li>
+                    <li><a href="#">Safety Directives</a></li>
+                    <li><a href="#">Cancellation Policies</a></li>
+                    <li><a href="#">Partner Onboarding</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-column">
+                <h4>Events</h4>
+                <ul>
+                    <li><a href="#">Live Concerts</a></li>
+                    <li><a href="#">Cultural Melas</a></li>
+                    <li><a href="#">Food Exhibitions</a></li>
+                    <li><a href="#">Spiritual Journeys</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-column">
+                <h4>Experiences</h4>
+                <ul>
+                    <li><a href="#">Heritage Walks</a></li>
+                    <li><a href="#">Adventure Escapes</a></li>
+                    <li><a href="#">Hidden Gems Maps</a></li>
+                    <li><a href="#">Luxury Stays</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Framework</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Matrices</a></li>
+                    <li><a href="#">Compliance Statutes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-tier">
+            <p>Â© 2026 Eventra Bharat. Crafted with â¤ï¸ for Incredible India. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/discover.js"></script>
+</body>
+</html>

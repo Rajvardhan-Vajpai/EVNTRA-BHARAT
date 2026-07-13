@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Events & Experiences | Eventra Bharat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/events.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="brand-accent">EVENTRA</span> BHARAT
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="#featuredGrid">Featured</a></li>
+                    <li><a href="#cities">Popular Cities</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <button class="login-btn">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-tag-wrapper">
+                    <span class="hero-tag">âœ¨ Cultured Entertainment Tier</span>
+                </div>
+                <h1>Discover Amazing <br><span class="text-gradient">Events Across India</span></h1>
+                <p class="hero-subtitle">Immerse yourself in world-class concerts, theatrical masterworks, legendary regional festivals, and elite stand-up showcases across Bharat.</p>
+                
+                <div class="search-panel">
+                    <div class="search-grid-inputs">
+                        <div class="search-item">
+                            <label for="searchBarInput"><i class="fa-solid fa-magnifying-glass"></i> Search</label>
+                            <input type="text" id="searchBarInput" placeholder="Artist, workshop, showcase name...">
+                        </div>
+                        <div class="search-item">
+                            <label for="locationFilter"><i class="fa-solid fa-location-dot"></i> Location</label>
+                            <select id="locationFilter">
+                                <option value="All">All Regions</option>
+                                <option value="Delhi">Delhi NCR</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Jaipur">Jaipur</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Bangalore">Bangalore</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Varanasi">Varanasi</option>
+                            </select>
+                        </div>
+                        <div class="search-item">
+                            <label for="categoryFilter"><i class="fa-solid fa-layer-group"></i> Category</label>
+                            <select id="categoryFilter">
+                                <option value="All">All Categories</option>
+                                <option value="Music">Music</option>
+                                <option value="Festivals">Festivals</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Workshops">Workshops</option>
+                                <option value="Adventure">Adventure</option>
+                                <option value="Food">Food & Gastronomy</option>
+                                <option value="Heritage">Heritage Walks</option>
+                                <option value="Sports">Sports & Polo</option>
+                            </select>
+                        </div>
+                        <div class="search-item">
+                            <label for="dateFilter"><i class="fa-solid fa-calendar-days"></i> Timeline</label>
+                            <input type="date" id="dateFilter">
+                        </div>
+                    </div>
+                    
+                    <div class="advanced-filters-row">
+                        <div class="filter-subset">
+                            <label for="priceRangeFilter">Max Budget:</label>
+                            <select id="priceRangeFilter">
+                                <option value="All">Any Price</option>
+                                <option value="0-1000">Under â‚¹1,000</option>
+                                <option value="1000-3000">â‚¹1,000 - â‚¹3,000</option>
+                                <option value="3000-7000">â‚¹3,000 - â‚¹7,000</option>
+                                <option value="7000-plus">â‚¹7,000+</option>
+                            </select>
+                        </div>
+                        <div class="filter-subset">
+                            <label for="ratingFilter">Min Rating:</label>
+                            <select id="ratingFilter">
+                                <option value="All">All Ratings</option>
+                                <option value="4.5">â˜… 4.5 & Above</option>
+                                <option value="4.8">â˜… 4.8 & Above</option>
+                            </select>
+                        </div>
+                        <div class="filter-subset sorting-subset">
+                            <label for="sortDropdown"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort By:</label>
+                            <select id="sortDropdown">
+                                <option value="trending">Trending</option>
+                                <option value="newest">Newest Additions</option>
+                                <option value="priceLowHigh">Price: Low to High</option>
+                                <option value="priceHighLow">Price: High to Low</option>
+                                <option value="highestRated">Highest Rated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-node"><strong>450+</strong><span>Live Arenas</span></div>
+                    <div class="stat-node"><strong>28</strong><span>Verified Cities</span></div>
+                    <div class="stat-node"><strong>12,500+</strong><span>Premium Bookings Today</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-track-section">
+            <div class="track-wrapper">
+                <div class="category-pills-slider" id="pillSliderContainer">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section-container" id="featured">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Curated Prestige</span>
+                    <h2>Featured Highlights</h2>
+                </div>
+                <p class="section-desc">The crown jewels of entertainment. Highly limited seating options available for immediate booking reservation.</p>
+            </div>
+            <div id="featuredGrid" class="premium-layout-grid cols-4">
+                </div>
+        </section>
+
+        <section class="section-container bg-subtle" id="upcoming">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">Calendar Timeline</span>
+                    <h2>Upcoming Gatherings</h2>
+                </div>
+                <div class="view-toggle-context">
+                    <p class="results-counter" id="activeResultCounter">Showing -- matches</p>
+                </div>
+            </div>
+            
+            <div id="upcomingGrid" class="premium-layout-grid cols-4">
+                </div>
+
+            <div class="pagination-orchestrator">
+                <button id="loadMoreBtn" class="load-more-btn">
+                    <span>Load More Masterworks</span>
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+                
+                <div class="pagination-stepper" id="paginationWrapper">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section-container" id="cities">
+            <div class="section-header center-align">
+                <span class="section-badge">Metropolitan Epicenters</span>
+                <h2>Explore by Popular Cities</h2>
+                <p class="section-desc">Select an ancestral cultural hub or vibrant tech city to lock your immediate regional entertainment search.</p>
+            </div>
+            <div id="citiesBentoGrid" class="bento-grid-blueprint">
+                </div>
+        </section>
+
+        <section class="newsletter-section">
+            <div class="newsletter-wrapper">
+                <div class="newsletter-inner">
+                    <h2>Priority Pass Broadcast</h2>
+                    <p>Join the upper echelon of Bharat's culture seekers. Receive high-priority private ticket queues, pre-sale verification credentials, and luxury event newsletters.</p>
+                    <form id="newsletterForm" class="newsletter-form" onsubmit="return false;">
+                        <div class="input-field-group">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="newsletterEmail" placeholder="Enter your high-tier email address" required>
+                        </div>
+                        <button type="submit" id="subscribeBtn" class="subscribe-btn">
+                            <span>Join Inner Circle</span>
+                            <i class="fa-solid fa-signature"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="professional-footer">
+        <div class="footer-top-tier">
+            <div class="footer-brand-column">
+                <a href="#" class="footer-logo"><span>EVENTRA</span> BHARAT</a>
+                <p class="footer-brand-pitch">Crafting elite pathways into the heart of Incredible India's high-tier celebrations, cultural networks, and unexplored geographical luxury platforms.</p>
+                <div class="social-links-row">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-column">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Live Concerts</a></li>
+                    <li><a href="#">Theater & Comedy</a></li>
+                    <li><a href="#">Heritage Expeditions</a></li>
+                    <li><a href="#">Polo & Elite Sports</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-column">
+                <h4>Concierge Support</h4>
+                <ul>
+                    <li><a href="#">Priority Ticket Help</a></li>
+                    <li><a href="#">Corporate Hospitality</a></li>
+                    <li><a href="#">Refund & Escrow Terms</a></li>
+                    <li><a href="#">Host Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-column">
+                <h4>Legal Matrix</h4>
+                <ul>
+                    <li><a href="#">Privacy Framework</a></li>
+                    <li><a href="#">Terms of Reservation</a></li>
+                    <li><a href="#">Anti-Scalping Rules</a></li>
+                    <li><a href="#">Compliance Codes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-tier">
+            <p>Â© 2026 Eventra Bharat. Engineered to high-end enterprise system standards. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/events.js"></script>
+</body>
+</html>

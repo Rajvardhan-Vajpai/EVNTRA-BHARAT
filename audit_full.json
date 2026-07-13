@@ -1,0 +1,631 @@
+﻿{
+  "total": 88,
+  "missing": 78,
+  "missing_entries": [
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\event-details.html",
+      "line": 37,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\event-details.html",
+      "line": 543,
+      "pattern": "src",
+      "match": "js/event-details.js",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/js/event-details.js"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\events.html",
+      "line": 243,
+      "pattern": "src",
+      "match": "js/events.js",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/js/events.js"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 159,
+      "pattern": "src",
+      "match": "assets/images/placeholder-square.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-square.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 177,
+      "pattern": "src",
+      "match": "assets/images/placeholder-square.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-square.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 195,
+      "pattern": "src",
+      "match": "assets/images/placeholder-square.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-square.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 213,
+      "pattern": "src",
+      "match": "assets/images/placeholder-square.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-square.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 247,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 261,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 275,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 289,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 303,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 317,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 331,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 345,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 359,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 386,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 407,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 444,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 459,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 474,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 504,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 515,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 526,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 537,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 548,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 559,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 643,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 654,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 665,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 692,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 703,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 714,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 725,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\explore.html",
+      "line": 951,
+      "pattern": "src",
+      "match": "js/explore.js",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/js/explore.js"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 36,
+      "pattern": "src",
+      "match": "assets/images/hero/hero-bg.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/hero/hero-bg.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 160,
+      "pattern": "src",
+      "match": "assets/images/events/event-sample.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/events/event-sample.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 180,
+      "pattern": "src",
+      "match": "assets/images/events/event-sample.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/events/event-sample.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 200,
+      "pattern": "src",
+      "match": "assets/images/events/event-sample.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/events/event-sample.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 220,
+      "pattern": "src",
+      "match": "assets/images/events/event-sample.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/events/event-sample.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 240,
+      "pattern": "src",
+      "match": "assets/images/events/event-sample.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/events/event-sample.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 260,
+      "pattern": "src",
+      "match": "assets/images/events/event-sample.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/events/event-sample.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 364,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\home.html",
+      "line": 414,
+      "pattern": "src",
+      "match": "js/home.js",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/js/home.js"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\login.html",
+      "line": 15,
+      "pattern": "src",
+      "match": "assets/images/placeholder-square.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-square.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\login.html",
+      "line": 16,
+      "pattern": "src",
+      "match": "assets/images/placeholder-square.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-square.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\login.html",
+      "line": 22,
+      "pattern": "src",
+      "match": "assets/images/placeholder-landscape.svg",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/assets/images/placeholder-landscape.svg"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\login.html",
+      "line": 114,
+      "pattern": "src",
+      "match": "js/login.js",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/js/login.js"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\profile.html",
+      "line": 43,
+      "pattern": "src",
+      "match": "js/login.js",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/js/login.js"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\registration.html",
+      "line": 977,
+      "pattern": "url",
+      "match": "file",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/file"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\registration.html",
+      "line": 181,
+      "pattern": "background-image",
+      "match": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23887364' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/url(\"data:image/svg+xml,%3Csvg xmlns='http:/www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23887364' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\html\\registration.html",
+      "line": 181,
+      "pattern": "image",
+      "match": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23887364' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/html/url(\"data:image/svg+xml,%3Csvg xmlns='http:/www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23887364' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\css\\event-details.css",
+      "line": 1574,
+      "pattern": "background-image",
+      "match": "radial-gradient(circle at 80% 20%, rgba(199, 154, 43, 0.15), transparent 50%)",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/css/radial-gradient(circle at 80% 20%, rgba(199, 154, 43, 0.15), transparent 50%)"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\css\\event-details.css",
+      "line": 1574,
+      "pattern": "image",
+      "match": "radial-gradient(circle at 80% 20%, rgba(199, 154, 43, 0.15), transparent 50%)",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/css/radial-gradient(circle at 80% 20%, rgba(199, 154, 43, 0.15), transparent 50%)"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\css\\explore.css",
+      "line": 356,
+      "pattern": "background-image",
+      "match": "linear-gradient(rgba(27, 12, 13, 0.4), rgba(27, 12, 13, 0.75)), \n                      url('../assets/images/placeholder-landscape.svg')",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/css/linear-gradient(rgba(27, 12, 13, 0.4), rgba(27, 12, 13, 0.75)), \n                      url('../assets/images/placeholder-landscape.svg')"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\css\\explore.css",
+      "line": 1469,
+      "pattern": "background-image",
+      "match": "linear-gradient(rgba(27, 12, 13, 0.85), rgba(27, 12, 13, 0.9)), \n                      url('../assets/images/placeholder-landscape.svg')",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/css/linear-gradient(rgba(27, 12, 13, 0.85), rgba(27, 12, 13, 0.9)), \n                      url('../assets/images/placeholder-landscape.svg')"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\css\\explore.css",
+      "line": 1648,
+      "pattern": "background-image",
+      "match": "linear-gradient(rgba(27, 12, 13, 0.75), rgba(27, 12, 13, 0.9)), \n                      url('../assets/images/placeholder-landscape.svg')",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/css/linear-gradient(rgba(27, 12, 13, 0.75), rgba(27, 12, 13, 0.9)), \n                      url('../assets/images/placeholder-landscape.svg')"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\css\\home.css",
+      "line": 396,
+      "pattern": "image",
+      "match": "linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%)",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/css/linear-gradient(to right, transparent 0%, "
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\css\\home.css",
+      "line": 397,
+      "pattern": "image",
+      "match": "linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%)",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/css/linear-gradient(to right, transparent 0%, "
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\discover.js",
+      "line": 114,
+      "pattern": "src",
+      "match": "${event.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${event.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\discover.js",
+      "line": 152,
+      "pattern": "src",
+      "match": "${state.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${state.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\discover.js",
+      "line": 171,
+      "pattern": "src",
+      "match": "${event.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${event.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\discover.js",
+      "line": 196,
+      "pattern": "src",
+      "match": "${dest.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${dest.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\discover.js",
+      "line": 211,
+      "pattern": "src",
+      "match": "${fest.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${fest.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\discover.js",
+      "line": 237,
+      "pattern": "src",
+      "match": "${exp.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${exp.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\event-details.js",
+      "line": 215,
+      "pattern": "src",
+      "match": "${item.image}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${item.image}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\event-details.js",
+      "line": 215,
+      "pattern": "src",
+      "match": "${Data.FallbackImage}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${Data.FallbackImage}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\event-details.js",
+      "line": 306,
+      "pattern": "src",
+      "match": "${event.image}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${event.image}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\event-details.js",
+      "line": 306,
+      "pattern": "src",
+      "match": "${Data.FallbackImage}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${Data.FallbackImage}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\events.js",
+      "line": 866,
+      "pattern": "src",
+      "match": "${eventData.image}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${eventData.image}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\events.js",
+      "line": 974,
+      "pattern": "src",
+      "match": "${city.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${city.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\explore.js",
+      "line": 188,
+      "pattern": "src",
+      "match": "${state.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${state.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\explore.js",
+      "line": 233,
+      "pattern": "src",
+      "match": "${dest.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${dest.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\explore.js",
+      "line": 260,
+      "pattern": "src",
+      "match": "${heritage.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${heritage.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\explore.js",
+      "line": 290,
+      "pattern": "src",
+      "match": "${gem.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${gem.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\explore.js",
+      "line": 318,
+      "pattern": "src",
+      "match": "${adv.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${adv.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\explore.js",
+      "line": 342,
+      "pattern": "src",
+      "match": "${trail.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${trail.img}"
+    },
+    {
+      "file": "C:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\js\\explore.js",
+      "line": 390,
+      "pattern": "src",
+      "match": "${season.img}",
+      "status": "missing",
+      "resolved": "C:/Users/hp/OneDrive/Desktop/eventra india/js/${season.img}"
+    }
+  ],
+  "found": 10
+}

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ==========================================================================
  * EVENTRA BHARAT - PREMIUM EVENT DETAILS PLATFORM ENGINE
  * Architecture: Modular Lifecycle Framework, Cached DOM Pipeline, and Decoupled State
@@ -64,16 +64,16 @@
             'royal_vip_4day': { price: 18000, label: 'Royal VIP Elite Courtyard' },
             'connoisseur_single_day': { price: 3500, label: 'Connoisseur Single Day Pass' }
         },
-        FallbackImage: 'https://via.placeholder.com/800x600/FFFDF8/7C1F23?text=Image+Unavailable',
+        FallbackImage: '../assets/images/placeholder-landscape.svg',
         Gallery: [
-            { image: 'https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?auto=format&fit=crop&w=800&q=80', title: 'Grand Courtyard Setup', alt: 'Imperial event lighting at night over a majestic palace courtyard' },
-            { image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80', title: 'Sufi Symphony Night', alt: 'Artists performing under ambient classical red and gold illumination' },
-            { image: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80', title: 'The Royal Banquet Dinner', alt: 'Long heritage luxury dining tables meticulously prepared for dignitaries' },
-            { image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=800&q=80', title: 'Illuminated Palace Arches', alt: 'Stunning exterior mapping showcase on classical sandstone fortresses' },
-            { image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80', title: 'Kathak Confluence Stage', alt: 'Dynamic capturing of classical Indian classical dance forms in action' },
-            { image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80', title: 'Acoustic Sound Mapping', alt: 'State-of-the-art concert system arrays embedded inside ancient architectures' },
-            { image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80', title: 'Dignitary Welcome Array', alt: 'Saffron flower carpets and royal traditional lines extending to guests' },
-            { image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80', title: 'Glow Finale Showcase', alt: 'Spectacular synchronization of eco-friendly sparklers over water bodies' }
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Grand Courtyard Setup', alt: 'Imperial event lighting at night over a majestic palace courtyard' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Sufi Symphony Night', alt: 'Artists performing under ambient classical red and gold illumination' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'The Royal Banquet Dinner', alt: 'Long heritage luxury dining tables meticulously prepared for dignitaries' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Illuminated Palace Arches', alt: 'Stunning exterior mapping showcase on classical sandstone fortresses' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Kathak Confluence Stage', alt: 'Dynamic capturing of classical Indian classical dance forms in action' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Acoustic Sound Mapping', alt: 'State-of-the-art concert system arrays embedded inside ancient architectures' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Dignitary Welcome Array', alt: 'Saffron flower carpets and royal traditional lines extending to guests' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Glow Finale Showcase', alt: 'Spectacular synchronization of eco-friendly sparklers over water bodies' }
         ],
         Timeline: [
             { time: '04:00 PM', title: 'Entry Opens', description: 'Royal verification checkpoints begin greeting patrons at the Outer Bastion gates.', icon: 'fa-door-open' },
@@ -92,12 +92,12 @@
             { name: 'Ananya Deshmukh', rating: 4, date: 'July 02, 2026', avatar: 'AD', text: 'Marvelous integration of technology and heritage. The ticketing configuration was very straightforward, and the post-purchase dynamic ledger worked flawlessly.', country: 'India', verified: true }
         ],
         RelatedEvents: [
-            { image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=600&q=80', title: 'Varanasi Dev Deepawali Cruise Lux', city: 'Varanasi', price: '₹12,500', rating: '4.9', category: 'Heritage Spiritual' },
-            { image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=600&q=80', title: 'Udaipur Mewar Symphony Gala', city: 'Udaipur', price: '₹18,000', rating: '5.0', category: 'Royal Music' },
-            { image: 'https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&w=600&q=80', title: 'Khajuraho Classical Dance Soiree', city: 'Khajuraho', price: '₹6,000', rating: '4.8', category: 'Dance Fine Arts' },
-            { image: 'https://images.unsplash.com/photo-1561489413-985b06da5bee?auto=format&fit=crop&w=600&q=80', title: 'Jaipur Literature Durbar Banquet', city: 'Jaipur', price: '₹9,500', rating: '4.7', category: 'Literary Luxury' },
-            { image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=600&q=80', title: 'Taj Mahal Cinematic Night View Tour', city: 'Agra', price: '₹14,000', rating: '4.9', category: 'Exquisite Monuments' },
-            { image: 'https://images.unsplash.com/photo-1610123598147-f632aa18b275?auto=format&fit=crop&w=600&q=80', title: 'Hampi Virupaksha Ruins Laser Mapping', city: 'Hampi', price: '₹5,500', rating: '4.8', category: 'Tech Architecture' }
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Varanasi Dev Deepawali Cruise Lux', city: 'Varanasi', price: '₹12,500', rating: '4.9', category: 'Heritage Spiritual' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Udaipur Mewar Symphony Gala', city: 'Udaipur', price: '₹18,000', rating: '5.0', category: 'Royal Music' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Khajuraho Classical Dance Soiree', city: 'Khajuraho', price: '₹6,000', rating: '4.8', category: 'Dance Fine Arts' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Jaipur Literature Durbar Banquet', city: 'Jaipur', price: '₹9,500', rating: '4.7', category: 'Literary Luxury' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Taj Mahal Cinematic Night View Tour', city: 'Agra', price: '₹14,000', rating: '4.9', category: 'Exquisite Monuments' },
+            { image: '../assets/images/placeholder-landscape.svg', title: 'Hampi Virupaksha Ruins Laser Mapping', city: 'Hampi', price: '₹5,500', rating: '4.8', category: 'Tech Architecture' }
         ]
     };
 

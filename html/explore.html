@@ -1,0 +1,953 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Incredible India | Eventra Bharat</title>
+    
+    <meta name="description" content="Immerse yourself in the luxury of discovery. Explore India's ultra-premium destinations, curated heritage trails, hidden gems, and sublime spiritual journeys with Eventra Bharat.">
+    <meta name="keywords" content="Luxury India Travel, Eventra Bharat, Incredible India, Premium Tourism, Airbnb Experiences India, UNESCO Heritage India, Luxury Spiritual Retreats">
+    <meta name="author" content="Eventra Bharat Engineering">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="stylesheet" href="../css/explore.css">
+</head>
+<body>
+
+    <header class="navbar" role="banner">
+        <div class="navbar-container">
+            <a href="home.html" class="logo" aria-label="Eventra Bharat Home">
+                <span class="logo-accent">EVENTRA</span> BHARAT
+            </a>
+
+            <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="explore.html" class="nav-link active" aria-current="page">Explore</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Destinations</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Experiences</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Heritage Pass</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-right">
+                <button class="regional-selector" aria-label="Select Language and Currency">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>EN-INR</span>
+                </button>
+                <button class="login-btn action-premium-trigger">
+                    <span>Reserve Club Access</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        
+        <section class="hero" aria-label="Introduction to Incredible India">
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+                <div class="hero-badge-container">
+                    <span class="hero-mini-badge">THE ART OF INDIAN EXPLORATION</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Explore <br><span class="serif-italic">Incredible India</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Cross terrestrial boundaries into a sovereign domain of architectural epics, sensory sub-climates, and generational sanctuaries curated for the refined global nomad.
+                </p>
+
+                <div class="search-orchestrator-wrapper">
+                    <form class="search-orchestrator" role="search" action="#" method="GET">
+                        
+                        <div class="search-segment">
+                            <label for="searchInput" class="search-label">
+                                <i class="fa-solid fa-compass text-gold"></i> Where to?
+                            </label>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search states, cities, secret sanctuaries..." autocomplete="off">
+                        </div>
+
+                        <div class="search-divider"></div>
+
+                        <div class="search-segment">
+                            <label for="locationSelect" class="search-label">
+                                <i class="fa-solid fa-map-location-dot"></i> Macro-Region
+                            </label>
+                            <select id="locationSelect" class="search-select">
+                                <option value="Anywhere">Anywhere</option>
+                                <option value="Himalayan North">Himalayan North</option>
+                                <option value="Royal West">Royal West</option>
+                                <option value="Deccan Centre">Deccan Centre</option>
+                                <option value="Tropical South">Tropical South</option>
+                                <option value="Tribal East">Tribal East</option>
+                            </select>
+                        </div>
+
+                        <div class="search-divider"></div>
+
+                        <div class="search-segment">
+                            <label for="dateInput" class="search-label">
+                                <i class="fa-solid fa-calendar-days"></i> Micro-Season
+                            </label>
+                            <input type="month" id="dateInput" class="search-input-date">
+                        </div>
+
+                        <div class="search-divider"></div>
+
+                        <div class="search-segment">
+                            <label for="categorySelect" class="search-label">
+                                <i class="fa-solid fa-sparkles"></i> Modality
+                            </label>
+                            <select id="categorySelect" class="search-select">
+                                <option value="All">All Experiences</option>
+                                <option value="Heritage">UNESCO Heritage</option>
+                                <option value="Spiritual">Spiritual Retreats</option>
+                                <option value="Adventure">Wild & Adventure</option>
+                                <option value="Food">Royal Gastronomy</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="exploreBtn" class="search-submit-btn" aria-label="Execute Custom Exploration Matrix">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="quick-explore-container">
+                    <span class="quick-explore-label">Immediate Transcendence:</span>
+                    <div class="quick-explore-tags">
+                        <button type="button" class="quick-tag">Taj Mahal Tier</button>
+                        <button type="button" class="quick-tag">Kerala Houseboats</button>
+                        <button type="button" class="quick-tag">Ladakh Monasteries</button>
+                        <button type="button" class="quick-tag">Jaipur Palaces</button>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#exploreByStateSection" class="scroll-indicator" aria-label="Scroll down to explore by state">
+                <span class="scroll-mouse">
+                    <span class="scroll-wheel"></span>
+                </span>
+                <span class="scroll-text">Descend Into Discovery</span>
+            </a>
+        </section>
+
+        <section id="exploreByStateSection" class="section-layout state-exploration-zone" aria-labelledby="stateHeading">
+            <div class="section-container">
+                <div class="section-header-row">
+                    <div class="header-left">
+                        <span class="section-super-title">Geographic Sovereignties</span>
+                        <h2 id="stateHeading" class="section-main-title">Explore by State</h2>
+                    </div>
+                    <p class="section-context-paragraph">
+                        India is a federation of civilizations. Select a distinct state baseline to reveal its localized micro-laws, visual fabrics, and architectural identities.
+                    </p>
+                </div>
+
+                <div id="stateGrid" class="state-layout-grid">
+                    <div class="state-card-wrapper">
+                        <article class="state-card">
+                            <div class="state-image-container">
+                                <img src="../assets/images/placeholder-square.svg" alt="Royal Palace Architecture in Rajasthan" class="state-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-square.svg';">
+                                <div class="state-img-scrim"></div>
+                            </div>
+                            <div class="state-card-body">
+                                <h3 class="state-name">Rajasthan</h3>
+                                <div class="state-meta">
+                                    <span class="meta-count"><i class="fa-solid fa-location-dot"></i> 42 Destinations</span>
+                                    <span class="meta-vibe">Royal Heritage</span>
+                                </div>
+                                <p class="state-description">A majestic landscape of sprawling desert fortresses, gilded royal palaces, and vibrant artisanal legacies.</p>
+                                <a href="#" class="state-card-link" aria-label="Explore Rajasthan state details">Enter Realm <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="state-card-wrapper">
+                        <article class="state-card">
+                            <div class="state-image-container">
+                                <img src="../assets/images/placeholder-square.svg" alt="Backwaters of Kerala lined with palm trees" class="state-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-square.svg';">
+                                <div class="state-img-scrim"></div>
+                            </div>
+                            <div class="state-card-body">
+                                <h3 class="state-name">Kerala</h3>
+                                <div class="state-meta">
+                                    <span class="meta-count"><i class="fa-solid fa-location-dot"></i> 28 Destinations</span>
+                                    <span class="meta-vibe">God's Own Country</span>
+                                </div>
+                                <p class="state-description">An emerald labyrinth of tropical backwaters, ancient Ayurvedic roots, and spice-laden mist ridges.</p>
+                                <a href="#" class="state-card-link" aria-label="Explore Kerala state details">Enter Realm <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="state-card-wrapper">
+                        <article class="state-card">
+                            <div class="state-image-container">
+                                <img src="../assets/images/placeholder-square.svg" alt="Snow-capped alpine peaks of Kashmir" class="state-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-square.svg';">
+                                <div class="state-img-scrim"></div>
+                            </div>
+                            <div class="state-card-body">
+                                <h3 class="state-name">Jammu & Kashmir</h3>
+                                <div class="state-meta">
+                                    <span class="meta-count"><i class="fa-solid fa-location-dot"></i> 19 Destinations</span>
+                                    <span class="meta-vibe">Alpine Paradigm</span>
+                                </div>
+                                <p class="state-description">Sublime glacial lakes, terraced Mughal floral gardens, and houseboats floating on reflective waters.</p>
+                                <a href="#" class="state-card-link" aria-label="Explore Jammu and Kashmir state details">Enter Realm <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="state-card-wrapper">
+                        <article class="state-card">
+                            <div class="state-image-container">
+                                <img src="../assets/images/placeholder-square.svg" alt="Western Ghats mountain passes in Maharashtra" class="state-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-square.svg';">
+                                <div class="state-img-scrim"></div>
+                            </div>
+                            <div class="state-card-body">
+                                <h3 class="state-name">Maharashtra</h3>
+                                <div class="state-meta">
+                                    <span class="meta-count"><i class="fa-solid fa-location-dot"></i> 35 Destinations</span>
+                                    <span class="meta-vibe">Deccan Dominance</span>
+                                </div>
+                                <p class="state-description">Ancient rock architecture, rugged high hill-fort complexes, and the relentless pulse of financial centers.</p>
+                                <a href="#" class="state-card-link" aria-label="Explore Maharashtra state details">Enter Realm <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout architecture-dark-bg-node" aria-labelledby="destinationHeading">
+            <div class="section-container">
+                <div class="section-header-row">
+                    <div class="header-left">
+                        <span class="section-super-title">The Master Collections</span>
+                        <h2 id="destinationHeading" class="section-main-title">Popular Destinations</h2>
+                    </div>
+                    <div class="header-controls">
+                        <span class="luxury-counter">08 / 32 Collections</span>
+                    </div>
+                </div>
+
+                <div id="destinationGrid" class="destination-bento-grid">
+                    
+                    <article class="destination-item-card span-horizontal">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Sunsets over pristine luxury beachfront in Goa" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">Coastal Sanctuary</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Goa</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.92</div>
+                            </div>
+                            <p class="dest-tags">Fontainhas Walk â€¢ Private Yacht Curation â€¢ Indo-Portuguese Estates</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Hawa Mahal terracotta architecture in Jaipur" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">The Pink City</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Jaipur</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.88</div>
+                            </div>
+                            <p class="dest-tags">Amber Fort Vaults â€¢ Royal Polo Grounds</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="High altitude pass of Ladakh with colorful flags" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">High Passes</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Ladakh</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.97</div>
+                            </div>
+                            <p class="dest-tags">Thiksey Astro-Trails â€¢ Pangong Eco Pods</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Ghats of Varanasi illuminated with spiritual lights" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">The Eternal Node</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Varanasi</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.95</div>
+                            </div>
+                            <p class="dest-tags">Subah-e-Banaras Private Cruise â€¢ Vedic Library Access</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Luxury houseboats floating on the Kerala waterways" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">God's Altar</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Kerala</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.91</div>
+                            </div>
+                            <p class="dest-tags">Kumarakom Retreats â€¢ Marari Private Beachfronts</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Monolithic boulder ruins and stone structures in Hampi" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">Vijayanagara Relics</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Hampi</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.89</div>
+                            </div>
+                            <p class="dest-tags">Boulder Architecture Walks â€¢ Tungabhadra Coracle Trails</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card span-horizontal">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="White salt flats stretching under the full moon in Kutch" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">Infinite Salt Mirror</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Rann of Kutch</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.86</div>
+                            </div>
+                            <p class="dest-tags">Premium Tent City Glamping â€¢ Rogue Moon Photography â€¢ Artisanal Rogan Crafts</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Transparent crystal waters and white sands of Radhanagar Beach" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">Oceanic Seclusion</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Andaman</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.96</div>
+                            </div>
+                            <p class="dest-tags">Havelock Dive Expeditions â€¢ Bioluminescent Night Kayaking</p>
+                        </div>
+                    </article>
+
+                    <article class="destination-item-card">
+                        <div class="dest-image-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Lush terrace tea estates facing snow mountains in Darjeeling" class="dest-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="dest-badge">Imperial Ridge</div>
+                        </div>
+                        <div class="dest-info-tray">
+                            <div class="dest-title-line">
+                                <h3>Darjeeling</h3>
+                                <div class="dest-rating"><i class="fa-solid fa-star"></i> 4.84</div>
+                            </div>
+                            <p class="dest-tags">Vintage Steam Rail Private Cabins â€¢ Single-Estate Tea Tasting</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout heritage-luxury-strip" aria-labelledby="heritageHeading">
+            <div class="section-container">
+                <div class="section-title-lockup">
+                    <span class="luxury-anchor-label">PROTECTED MONUMENTS & CIVILIZATIONS</span>
+                    <h2 id="heritageHeading" class="section-main-title">UNESCO World Heritage Sites</h2>
+                </div>
+
+                <div id="heritageGrid" class="heritage-showcase-slider">
+                    
+                    <article class="heritage-wide-card">
+                        <div class="heritage-image-split">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Intricate structural stone alignments of Khajuraho Temples" class="heritage-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="heritage-content-split">
+                            <div class="heritage-header">
+                                <span class="heritage-id-badge">UNESCO Ref. 240</span>
+                                <h3 class="heritage-title">Khajuraho Monument Complex</h3>
+                            </div>
+                            <p class="heritage-excerpt">
+                                An architectural pinnacle of the Chandela dynasty, translating advanced metaphysics, cosmic alignments, and deep human erotic play into intricate sandstone masterpieces.
+                            </p>
+                            <div class="heritage-action-bar">
+                                <span class="heritage-descriptor"><i class="fa-solid fa-gopuram"></i> Nagara Architecture Era</span>
+                                <button class="btn-luxury-text" aria-label="Learn more about Khajuraho Monument Complex">
+                                    <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="heritage-wide-card">
+                        <div class="heritage-image-split">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Kailash Temple carved out of a single monolithic rock face at Ellora" class="heritage-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="heritage-content-split">
+                            <div class="heritage-header">
+                                <span class="heritage-id-badge">UNESCO Ref. 250</span>
+                                <h3 class="heritage-title">Ajanta & Ellora Monolithic Caves</h3>
+                            </div>
+                            <p class="heritage-excerpt">
+                                High basalt rock precipices sculpted directly into operational temple complexes. Witness the Kailash temple, an absolute architectural achievement carved out of a single piece of live rock.
+                            </p>
+                            <div class="heritage-action-bar">
+                                <span class="heritage-descriptor"><i class="fa-solid fa-gem"></i> Rock-Cut Architecture</span>
+                                <button class="btn-luxury-text" aria-label="Learn more about Ajanta & Ellora Caves">
+                                    <span>Learn More</span> <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout hidden-gems-zone" aria-labelledby="hiddenHeading">
+            <div class="section-container">
+                <div class="section-header-center">
+                    <span class="section-super-title">The Unmapped Cartography</span>
+                    <h2 id="hiddenHeading" class="section-main-title">Hidden Gems of the Subcontinent</h2>
+                    <p class="section-center-paragraph">
+                        Protected from mass footfall, these locations preserve primitive quietude, rare ecosystems, and untouched structural patterns.
+                    </p>
+                </div>
+
+                <div id="hiddenGrid" class="hidden-luxury-matrix">
+                    
+                    <article class="gem-editorial-card">
+                        <div class="gem-frame">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Pine forests and agricultural flats of Ziro Valley Arunachal Pradesh" class="gem-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="gem-location-stamp">Arunachal Pradesh</div>
+                        </div>
+                        <div class="gem-details">
+                            <h3>Ziro Valley</h3>
+                            <p>An alpine sanctuary of terraced rice fields and pine ridges, maintained by the Apatani tribe's sustainable practices.</p>
+                            <div class="gem-signature-row">
+                                <span class="signature-metric"><i class="fa-solid fa-leaf"></i> Eco-Primitive</span>
+                                <span class="signature-metric"><i class="fa-solid fa-volume-xmark"></i> Zero Sound Footprint</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="gem-editorial-card">
+                        <div class="gem-frame">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="River sunset at Majuli island in Assam" class="gem-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="gem-location-stamp">Assam</div>
+                        </div>
+                        <div class="gem-details">
+                            <h3>Majuli Island</h3>
+                            <p>The largest river island on Earth, nested inside the Brahmaputra, acting as a cradle for ancient Neo-Vaishnavite performance monastries.</p>
+                            <div class="gem-signature-row">
+                                <span class="signature-metric"><i class="fa-solid fa-water"></i> River Civilization</span>
+                                <span class="signature-metric"><i class="fa-solid fa-masks-theater"></i> Mask Carving Traditions</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="gem-editorial-card">
+                        <div class="gem-frame">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Circular hyper-saline lake inside a meteorite crater bowl" class="gem-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="gem-location-stamp">Maharashtra</div>
+                        </div>
+                        <div class="gem-details">
+                            <h3>Lonar Crater Lake</h3>
+                            <p>A hyper-saline geo-heritage lake created by a high-velocity meteor impact within basalt rock, surrounded by ancient temples.</p>
+                            <div class="gem-signature-row">
+                                <span class="signature-metric"><i class="fa-solid fa-meteor"></i> Impact Site</span>
+                                <span class="signature-metric"><i class="fa-solid fa-flask"></i> Endemic Chemistry</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout extreme-adventure-zone" aria-labelledby="adventureHeading">
+            <div class="section-container">
+                <div class="section-header-row">
+                    <div class="header-left">
+                        <span class="section-super-title">High-Altitude & Terrestrial Expeditions</span>
+                        <h2 id="adventureHeading" class="section-main-title">Adventure Experiences</h2>
+                    </div>
+                </div>
+
+                <div id="adventureGrid" class="adventure-horizontal-scroll">
+                    
+                    <article class="adventure-card-node">
+                        <div class="adventure-media">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Climbers on an alpine mountain ridge" class="adv-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="adv-intensity">Level: Extreme</div>
+                        </div>
+                        <div class="adventure-meta-data">
+                            <h3>High Alpine Trekking</h3>
+                            <p>Route tactical itineraries over Chadar Frozen River or Roopkund ridge terrains with expedition leaders.</p>
+                        </div>
+                    </article>
+
+                    <article class="adventure-card-node">
+                        <div class="adventure-media">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="White water rafting down a raging river canyon" class="adv-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="adv-intensity">Level: Grade IV</div>
+                        </div>
+                        <div class="adventure-meta-data">
+                            <h3>River Rafting</h3>
+                            <p>Navigate the violent white-water canyons of the Zanskar or Indus river systems.</p>
+                        </div>
+                    </article>
+
+                    <article class="adventure-card-node">
+                        <div class="adventure-media">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Luxury safari camp under clear starlit desert skies" class="adv-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="adv-intensity">Level: Luxury</div>
+                        </div>
+                        <div class="adventure-meta-data">
+                            <h3>Deep Wilderness Camping</h3>
+                            <p>Luxury geodesic structures pitched within high cold deserts or deep inside sub-tropical foliage.</p>
+                        </div>
+                    </article>
+
+                    <article class="adventure-card-node">
+                        <div class="adventure-media">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Paraglider soaring over high mountain valley" class="adv-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="adv-intensity">Level: Advanced</div>
+                        </div>
+                        <div class="adventure-meta-data">
+                            <h3>Thermic Paragliding</h3>
+                            <p>Launch from Bir Billing, the world's premier geographical ridge platform, for high cross-country flights.</p>
+                        </div>
+                    </article>
+
+                    <article class="adventure-card-node">
+                        <div class="adventure-media">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Diver swimming alongside coral reef structures" class="adv-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="adv-intensity">Level: PADI Elite</div>
+                        </div>
+                        <div class="adventure-meta-data">
+                            <h3>Deep Scuba Diving</h3>
+                            <p>Map the volcanic reefs, open oceanic channels, and marine walls of Havelock Island.</p>
+                        </div>
+                    </article>
+
+                    <article class="adventure-card-node">
+                        <div class="adventure-media">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Bengal Tiger pacing through dry forest brush" class="adv-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                            <div class="adv-intensity">Level: Apex Tracker</div>
+                        </div>
+                        <div class="adventure-meta-data">
+                            <h3>Imperial Tiger Safaris</h3>
+                            <p>Track the Royal Bengal Tiger across the ancient deciduous terrain of Ranthambore or Bandhavgarh.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout spiritual-transcendence-strip" aria-labelledby="spiritualHeading">
+            <div class="section-container">
+                <div class="section-header-center">
+                    <span class="section-super-title">Vedic Metaphysics & Inner Realignment</span>
+                    <h2 id="spiritualHeading" class="section-main-title">Spiritual Journeys</h2>
+                    <p class="section-center-paragraph">
+                        India does not offer travel; it offers transformation. Travel inward along ancient lines of intense contemplative energy.
+                    </p>
+                </div>
+
+                <div id="spiritualGrid" class="spiritual-triptych-layout">
+                    
+                    <article class="spiritual-box">
+                        <div class="spiritual-icon-frame">
+                            <i class="fa-solid fa-gopuram"></i>
+                        </div>
+                        <h3>Vedic Temple Architecture</h3>
+                        <p class="spiritual-box-desc">
+                            Study the advanced geometry of Southern structural marvels like Madurai Meenakshi or Thanjavur Brihadisvara, designed as cosmic power centers.
+                        </p>
+                        <ul class="spiritual-sub-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Acoustic pillar verification</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Alignment tracking</li>
+                        </ul>
+                    </article>
+
+                    <article class="spiritual-box">
+                        <div class="spiritual-icon-frame">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+                        <h3>The Char Dham Continuum</h3>
+                        <p class="spiritual-box-desc">
+                            High-altitude geographical circuits spanning rugged Himalayan gorges to oceanside coordinates, maps for spiritual release.
+                        </p>
+                        <ul class="spiritual-sub-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Heli-aviation linkages</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Private Pandit facilitation</li>
+                        </ul>
+                    </article>
+
+                    <article class="spiritual-box">
+                        <div class="spiritual-icon-frame">
+                            <i class="fa-solid fa-om"></i>
+                        </div>
+                        <h3>Silent Meditation Retreats</h3>
+                        <p class="spiritual-box-desc">
+                            Immerse your consciousness within secluded Rishikesh ashrams or silent Vipassana sanctuaries nestled inside dense bamboo groves.
+                        </p>
+                        <ul class="spiritual-sub-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Monastic lifestyle guidelines</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Elemental detoxification</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout gastronomy-luxury-zone" aria-labelledby="foodHeading">
+            <div class="section-container">
+                <div class="section-header-row">
+                    <div class="header-left">
+                        <span class="section-super-title">The Culinary Spice Lineage</span>
+                        <h2 id="foodHeading" class="section-main-title">Gastronomy & Food Trails</h2>
+                    </div>
+                </div>
+
+                <div id="foodGrid" class="food-display-grid">
+                    
+                    <article class="food-editorial-node">
+                        <div class="food-image-frame">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Delicate plating of Indian royal cuisine with saffron accents" class="food-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="food-content">
+                            <span class="food-category-label">Royal Kitchen Formulations</span>
+                            <h3>Awadhi Dum Pukht Culinary</h3>
+                            <p>Unlock the slow-cooking methods of imperial Lucknow, where meat and rich spices mature inside dough-sealed clay pots over low ember beds.</p>
+                        </div>
+                    </article>
+
+                    <article class="food-editorial-node">
+                        <div class="food-image-frame">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Assorted authentic Indian street food delicacies" class="food-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="food-content">
+                            <span class="food-category-label">Old City Legacy Curation</span>
+                            <h3>Chandni Chowk Spice Matrix</h3>
+                            <p>Navigate the chaotic lanes of Old Delhi with culinary historians to sample generation-old street food hubs processing rare spice mixtures.</p>
+                        </div>
+                    </article>
+
+                    <article class="food-editorial-node">
+                        <div class="food-image-frame">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Traditional clay cooking pots on a wood fire woodstove" class="food-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="food-content">
+                            <span class="food-category-label">Private Masterclasses</span>
+                            <h3>Malabar Coastal Extraction</h3>
+                            <p>A hands-on masterclass analyzing coconut milk reductions, pure tellicherry black peppercorns, and freshly harvested curry leaves.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout season-curator-zone" aria-labelledby="seasonHeading">
+            <div class="section-container">
+                <div class="section-header-center">
+                    <span class="section-super-title">The Meteorological Almanac</span>
+                    <h2 id="seasonHeading" class="section-main-title">Seasonal Recommendations</h2>
+                    <p class="section-center-paragraph">
+                        India cannot be experienced universally at any single node. Synchronize your arrival with the subcontinental climate shifts.
+                    </p>
+                </div>
+
+                <div id="seasonGrid" class="season-quad-grid">
+                    
+                    <div class="season-quad-cell">
+                        <div class="season-background-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Cool valleys of Shimla during premium summer months" class="season-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="season-glass-overlay">
+                            <h3>Summer <span class="season-months">(May â€“ August)</span></h3>
+                            <p class="season-desc">Retreat to high Himalayan sanctuaries like Shimla or Gulmarg. Explore tea plantations or track snow leopards in high-altitude terrain.</p>
+                            <span class="season-cta-tag">Go North <i class="fa-solid fa-arrow-up-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="season-quad-cell">
+                        <div class="season-background-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Western ghats during torrential monsoon rain" class="season-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="season-glass-overlay">
+                            <h3>Monsoon <span class="season-months">(Sept â€“ October)</span></h3>
+                            <p class="season-desc">Witness the transforming power of rainfall in the Western Ghats or Cherrapunji. The perfect season for intensive Ayurvedic treatments.</p>
+                            <span class="season-cta-tag">Go Western Ridge <i class="fa-solid fa-arrow-up-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="season-quad-cell">
+                        <div class="season-background-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Golden fort structures of Jaisalmer in winter dusk" class="season-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="season-glass-overlay">
+                            <h3>Winter <span class="season-months">(Nov â€“ February)</span></h3>
+                            <p class="season-desc">The ideal window for desert exploration across Rajasthan, white salt marsh excursions in Kutch, or coastal sailing in Goa.</p>
+                            <span class="season-cta-tag">Go Desert Tiers <i class="fa-solid fa-arrow-up-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="season-quad-cell">
+                        <div class="season-background-wrapper">
+                            <img src="../assets/images/placeholder-landscape.svg" alt="Lush blooming orchards of the Kashmir Valley" class="season-img" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                        </div>
+                        <div class="season-glass-overlay">
+                            <h3>Spring <span class="season-months">(March â€“ April)</span></h3>
+                            <p class="season-desc">Witness the landscape come alive with cherry blossom blooms across the north and vibrant cultural festivals welcoming the harvest cycle.</p>
+                            <span class="season-cta-tag">Go Valley Lines <i class="fa-solid fa-arrow-up-right"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout dynamic-map-integration" aria-labelledby="mapHeading">
+            <div class="section-container">
+                <div class="section-header-center">
+                    <span class="section-super-title">Cartographic Visual Engine</span>
+                    <h2 id="mapHeading" class="section-main-title">Interactive Subcontinent Index</h2>
+                </div>
+
+                <div id="indiaMap" class="india-map-blueprint-wrapper">
+                    <div class="map-blueprint-glassmorphism-scrim">
+                        <div class="blueprint-vector-placeholder">
+                            <i class="fa-solid fa-map-location-dot blueprint-icon"></i>
+                            <h3 class="blueprint-title">Vector Geographic Engine Integration Pending</h3>
+                            <p class="blueprint-subtitle">
+                                Future state deployments will inject interactive SVG topologies, real-time climate overlays, and live heritage crowd metrics.
+                            </p>
+                            
+                            <div class="blueprint-interactive-nodes-preview">
+                                <span class="preview-node"><i class="fa-solid fa-circle-dot text-gold"></i> Node Del-01</span>
+                                <span class="preview-node"><i class="fa-solid fa-circle-dot text-gold"></i> Node Bom-02</span>
+                                <span class="preview-node"><i class="fa-solid fa-circle-dot text-gold"></i> Node Blr-03</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout logistical-intelligence-zone" aria-labelledby="tipsHeading">
+            <div class="section-container">
+                <div class="section-title-lockup">
+                    <span class="luxury-anchor-label">LOGISTICAL INTELLIGENCE ARCHITECTURE</span>
+                    <h2 id="tipsHeading" class="section-main-title">Essential Travel Intelligence</h2>
+                </div>
+
+                <div class="logistical-cards-wrapper">
+                    <article class="logistical-intel-card">
+                        <div class="intel-header">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h3>Safety Protocols</h3>
+                        </div>
+                        <p class="intel-body">
+                            Access our premium real-time concierge grid and verified transport routes. Utilize satellite communication frameworks across complex remote paths.
+                        </p>
+                    </article>
+
+                    <article class="logistical-intel-card">
+                        <div class="intel-header">
+                            <i class="fa-solid fa-suitcase-rolling"></i>
+                            <h3>Sartorial & Packing Matrix</h3>
+                        </div>
+                        <p class="intel-body">
+                            Pack variable layers to transition from high mountain valleys to humid coastal plains. Always pack conservative attire suitable for historical monastic sanctuaries.
+                        </p>
+                    </article>
+
+                    <article class="logistical-intel-card">
+                        <div class="intel-header">
+                            <i class="fa-solid fa-jet-fighter"></i>
+                            <h3>Premium Transport Corridors</h3>
+                        </div>
+                        <p class="intel-body">
+                            We route regional transits via high-speed Vande Bharat express cabins, luxury private multi-engine aircraft charters, and curated private drivers.
+                        </p>
+                    </article>
+
+                    <article class="logistical-intel-card">
+                        <div class="intel-header">
+                            <i class="fa-solid fa-vault"></i>
+                            <h3>Currency & Chrono Windows</h3>
+                        </div>
+                        <p class="intel-body">
+                            Maintain a secure balance of localized digital banking accounts (UPI) alongside physical sovereign currency denominations. Check structural monument operating schedules beforehand.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-layout platform-merit-manifesto" aria-labelledby="manifestoHeading">
+            <div class="section-container">
+                <div class="section-header-center">
+                    <span class="section-super-title">The Sovereign Guarantee</span>
+                    <h2 id="manifestoHeading" class="section-main-title">Why Explore with Eventra Bharat</h2>
+                </div>
+
+                <div class="manifesto-quad-grid">
+                    
+                    <article class="feature-manifesto-card">
+                        <div class="manifesto-visual-anchor">
+                            <i class="fa-solid fa-badge-check"></i>
+                        </div>
+                        <h3>Verified Experiences</h3>
+                        <p>Every single high-altitude base camp, heritage tour operator, and private palace guide undergoes a strict certification process before joining our network.</p>
+                    </article>
+
+                    <article class="feature-manifesto-card">
+                        <div class="manifesto-visual-anchor">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3>Local Experts & Historians</h3>
+                        <p>Connect with university-trained archeologists, direct royal house lineage holders, and culinary historians who bring local insights to life.</p>
+                    </article>
+
+                    <article class="feature-manifesto-card">
+                        <div class="manifesto-visual-anchor">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h3>Safe Travel Framework</h3>
+                        <p>Travel securely with integrated satellite SOS systems, comprehensive medical backup insurance partnerships, and high-security ground transportation assets.</p>
+                    </article>
+
+                    <article class="feature-manifesto-card">
+                        <div class="manifesto-visual-anchor">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3>24Ã—7 Premium Support</h3>
+                        <p>A dedicated operations center stands ready at any minute to handle real-time logistical changes, helicopter emergency airlifts, or regional re-routing.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-luxury-cta-zone" aria-labelledby="newsletterHeading">
+            <div class="newsletter-background-scrim"></div>
+            <div class="section-container newsletter-flex-container">
+                
+                <div class="newsletter-copywrite">
+                    <h2 id="newsletterHeading">Join the Sovereign Circle</h2>
+                    <p>Receive monthly curations on hidden historical restorations, seasonal festival entries, and private expedition openings across India.</p>
+                </div>
+
+                <div class="newsletter-action-form-container">
+                    <form id="newsletterForm" class="newsletter-premium-input-block" action="#" method="POST">
+                        <div class="input-icon-shell">
+                            <i class="fa-regular fa-envelope-open"></i>
+                            <input type="email" id="newsletterEmail" class="newsletter-input-node" placeholder="Ex: globalnomad@luxury.com" required aria-label="Electronic Destination Address">
+                        </div>
+                        <button type="submit" id="subscribeBtn" class="newsletter-submit-trigger">
+                            <span>Subscribe</span> <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </form>
+                    <span class="form-compliance-notice"><i class="fa-solid fa-lock"></i> Zero Spam Mandate. Encrypted Identity Logging.</span>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="production-footer-framework" role="contentinfo">
+        <div class="footer-core-container">
+            
+            <div class="footer-column-brand">
+                <span class="footer-logo">EVENTRA <span class="thin">BHARAT</span></span>
+                <p class="footer-brand-statement">
+                    Architecting digital entry points into the cultural and historical landscapes of India. Inspired by minimalism, built for global discovery.
+                </p>
+                <div class="social-channels-rack">
+                    <a href="#" aria-label="Access Instagram Feed"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Access Twitter Logistical Feed"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Access YouTube Cinematic Channel"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Access LinkedIn Corporate Directory"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column-links">
+                <h4 class="footer-column-title">Destinations</h4>
+                <ul class="footer-link-list">
+                    <li><a href="#">Himalayan Ridges</a></li>
+                    <li><a href="#">Malabar Coastlines</a></li>
+                    <li><a href="#"> Thar Desert Compounds</a></li>
+                    <li><a href="#">Deccan Monoliths</a></li>
+                    <li><a href="#">Ganga River Basins</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column-links">
+                <h4 class="footer-column-title">Experiences</h4>
+                <ul class="footer-link-list">
+                    <li><a href="#">UNESCO Heritage Trails</a></li>
+                    <li><a href="#">Vedic Spiritual Retreats</a></li>
+                    <li><a href="#">High-Altitude Climbs</a></li>
+                    <li><a href="#">Imperial Gastronomy</a></li>
+                    <li><a href="#">Artisanal Masterclasses</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column-links">
+                <h4 class="footer-column-title">Corporate Sovereignty</h4>
+                <ul class="footer-link-list">
+                    <li><a href="#">Global Press Room</a></li>
+                    <li><a href="#">Data Privacy Charter</a></li>
+                    <li><a href="#">Sovereign Cryptographic Security</a></li>
+                    <li><a href="#">Sustainable Tourism Accord</a></li>
+                    <li><a href="#">Contact Operations Concierge</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-baseline-bar">
+            <div class="baseline-container">
+                <p class="copyright-text">Â© 2026 Eventra Bharat Platforms Inc. All sovereign rights reserved globally.</p>
+                <div class="baseline-policy-links">
+                    <a href="#">Terms of Discovery</a>
+                    <a href="#">Privacy Infrastructure</a>
+                    <a href="#">Cookie Mapping Index</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/explore.js"></script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details | Eventra Bharat</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/event-details.css">
+    
+</head>
+<body class="premium-event-details-engine">
+
+    <header id="navbar" class="navbar GlobalStickyHeader">
+        <div class="logo">
+            EVENTRA BHARAT
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="explore.html">Explore</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <button class="login-btn ActionButtonPrimary" aria-label="Account Login">Login</button>
+        </div>
+    </header>
+
+    <main class="MainContentLayoutWrapper">
+        <section class="hero-premium-viewport ExtendedHeroBanner" aria-label="Event Introduction">
+            <div class="hero-parallax-background-container">
+                <img src="../assets/images/placeholder-landscape.svg" alt="Imperial Event Cover Canvas" class="HeroFluidAsset" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+                <div class="hero-vignette-scrim"></div>
+            </div>
+            
+            <div class="HeroContentConstrainedContainer">
+                <div class="HeroContentLayoutGrid">
+                    <div class="HeroLayoutLeftStack">
+                        <div class="HeroCategoryBadgeRow">
+                            <span class="LuxuryCategoryBadge">Premium Heritage Experience</span>
+                        </div>
+                        
+                        <h1 class="ImperialMainHeadline">The Royal Mewar Sacred Sound &amp; Arts Festival</h1>
+                        
+                        <div class="HeroMetaDetailsRow">
+                            <div class="HeroRatingGroup">
+                                <i class="fa-solid fa-star PremiumStarTone"></i>
+                                <span class="RatingValueMetric">4.9</span>
+                                <span class="ReviewCountData">(1,240 Connoisseur Reviews)</span>
+                            </div>
+                            <div class="HeroLocationStamp">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>City Palace, Udaipur, Rajasthan</span>
+                            </div>
+                        </div>
+
+                        <div class="HeroScheduleInlineStrip">
+                            <div class="InlineStripMetric">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <span>Nov 12 - Nov 15, 2026</span>
+                            </div>
+                            <div class="InlineStripMetric">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>18:00 IST onwards</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="HeroLayoutRightStack">
+                        <div class="HeroActionControlGroup">
+                            <button id="wishlistBtn" class="GlassmorphicIconButton" aria-label="Add event to wishlist" data-favorited="false">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                            <button id="shareBtn" class="GlassmorphicIconButton" aria-label="Share this event experience">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </button>
+                        </div>
+                        <div class="HeroPricingValueTier">
+                            <span class="PriceLabelPrefix">Experience from</span>
+                            <div class="PriceMainNumeric">â‚¹8,500 <span class="PriceSuffixUnit">/ Guest</span></div>
+                        </div>
+                        <button id="heroBookNowBtn" class="LuxuryCtaPrimary ButtonFillMaroon smooth-scroll-trigger" data-target="#bookingAnchorZone">
+                            Secure Passes Now <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="DualColumnLayoutContainer ContainerBoundary">
+            
+            <div class="ContentColumnLeftMaster">
+                
+                <section class="InfoMatrixSection" aria-label="Event Specifications">
+                    <div class="SectionAdaptiveHeading">
+                        <h2>Experience Specifications</h2>
+                    </div>
+                    <div class="InfoStructuredCardGrid">
+                        <div class="SpecPremiumMetricCard">
+                            <div class="SpecCardIconBox"><i class="fa-solid fa-calendar-day"></i></div>
+                            <div class="SpecCardDataStack">
+                                <span class="SpecLabel">Date</span>
+                                <span class="SpecValue">Nov 12 - 15, 2026</span>
+                            </div>
+                        </div>
+                        <div class="SpecPremiumMetricCard">
+                            <div class="SpecCardIconBox"><i class="fa-solid fa-hourglass-half"></i></div>
+                            <div class="SpecCardDataStack">
+                                <span class="SpecLabel">Duration</span>
+                                <span class="SpecValue">4 Dynamic Evenings</span>
+                            </div>
+                        </div>
+                        <div class="SpecPremiumMetricCard">
+                            <div class="SpecCardIconBox"><i class="fa-solid fa-gopuram"></i></div>
+                            <div class="SpecCardDataStack">
+                                <span class="SpecLabel">Venue &amp; State</span>
+                                <span class="SpecValue">City Palace, Rajasthan</span>
+                            </div>
+                        </div>
+                        <div class="SpecPremiumMetricCard">
+                            <div class="SpecCardIconBox"><i class="fa-solid fa-language"></i></div>
+                            <div class="SpecCardDataStack">
+                                <span class="SpecLabel">Language</span>
+                                <span class="SpecValue">Hindi, English, Mewari</span>
+                            </div>
+                        </div>
+                        <div class="SpecPremiumMetricCard">
+                            <div class="SpecCardIconBox"><i class="fa-solid fa-user-shield"></i></div>
+                            <div class="SpecCardDataStack">
+                                <span class="SpecLabel">Age Requirement</span>
+                                <span class="SpecValue">Ages 16+ Permitted</span>
+                            </div>
+                        </div>
+                        <div class="SpecPremiumMetricCard">
+                            <div class="SpecCardIconBox"><i class="fa-solid fa-shirt"></i></div>
+                            <div class="SpecCardDataStack">
+                                <span class="SpecLabel">Dress Code</span>
+                                <span class="SpecValue">Royal Ethnic Attire</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="EditorialNarrativeSection" aria-label="About the Event">
+                    <div class="SectionAdaptiveHeading">
+                        <h2>The Narrative Experience</h2>
+                    </div>
+                    <div class="EditorialTextBlock standard-rich-text">
+                        <p class="LeadParagraphText">
+                            Immerse yourself within an unprecedented convergence of sacred structural acoustics and royal Rajasthani heritage. Hosted inside the historical micro-courtyards of the iconic Udaipur City Palace, this festival brings together global maestros of classical, sufi, and folk music movements for four evenings under the autumn starlight.
+                        </p>
+                        <p>
+                            Every performance is curated to synchronize flawlessly with the cosmic architecture of the Mewar dynasty. Attendees will navigate historic corridors illuminated entirely by hand-poured candle structures, experiencing sensory textures designed exclusively for our patron community.
+                        </p>
+                    </div>
+
+                    <div class="EditorialHighlightsGrid">
+                        <div class="HighlightItemBlock">
+                            <div class="HighlightMarkerIcon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="HighlightContentText">
+                                <h3>Exclusive Access Passes</h3>
+                                <p>Unrestricted access to the Zenana Mahal and inner structural courtyards typically sealed to the general public.</p>
+                            </div>
+                        </div>
+                        <div class="HighlightItemBlock">
+                            <div class="HighlightMarkerIcon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="HighlightContentText">
+                                <h3>Curated Epicurean Trails</h3>
+                                <p>Four-course authentic Mewari silver-service dinners crafted by royal culinary descendants.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="TonalSplitInclusionGrid">
+                        <div class="InclusionListCard">
+                            <h3><i class="fa-solid fa-square-plus InclusionPassIcon"></i> What's Included</h3>
+                            <ul class="PremiumBulletList text-muted">
+                                <li><i class="fa-solid fa-check"></i> All performance access keys over the 4-day cycle</li>
+                                <li><i class="fa-solid fa-check"></i> Traditional royal welcome ritual &amp; authentic welcome beverage</li>
+                                <li><i class="fa-solid fa-check"></i> Valet parking privileges inside designated palace perimeter zones</li>
+                                <li><i class="fa-solid fa-check"></i> Commemorative high-fidelity hardbound festival documentation portfolio</li>
+                            </ul>
+                        </div>
+                        <div class="ExclusionListCard">
+                            <h3><i class="fa-solid fa-square-minus ExclusionFailIcon"></i> What's Not Included</h3>
+                            <ul class="PremiumBulletList text-muted">
+                                <li><i class="fa-solid fa-xmark"></i> Private local luxury transport transfers to and from the venue</li>
+                                <li><i class="fa-solid fa-xmark"></i> Hotel accommodations or personal extended travel itineraries</li>
+                                <li><i class="fa-solid fa-xmark"></i> Selected super-premium vintage beverages available at bespoke bars</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="OperationalGuidelinesContainer">
+                        <h3><i class="fa-solid fa-shield-halved"></i> Community Guardrails &amp; Code of Conduct</h3>
+                        <div class="GuidelinesTextContent">
+                            <p>To preserve the spiritual acoustic frequency and generational structural integrity of the City Palace complex, all attendees must strictly adhere to our baseline operational standards:</p>
+                            <ul class="StandardIconizedList">
+                                <li><strong>Flash Photography Prohibited:</strong> Handheld cinematic capturing devices without auxiliary artificial illumination arrays are accepted. Professional recording arrays require written press clearance.</li>
+                                <li><strong>Punctuality Protocols:</strong> Main structural gates lock precisely 15 minutes prior to the evening raga initialization sequence. Late entries stand forfeit to maintain pristine acoustic performance fields.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="DynamicVisualSection" aria-label="Media Showcase">
+                    <div class="SectionAdaptiveHeading">
+                        <h2>Visual Gallery</h2>
+                        <span class="SectionSubtitle">Captured moments from prior legacy iterations</span>
+                    </div>
+                    <div id="galleryGrid" class="AssetShowcaseAdaptiveGrid StructuralSkeletonLoaderContainer">
+                        <div class="SkeletonElement NodeImageAspectRatio"></div >
+                        <div class="SkeletonElement NodeImageAspectRatio"></div>
+                        <div class="SkeletonElement NodeImageAspectRatio"></div>
+                        <div class="SkeletonElement NodeImageAspectRatio"></div>
+                    </div>
+                </section>
+
+                <section class="ChronologicalTimelineSection" aria-label="Event Itinerary Timeline">
+                    <div class="SectionAdaptiveHeading">
+                        <h2>Festival Itinerary &amp; Timeline</h2>
+                    </div>
+                    <div id="scheduleTimeline" class="InteractiveTimelineWrapper InfrastructurePipelineNode">
+                        <div class="SkeletonElement NodeTimelineRowHeight"></div>
+                        <div class="SkeletonElement NodeTimelineRowHeight"></div>
+                    </div>
+                </section>
+
+                <section class="GeographicalInfrastructureSection" aria-label="Venue Coordinates and Access Routes">
+                    <div class="SectionAdaptiveHeading">
+                        <h2>The Physical Space</h2>
+                    </div>
+                    <div class="VenueLayoutGrid">
+                        <div class="VenueEditorialCard">
+                            <span class="VenueCardSubText">The Historic Landmark</span>
+                            <h3>The Zenana Mahal Courtyard</h3>
+                            <p class="VenueAddressLine">City Palace Complex, Udaipur, Rajasthan 313001</p>
+                            
+                            <hr class="PremiumDivider">
+                            
+                            <div class="TransitMetricRow">
+                                <div class="TransitNodePoint">
+                                    <i class="fa-solid fa-square-p"></i>
+                                    <div><strong>Palace Managed Valet</strong> <span>Secured interior perimeter fields</span></div>
+                                </div>
+                                <div class="TransitNodePoint">
+                                    <i class="fa-solid fa-train-subway"></i>
+                                    <div><strong>Udaipur City Station</strong> <span>2.5 km distance from entry port</span></div>
+                                </div>
+                                <div class="TransitNodePoint">
+                                    <i class="fa-solid fa-plane"></i>
+                                    <div><strong>Maharana Pratap Airport</strong> <span>24 km trans-city luxury transit link</span></div>
+                                </div>
+                            </div>
+                            
+                            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="LuxuryCtaSecondary ActionButtonBordered full-width-center-button">
+                                Open in Google Maps Navigation <i class="fa-solid fa-location-arrow"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="MapCanvasWrapper">
+                            <div id="venueMap" class="DynamicMapEmbedSurface HTMLFixtureFrameContainer">
+                                <div class="MapFallbackPlaceholderGraphic">
+                                    <i class="fa-solid fa-map-location-dot MapLoadingAnimatedIcon"></i>
+                                    <span>Synchronizing real-time coordinate matrix...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="CorporateIdentitySection" aria-label="Host Profile">
+                    <div class="OrganizerPremiumCard">
+                        <div class="OrganizerBrandProfileHeader">
+                            <div class="OrganizerAvatarFrame">
+                                <div class="CorporateInitialsFallback font-serif">MM</div>
+                            </div>
+                            <div class="OrganizerIdentityStack">
+                                <span class="VerificationStatusBadge"><i class="fa-solid fa-circle-check"></i> Verified Platform Host</span>
+                                <h3>Maharana Mewar Historical Research Foundation</h3>
+                                <p class="CorporateMetaSummary">Established 1969 â€¢ Cultural Preservation Wing</p>
+                            </div>
+                        </div>
+                        <p class="OrganizerNarrativeBio text-muted">
+                            The foundation remains dedicated to preserving the exceptional heritage architectures, timeless classical performance disciplines, and sacred ancient artistic traditions of northwestern India. All proceeds from pass sales directly fund local master artisan conservation programs.
+                        </p>
+                        <div class="OrganizerActionPanelRow">
+                            <div class="OrganizerSocialLinks">
+                                <a href="#" aria-label="Visit Organizer Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" aria-label="Visit Organizer LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#" aria-label="Visit Organizer Official Website"><i class="fa-solid fa-globe"></i></a>
+                            </div>
+                            <button class="LuxuryCtaSecondary ActionButtonSubtle">View Host Portfolio</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="SocialProofEvaluationSection" aria-label="Guest Reviews and Feedback">
+                    <div class="SectionAdaptiveHeading">
+                        <h2>Guest Sentiment &amp; Reviews</h2>
+                    </div>
+                    <div class="MetricSummaryDashboardGrid">
+                        <div class="GlobalNumericScoreCard">
+                            <div class="LargeScoreDisplay">4.9</div>
+                            <div class="ScoreStarsRow"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <div class="TotalReviewsLabel">Based on 1,240 experiences</div>
+                        </div>
+                        <div class="RatingHistogramDistributionTray">
+                            <div class="HistogramRow">
+                                <span class="HistogramLevelLabel">5 Stars</span>
+                                <div class="HistogramBarTrack"><div class="HistogramBarFill" style="width: 92%;"></div></div>
+                                <span class="HistogramPercentageValue">92%</span>
+                            </div>
+                            <div class="HistogramRow">
+                                <span class="HistogramLevelLabel">4 Stars</span>
+                                <div class="HistogramBarTrack"><div class="HistogramBarFill" style="width: 6%;"></div></div>
+                                <span class="HistogramPercentageValue">6%</span>
+                            </div>
+                            <div class="HistogramRow">
+                                <span class="HistogramLevelLabel">3 Stars</span>
+                                <div class="HistogramBarTrack"><div class="HistogramBarFill" style="width: 2%;"></div></div>
+                                <span class="HistogramPercentageValue">2%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="reviewGrid" class="SocialProofInteractiveReviewGrid MatrixDynamicLayout flex-column-layout">
+                        <div class="SkeletonElement NodeReviewRowHeight"></div>
+                    </div>
+                </section>
+
+            </div> <aside id="bookingAnchorZone" class="ContentColumnRightMaster StickySidebarContainer" aria-label="Purchase Platform Interface">
+                <div class="GlassmorphicBookingCard LateralStickyCardEngine">
+                    <div class="BookingCardHeaderRow">
+                        <div class="CardHeaderPricingStack">
+                            <span class="PricingBadgeContext text-muted">Pass Tier</span>
+                            <h3 class="TierTitleDisplay">Imperial Full-Access Pass</h3>
+                        </div>
+                        <div class="CardHeaderValueNumerical">
+                            <div class="DisplayPriceFigure">â‚¹8,500</div>
+                            <span class="TaxationInclusiveDisclaimer text-muted">All taxes &amp; palace fees included</span>
+                        </div>
+                    </div>
+                    
+                    <hr class="PremiumDivider">
+
+                    <form id="ticketPurchaseSelectionForm" class="BookingFormInternalFlow" onsubmit="return false;">
+                        <div class="BookingFormInputGroup">
+                            <label for="ticketTypeSelectionField" class="FormInputLabel">Select Experience Tier</label>
+                            <div class="CustomSelectFieldContainer">
+                                <select id="ticketTypeSelectionField" class="PremiumFormSelectControlElement">
+                                    <option value="imperial_4day">Imperial 4-Day Pass (â‚¹8,500)</option>
+                                    <option value="royal_vip_4day">Royal VIP Elite Courtyard (â‚¹18,000)</option>
+                                    <option value="connoisseur_single_day">Single Day Access - Opening Gala (â‚¹3,500)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="BookingFormInputGroup QuantitySelectorInteractiveRow">
+                            <div class="QuantityLabelsStack">
+                                <label for="ticketQuantity" class="FormInputLabel">Number of Guests</label>
+                                <span class="InventoryWarningLabel" id="inventoryCounterAlert">Only 8 premium passes remaining for this bracket</span>
+                            </div>
+                            <div class="QuantityControlWidgetEngine">
+                                <button type="button" class="QuantityDecrementAction QuantityWidgetButton" aria-label="Reduce guest count" onclick="document.getElementById('ticketQuantity').stepDown(); document.getElementById('ticketQuantity').dispatchEvent(new Event('change'));">-</button>
+                                <input type="number" id="ticketQuantity" class="QuantityNumericInputField" value="1" min="1" max="10" readonly step="1">
+                                <button type="button" class="QuantityIncrementAction QuantityWidgetButton" aria-label="Increase guest count" onclick="document.getElementById('ticketQuantity').stepUp(); document.getElementById('ticketQuantity').dispatchEvent(new Event('change'));">+</button>
+                            </div>
+                        </div>
+
+                        <div class="DynamicInvoiceSummaryZone">
+                            <div class="InvoiceCalculationLine">
+                                <span class="InvoiceLabel text-muted">Base Pass Multiplication</span>
+                                <span class="InvoiceCalculatedValue" id="invoiceSubtotalDisplay">â‚¹8,500</span>
+                            </div>
+                            <div class="InvoiceCalculationLine">
+                                <span class="InvoiceLabel text-muted">Palace Restoration Levy</span>
+                                <span class="InvoiceCalculatedValue">â‚¹0.00</span>
+                            </div>
+                            <hr class="PremiumDividerSubtle">
+                            <div class="InvoiceCalculationLine InvoiceTotalMainLine">
+                                <span class="InvoiceTotalLabel font-serif">Aggregated Total</span>
+                                <span class="InvoiceTotalNumerical" id="invoiceTotalDisplay">â‚¹8,500</span>
+                            </div>
+                        </div>
+
+                        <button id="bookNowBtn" type="submit" class="LuxuryCtaPrimary ButtonFillMaroon full-width-cta-button LargeButtonInteractive">
+                            Proceed to Secure Checkout <i class="fa-solid fa-lock"></i>
+                        </button>
+                    </form>
+
+                    <div class="BookingCardGuaranteesTray">
+                        <div class="GuaranteeItem"><i class="fa-solid fa-arrow-rotate-left"></i> <span>Flexible Refund Window up to 7 days prior</span></div>
+                        <div class="GuaranteeItem"><i class="fa-solid fa-shield-halved"></i> <span>Encrypted High-Security Booking Pipeline</span></div>
+                    </div>
+                </div>
+            </aside> </div> <section class="ContextualDiscoveryCarouselSection ContainerBoundary" aria-label="Recommended Alternatives">
+            <div class="SectionAdaptiveHeading">
+                <h2>Elite Alternatives In This Region</h2>
+                <span class="SectionSubtitle">Curated cultural programs tailored to your preferences</span>
+            </div>
+            <div id="relatedEventsGrid" class="DiscoveryCarouselDynamicGrid CardAdaptiveStructureMatrix">
+                <div class="SkeletonElement NodeCardStandardHeight"></div>
+                <div class="SkeletonElement NodeCardStandardHeight"></div>
+                <div class="SkeletonElement NodeCardStandardHeight"></div>
+            </div>
+        </section>
+
+        <section class="AccessibleKnowledgeSection ContainerBoundary" aria-label="Frequently Asked Questions">
+            <div class="SectionAdaptiveHeading CenteredHeading">
+                <h2>Frequently Asked Queries</h2>
+            </div>
+            <div class="AccordionLayoutContainer HighFidelityAccordionEngine">
+                
+                <div class="AccordionItemFrame">
+                    <button class="AccordionInteractiveHeader" aria-expanded="false" data-target="#faq-ans-1">
+                        <span>What protocols govern structural cancellation and processing refunds?</span>
+                        <i class="fa-solid fa-plus AccordionStateIcon"></i>
+                    </button>
+                    <div id="faq-ans-1" class="AccordionContentDrawer" hidden>
+                        <div class="AccordionInnerPaddingBox text-muted">
+                            Full fiscal reimbursement is processed directly to the original transactional pathway if execution parameters are initialized seven business days prior to the opening festival ceremony. Cancellations inside this dynamic threshold are non-refundable but can be reassigned to alternative patrons.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="AccordionItemFrame">
+                    <button class="AccordionInteractiveHeader" aria-expanded="false" data-target="#faq-ans-2">
+                        <span>Are individual accommodation pipelines structured within the pass matrix?</span>
+                        <i class="fa-solid fa-plus AccordionStateIcon"></i>
+                    </button>
+                    <div id="faq-ans-2" class="AccordionContentDrawer" hidden>
+                        <div class="AccordionInnerPaddingBox text-muted">
+                            The pass explicitly covers access architecture within the Palace boundaries. However, Eventra Bharat patrons receive pre-negotiated priority booking links at partnering heritage properties like the Taj Lake Palace and The Oberoi Udaivilas upon checkout.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="AccordionItemFrame">
+                    <button class="AccordionInteractiveHeader" aria-expanded="false" data-target="#faq-ans-3">
+                        <span>Is local weather variation going to impact performance operations?</span>
+                        <i class="fa-solid fa-plus AccordionStateIcon"></i>
+                    </button>
+                    <div id="faq-ans-3" class="AccordionContentDrawer" hidden>
+                        <div class="AccordionInnerPaddingBox text-muted">
+                            November marks the transition into Udaipur's premium winter season, with clear evening skies averaging 18Â°C. In the statistically improbable event of heavy rain arrays, performance modules shift seamlessly from open courtyards into historical indoor vaulted durbar spaces within the palace structure.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="PremiumEngagementNewsletterSection" aria-label="Newsletter Subscription">
+            <div class="NewsletterViewportContentBox ContainerBoundary">
+                <div class="NewsletterTextLayoutColumn">
+                    <h2>Join The Elite Connoisseur Network</h2>
+                    <p>Be the first to access unlisted heritage festivals, rare spiritual expeditions, and private classical showcases across the subcontinent.</p>
+                </div>
+                <div class="NewsletterInteractionFormColumn">
+                    <form id="newsletterForm" class="NewsletterPremiumInputBlock">
+                        <label for="newsletterEmail" class="VisuallyHidden">Email Address</label>
+                        <input id="newsletterEmail" type="email" placeholder="Enter your premium email coordinate" required class="NewsletterStructuralInputBox">
+                        <button id="subscribeBtn" type="submit" class="NewsletterActionSubmitBtn">
+                            Request VIP Invitation <i class="fa-solid fa-envelope-open-text"></i>
+                        </button>
+                    </form>
+                    <span class="FormPrivacyDisclaimer text-muted">We respect digital privacy. Zero spam. Safe unsubscribing protocols always apply.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="EnterpriseSystemFooter" aria-label="Platform Corporate Footer">
+        <div class="FooterInternalDirectoryGrid ContainerBoundary">
+            
+            <div class="CorporateIdentityBrandBlock">
+                <div class="FooterLogoMark">EVENTRA BHARAT</div>
+                <p class="CorporateMottoPara text-muted">Architecting the definitive modern digital access framework for India's premier live experiences, historical art celebrations, and luxury tourism events.</p>
+                <div class="CorporateOfficeAddress text-muted">
+                    <i class="fa-solid fa-building-columns"></i> <span>Regd Office: Imperial Sovereign Towers, Connaught Place, New Delhi, 110001</span>
+                </div>
+            </div>
+            
+            <div class="FooterDirectoryLinksColumn">
+                <h4>Company Hierarchy</h4>
+                <ul>
+                    <li><a href="#">Corporate Narrative</a></li>
+                    <li><a href="#">Human Capital Careers</a></li>
+                    <li><a href="#">Press Ecosystem Kit</a></li>
+                    <li><a href="#">Sustainability Mandate</a></li>
+                </ul>
+            </div>
+
+            <div class="FooterDirectoryLinksColumn">
+                <h4>Support Services</h4>
+                <ul>
+                    <li><a href="#">Concierge Help Portal</a></li>
+                    <li><a href="#">Pass Purchase Safeguards</a></li>
+                    <li><a href="#">Corporate Accounts Protocol</a></li>
+                    <li><a href="#">Platform System Status</a></li>
+                </ul>
+            </div>
+
+            <div class="FooterDirectoryLinksColumn">
+                <h4>Legal Foundations</h4>
+                <ul>
+                    <li><a href="#">Terms of Architecture Usage</a></li>
+                    <li><a href="#">Privacy Protection Policies</a></li>
+                    <li><a href="#">Anti-Scalping Token Regulations</a></li>
+                    <li><a href="#">Palace Conservation Compliance</a></li>
+                </ul>
+            </div>
+
+            <div class="FooterDirectoryLinksColumn">
+                <h4>Social Grid Connections</h4>
+                <div class="CorporateFooterSocialIcons">
+                    <a href="#" aria-label="Eventra Bharat on Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Eventra Bharat on X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Eventra Bharat on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Eventra Bharat on YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <span class="CorporateCertificationLabel text-muted"><i class="fa-solid fa-award"></i> National Tourism Excellence Laureate 2026</span>
+            </div>
+
+        </div>
+
+        <div class="FooterCopyrightBaselinePanel">
+            <div class="BaselinePanelContainer ContainerBoundary">
+                <p>Â© 2026 Eventra Bharat Platforms Private Limited. Crafted with architectural excellence for the global Indian citizen.</p>
+                <div class="SystemComplianceStampsRow text-muted">
+                    <span>ISO 27001 Certified</span> â€¢ <span>PCI-DSS High Security Secured</span> â€¢ <span>Digital India Initiative Alliance Partner</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/event-details.js" defer></script>
+</body>
+</html>
