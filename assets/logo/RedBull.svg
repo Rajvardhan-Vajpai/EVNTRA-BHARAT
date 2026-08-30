@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <rect width="300" height="120" fill="transparent"/>
+  <circle cx="45" cy="60" r="20" fill="#FFC20E"/>
+  <path d="M 25 60 L 45 45 L 45 75 Z" fill="#E21B22"/>
+  <path d="M 65 60 L 45 45 L 45 75 Z" fill="#E21B22"/>
+  <text x="95" y="75" font-family="Arial, sans-serif" font-weight="900" font-size="42" fill="#001B3A" letter-spacing="-1">Red Bull</text>
+</svg>
