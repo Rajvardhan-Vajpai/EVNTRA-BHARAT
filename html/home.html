@@ -6,24 +6,26 @@
 <title>Eventra — Where India Meets</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="../css/logo.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
-
+ 
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
+    <a href="home.html" class="nav-logo dynamic-logo-container">
       <span class="logo-text">Eventra</span>
-      <span class="logo-mark">Bharat</span>
+      <span class="logo-mark dynamic-bharat">Bharat</span>
     </a>
     <div class="nav-links">
       <a href="discover.html">Discover</a>
       <a href="events.html">Events</a>
       <a href="explore.html">Explore</a>
-      <a href="create.html">Create Event</a>
+      <a href="registration.html">Create Event</a>
     </div>
     <div class="nav-actions">
-      <button class="btn-outline">Sign up</button>
+      <a href="login.html"><button class="btn-outline">Sign up</button></a>
       <a href="login.html"><button class="btn-solid">Login</button></a>
     </div>
   </div>
@@ -33,48 +35,84 @@
 <section class="hero">
   <div class="hero-frame">
     <div class="hero-bg">
-      <img src="../assets/images/hero/hero-bg.svg" alt="" class="hero-bg-image">
+      <canvas id="hero-canvas" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;"></canvas>
     </div>
-    <div class="hero-fade"></div>
     <div class="hero-content">
       <div class="hero-tag">Travel. Celebrate. Connect.</div>
       <div class="hr-flourish left"><span>✦</span></div>
       <h1 class="hero-title">Where India<br>Meets</h1>
       <p class="hero-sub">Discover incredible places, unforgettable events, and meaningful connections across Bharat.</p>
       <div class="hero-cta-row">
-        <button class="btn-hero-primary">Explore Events →</button>
-        <button class="btn-hero-ghost">▶ Watch Video</button>
+        <a href="events.html"><button class="btn-hero-primary">Explore Events →</button></a>
+        <a href="discover.html"><button class="btn-hero-ghost">▶ Discover More</button></a>
       </div>
-    </div>
-  </div>
-
-  <div class="search-wrap">
-    <div class="search-card">
-      <div class="sf">
-        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div class="sf-text"><div class="sf-label">Where</div><div class="sf-row"><input type="text" placeholder="Search destination"></div></div>
-      </div>
-      <div class="sf">
-        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <div class="sf-text"><div class="sf-label">When</div><div class="sf-row"><input type="text" placeholder="Select date"></div></div>
-      </div>
-      <div class="sf">
-        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><line x1="8" y1="11" x2="16" y2="13"/></svg>
-        <div class="sf-text"><div class="sf-label">Category</div><div class="sf-row"><input type="text" placeholder="All categories"></div></div>
-      </div>
-      <div class="sf">
-        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-        <div class="sf-text"><div class="sf-label">People</div><div class="sf-row"><input type="text" placeholder="Any number"></div></div>
-      </div>
-      <button class="btn-search">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Search
-      </button>
     </div>
   </div>
 </section>
 
-<!-- STATS STRIP -->
+<div class="search-wrap">
+  <form id="heroSearchForm" class="search-card" action="events.html" method="GET">
+      <div class="sf">
+        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="sf-text">
+          <div class="sf-label">Where</div>
+          <div class="sf-row">
+            <select name="city" required>
+              <option value="" disabled selected>Search destination</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="delhi">Delhi</option>
+              <option value="bengaluru">Bengaluru</option>
+              <option value="goa">Goa</option>
+              <option value="pune">Pune</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="sf">
+        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div class="sf-text">
+          <div class="sf-label">When</div>
+          <div class="sf-row">
+            <input type="date" name="date" required>
+          </div>
+        </div>
+      </div>
+      <div class="sf">
+        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><line x1="8" y1="11" x2="16" y2="13"/></svg>
+        <div class="sf-text">
+          <div class="sf-label">Category</div>
+          <div class="sf-row">
+            <select name="cat">
+              <option value="" disabled selected>All categories</option>
+              <option value="concerts">Concerts</option>
+              <option value="sports">Sports</option>
+              <option value="cultural">Cultural</option>
+              <option value="food">Food Festivals</option>
+              <option value="nightlife">Nightlife & Parties</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="sf">
+        <svg class="sf-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <div class="sf-text">
+          <div class="sf-label">People</div>
+          <div class="sf-row">
+            <select name="people">
+              <option value="" disabled selected>Any number</option>
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3+">3+ People</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn-search">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
+    </form>
+</div>
 <div class="stats-strip">
   <div class="container">
     <div class="stats-row">
@@ -98,26 +136,6 @@
   </div>
 </div>
 
-<!-- CITIES BAND -->
-<div class="cities-band reveal">
-  <div class="container">
-    <div class="cities-inner">
-      <span class="cities-label">Browse by City</span>
-      <div class="cities-row">
-        <button class="city-chip active">Mumbai</button>
-        <button class="city-chip">Delhi</button>
-        <button class="city-chip">Bengaluru</button>
-        <button class="city-chip">Hyderabad</button>
-        <button class="city-chip">Pune</button>
-        <button class="city-chip">Jaipur</button>
-        <button class="city-chip">Kolkata</button>
-        <button class="city-chip">Ahmedabad</button>
-        <button class="city-chip">Chennai</button>
-        <button class="city-chip">Goa</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- CATEGORIES -->
 <section class="section">
@@ -128,18 +146,76 @@
       <h2 class="display-lg">Find your kind of moment.</h2>
       <p class="body-md" style="margin-top:10px;max-width:480px;margin-left:auto;margin-right:auto;">From sold-out arenas to neighbourhood melas — there's something for everyone.</p>
     </div>
-    <div class="cat-grid">
-      <div class="cat-card reveal delay-1"><div class="cat-icon-wrap">🎵</div><div class="cat-name">Concerts</div><div class="cat-count">2,400+ events</div></div>
-      <div class="cat-card reveal delay-1"><div class="cat-icon-wrap">🎪</div><div class="cat-name">Melas</div><div class="cat-count">180+ events</div></div>
-      <div class="cat-card reveal delay-1"><div class="cat-icon-wrap">🪔</div><div class="cat-name">Religious</div><div class="cat-count">640+ events</div></div>
-      <div class="cat-card reveal delay-1"><div class="cat-icon-wrap">🍜</div><div class="cat-name">Food Festivals</div><div class="cat-count">320+ events</div></div>
-      <div class="cat-card reveal delay-2"><div class="cat-icon-wrap">🎓</div><div class="cat-name">College Fests</div><div class="cat-count">510+ events</div></div>
-      <div class="cat-card reveal delay-2"><div class="cat-icon-wrap">🏏</div><div class="cat-name">Sports</div><div class="cat-count">270+ events</div></div>
-      <div class="cat-card reveal delay-2"><div class="cat-icon-wrap">🚀</div><div class="cat-name">Startup Events</div><div class="cat-count">190+ events</div></div>
-      <div class="cat-card reveal delay-2"><div class="cat-icon-wrap">🎭</div><div class="cat-name">Cultural</div><div class="cat-count">880+ events</div></div>
+    <div class="bento-grid">
+      <a href="events.html?cat=concerts" class="bento-card cat-concerts reveal delay-1">
+        <img src="../assets/images/categories/concerts.png?auto=format&fit=crop&w=800&q=80" alt="Concerts">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">CONCERTS</div></div>
+      </a>
+      <a href="events.html?cat=religious" class="bento-card cat-workshops reveal delay-1">
+        <img src="../assets/images/categories/religious.png?auto=format&fit=crop&w=400&q=80" alt="Religious">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">RELIGIOUS</div></div>
+      </a>
+      <a href="events.html?cat=melas" class="bento-card cat-melas reveal delay-1">
+        <img src="../assets/images/categories/melas.png?auto=format&fit=crop&w=400&q=80" alt="Melas & Festivals">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">MELAS & FESTIVALS</div></div>
+      </a>
+      <a href="events.html?cat=startup" class="bento-card cat-business reveal delay-2">
+        <img src="../assets/images/categories/startup.png?auto=format&fit=crop&w=400&q=80" alt="Startup Events">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">STARTUP EVENTS</div></div>
+      </a>
+      <a href="events.html?cat=college" class="bento-card cat-startup reveal delay-2">
+        <img src="../assets/images/categories/college.png?auto=format&fit=crop&w=400&q=80" alt="College Fests">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">COLLEGE FESTS</div></div>
+      </a>
+      <a href="events.html?cat=sports" class="bento-card cat-sports reveal delay-2">
+        <img src="../assets/images/categories/sports.png?auto=format&fit=crop&w=400&q=80" alt="Sports">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">SPORTS</div></div>
+      </a>
+      <a href="events.html?cat=cultural" class="bento-card cat-art reveal delay-3">
+        <img src="../assets/images/categories/cultural.png?auto=format&fit=crop&w=800&q=80" alt="Cultural">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">CULTURAL</div></div>
+      </a>
+      <a href="events.html?cat=food" class="bento-card cat-theatre reveal delay-3">
+        <img src="../assets/images/categories/food.png?auto=format&fit=crop&w=400&q=80" alt="Food Festivals">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">FOOD FESTIVALS</div></div>
+      </a>
+      <a href="events.html?cat=nightlife" class="bento-card cat-nightlife reveal delay-3">
+        <img src="../assets/images/categories/nightlife.png" alt="Nightlife & Parties">
+        <div class="bento-overlay"></div>
+        <div class="bento-content"><div class="bento-title">NIGHTLIFE & PARTIES</div></div>
+      </a>
     </div>
   </div>
 </section>
+
+<!-- CITIES BAND -->
+<div class="cities-band reveal">
+  <div class="container">
+    <div class="cities-inner">
+      <span class="cities-label">Browse by City</span>
+      <div class="cities-row">
+        <button class="city-chip" data-city="all">All</button>
+        <button class="city-chip active" data-city="Mumbai">Mumbai</button>
+        <button class="city-chip" data-city="Delhi">Delhi</button>
+        <button class="city-chip" data-city="Bengaluru">Bengaluru</button>
+        <button class="city-chip" data-city="Hyderabad">Hyderabad</button>
+        <button class="city-chip" data-city="Pune">Pune</button>
+        <button class="city-chip" data-city="Kolkata">Kolkata</button>
+        <button class="city-chip" data-city="Ahmedabad">Ahmedabad</button>
+        <button class="city-chip" data-city="Chennai">Chennai</button>
+        <button class="city-chip" data-city="Goa">Goa</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FEATURED EVENTS -->
 <section class="section" style="background:var(--cream-deep);">
@@ -150,130 +226,575 @@
         <h2 class="display-lg">Hand-picked experiences.</h2>
         <p class="body-md" style="margin-top:8px;">Curated by our editors and trusted by India's top organizers.</p>
       </div>
-      <a href="#" class="view-all">View all →</a>
+      <a href="events.html" class="view-all">View all →</a>
     </div>
-    <div class="event-grid reveal">
+    <div class="event-grid reveal" id="eventGrid">
+        <!-- Event: Sunburn Festival Goa -->
+        <article class="event-card" data-city="Goa" data-id="sunburn-festival">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/goa/sunburn-festival/1.webp" alt="Sunburn Festival Goa">
+              <div class="ev-badges">
+                <span class="ev-badge b-trend">Trending</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Concert</span><span class="ev-sep"></span><span class="ev-city">Goa</span></div>
+              <div class="ev-name">Sunburn Festival Goa</div>
+              <div class="ev-date">📅 Dec 28-31, 2025</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹3,499</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=sunburn-festival'">Book Now</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/goa/sunburn-festival/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/goa/sunburn-festival/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/goa/sunburn-festival/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/goa/sunburn-festival/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Concert</span> • <span class="exp-city">Goa</span>
+                </div>
+                <h3 class="exp-title">Sunburn Festival Goa</h3>
+                <div class="exp-rating">⭐ 4.9/5</div>
+                <p class="exp-desc">Asia's biggest electronic dance music festival featuring world-renowned DJs.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Multiple Stages</li>
+                    <li>✓ Global Headliners</li>
+                    <li>✓ Flea Market</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Dec 28-31, 2025</div>
+                    </div>
+                    <a href="event-details.html?event=sunburn-festival" class="btn-know-more">Know More →</a>
+                </div>
+            </div>
+          </div>
+        </article>
 
-        <!-- Example 1 -->
-        <div class="event-card">
-          <div class="ev-img">
-            <img src="../assets/images/events/event-sample.svg" alt="Sunburst">
-            <div class="ev-badges">
-              <span class="ev-badge b-trend">Trending</span>
-              <button class="ev-fav" onclick="toggleFav(this)">♡</button>
+        <!-- Event: Durga Puja Kolkata -->
+        <article class="event-card" data-city="Kolkata" data-id="durga-puja">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/kolkata/durga-puja/1.webp" alt="Durga Puja Kolkata">
+              <div class="ev-badges">
+                <span class="ev-badge b-pick">Editor's Pick</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Religious</span><span class="ev-sep"></span><span class="ev-city">Kolkata</span></div>
+              <div class="ev-name">Durga Puja Kolkata</div>
+              <div class="ev-date">📅 Oct 1-5, 2025</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">Free</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=durga-puja'">Book Now</button>
+              </div>
             </div>
           </div>
-          <div class="ev-body">
-            <div class="ev-meta-row"><span class="ev-cat">Music Festival</span><span class="ev-sep"></span><span class="ev-city">Goa</span></div>
-            <div class="ev-name">Sunburst Festival 2025</div>
-            <div class="ev-date">📅 Dec 28, 2025 · 4:00 PM onwards</div>
-            <div class="ev-footer">
-              <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹1,999</div></div>
-              <button class="btn-book">Book Now</button>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/kolkata/durga-puja/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/kolkata/durga-puja/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/kolkata/durga-puja/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/kolkata/durga-puja/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Religious</span> • <span class="exp-city">Kolkata</span>
+                </div>
+                <h3 class="exp-title">Durga Puja Kolkata</h3>
+                <div class="exp-rating">⭐ 5.0/5</div>
+                <p class="exp-desc">The grandest celebration of art, culture, and devotion in the City of Joy.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Art Installations</li>
+                    <li>✓ Cultural Performances</li>
+                    <li>✓ Street Food</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Oct 1-5, 2025</div>
+                    </div>
+                    <a href="event-details.html?event=durga-puja" class="btn-know-more">Know More →</a>
+                </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Example 2 -->
-        <div class="event-card">
-          <div class="ev-img">
-            <img src="../assets/images/events/event-sample.svg" alt="Pushkar">
-            <div class="ev-badges">
-              <span class="ev-badge b-pick">Editor's Pick</span>
-              <button class="ev-fav" onclick="toggleFav(this)">♡</button>
+        <!-- Event: Jaipur Literature Fest -->
+        <article class="event-card" data-city="Jaipur" data-id="jaipur-lit-fest">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/jaipur/jaipur-literature-festival/1.webp" alt="Jaipur Literature Fest">
+              <div class="ev-badges">
+                <span class="ev-badge b-trend">Popular</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Cultural</span><span class="ev-sep"></span><span class="ev-city">Jaipur</span></div>
+              <div class="ev-name">Jaipur Literature Fest</div>
+              <div class="ev-date">📅 Jan 30 - Feb 3, 2026</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹499</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=jaipur-lit-fest'">Book Now</button>
+              </div>
             </div>
           </div>
-          <div class="ev-body">
-            <div class="ev-meta-row"><span class="ev-cat">Mela</span><span class="ev-sep"></span><span class="ev-city">Rajasthan</span></div>
-            <div class="ev-name">Pushkar Camel Fair</div>
-            <div class="ev-date">📅 Nov 5–15, 2025 · All day</div>
-            <div class="ev-footer">
-              <div><div class="ev-price-label">Entry</div><div class="ev-price-val">Free</div></div>
-              <button class="btn-book-outline">Explore</button>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/jaipur/jaipur-literature-festival/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/jaipur/jaipur-literature-festival/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/jaipur/jaipur-literature-festival/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/jaipur/jaipur-literature-festival/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Cultural</span> • <span class="exp-city">Jaipur</span>
+                </div>
+                <h3 class="exp-title">Jaipur Literature Fest</h3>
+                <div class="exp-rating">⭐ 4.8/5</div>
+                <p class="exp-desc">The greatest literary show on Earth, bringing together authors, thinkers, and leaders.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Speaker Panels</li>
+                    <li>✓ Book Signings</li>
+                    <li>✓ Heritage Venue</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Jan 30 - Feb 3, 2026</div>
+                    </div>
+                    <a href="event-details.html?event=jaipur-lit-fest" class="btn-know-more">Know More →</a>
+                </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Example 3 -->
-        <div class="event-card">
-          <div class="ev-img">
-            <img src="../assets/images/events/event-sample.svg" alt="JLF">
-            <div class="ev-badges">
-              <span class="ev-badge b-trend">Trending</span>
-              <button class="ev-fav" onclick="toggleFav(this)">♡</button>
+        <!-- Event: Delhi Comic Con -->
+        <article class="event-card" data-city="Delhi" data-id="comic-con-delhi">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/delhi/comic-con-delhi/1.webp" alt="Delhi Comic Con">
+              <div class="ev-badges">
+                <span class="ev-badge b-new">New</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Startup</span><span class="ev-sep"></span><span class="ev-city">Delhi</span></div>
+              <div class="ev-name">Delhi Comic Con</div>
+              <div class="ev-date">📅 Dec 6-8, 2025</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹899</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=comic-con-delhi'">Book Now</button>
+              </div>
             </div>
           </div>
-          <div class="ev-body">
-            <div class="ev-meta-row"><span class="ev-cat">Conference</span><span class="ev-sep"></span><span class="ev-city">Jaipur</span></div>
-            <div class="ev-name">Jaipur Literature Festival</div>
-            <div class="ev-date">📅 Jan 30–Feb 3, 2026 · 9:00 AM</div>
-            <div class="ev-footer">
-              <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹499</div></div>
-              <button class="btn-book">Book Now</button>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/delhi/comic-con-delhi/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/delhi/comic-con-delhi/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/delhi/comic-con-delhi/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/delhi/comic-con-delhi/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Startup</span> • <span class="exp-city">Delhi</span>
+                </div>
+                <h3 class="exp-title">Delhi Comic Con</h3>
+                <div class="exp-rating">⭐ 4.7/5</div>
+                <p class="exp-desc">India's greatest pop-culture experience with cosplay, merchandise, and comics.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Cosplay Contest</li>
+                    <li>✓ Exclusive Merch</li>
+                    <li>✓ Artist Alley</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Dec 6-8, 2025</div>
+                    </div>
+                    <a href="event-details.html?event=comic-con-delhi" class="btn-know-more">Know More →</a>
+                </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Example 4 -->
-        <div class="event-card">
-          <div class="ev-img">
-            <img src="../assets/images/events/event-sample.svg" alt="NH7">
-            <div class="ev-badges">
-              <span class="ev-badge b-new">New</span>
-              <button class="ev-fav" onclick="toggleFav(this)">♡</button>
+        <!-- Event: NH7 Weekender -->
+        <article class="event-card" data-city="Pune" data-id="nh7-weekender-pune">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/pune/nh7-weekender-pune/1.webp" alt="NH7 Weekender">
+              <div class="ev-badges">
+                <span class="ev-badge b-trend">Trending</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Concert</span><span class="ev-sep"></span><span class="ev-city">Pune</span></div>
+              <div class="ev-name">NH7 Weekender</div>
+              <div class="ev-date">📅 Dec 14-15, 2025</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹2,499</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=nh7-weekender-pune'">Book Now</button>
+              </div>
             </div>
           </div>
-          <div class="ev-body">
-            <div class="ev-meta-row"><span class="ev-cat">Music Festival</span><span class="ev-sep"></span><span class="ev-city">Pune</span></div>
-            <div class="ev-name">NH7 Weekender 2025</div>
-            <div class="ev-date">📅 Dec 14–15, 2025 · 3:00 PM</div>
-            <div class="ev-footer">
-              <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹2,499</div></div>
-              <button class="btn-book">Book Now</button>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/pune/nh7-weekender-pune/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/pune/nh7-weekender-pune/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/pune/nh7-weekender-pune/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/pune/nh7-weekender-pune/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Concert</span> • <span class="exp-city">Pune</span>
+                </div>
+                <h3 class="exp-title">NH7 Weekender</h3>
+                <div class="exp-rating">⭐ 4.8/5</div>
+                <p class="exp-desc">The happiest music festival featuring indie, rock, and electronic artists.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Multi-genre</li>
+                    <li>✓ Art Installations</li>
+                    <li>✓ Food Market</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Dec 14-15, 2025</div>
+                    </div>
+                    <a href="event-details.html?event=nh7-weekender-pune" class="btn-know-more">Know More →</a>
+                </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Example 5 -->
-        <div class="event-card">
-          <div class="ev-img">
-            <img src="../assets/images/events/event-sample.svg" alt="Food Fest">
-            <div class="ev-badges">
-              <span class="ev-badge b-pick">Editor's Pick</span>
-              <button class="ev-fav" onclick="toggleFav(this)">♡</button>
+        <!-- Event: Bengaluru Food Fete -->
+        <article class="event-card" data-city="Bengaluru" data-id="bengaluru-food-fete">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/bengaluru/bengaluru-food-fete/1.webp" alt="Bengaluru Food Fete">
+              <div class="ev-badges">
+                <span class="ev-badge b-pick">Editor's Pick</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Food Festival</span><span class="ev-sep"></span><span class="ev-city">Bengaluru</span></div>
+              <div class="ev-name">Bengaluru Food Fete</div>
+              <div class="ev-date">📅 Nov 15-17, 2025</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹299</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=bengaluru-food-fete'">Book Now</button>
+              </div>
             </div>
           </div>
-          <div class="ev-body">
-            <div class="ev-meta-row"><span class="ev-cat">Food Festival</span><span class="ev-sep"></span><span class="ev-city">Delhi</span></div>
-            <div class="ev-name">Delhi Street Food Festival</div>
-            <div class="ev-date">📅 Oct 18–20, 2025 · 11:00 AM</div>
-            <div class="ev-footer">
-              <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹299</div></div>
-              <button class="btn-book">Book Now</button>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/bengaluru/bengaluru-food-fete/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/bengaluru/bengaluru-food-fete/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/bengaluru/bengaluru-food-fete/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/bengaluru/bengaluru-food-fete/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Food Festival</span> • <span class="exp-city">Bengaluru</span>
+                </div>
+                <h3 class="exp-title">Bengaluru Food Fete</h3>
+                <div class="exp-rating">⭐ 4.6/5</div>
+                <p class="exp-desc">A culinary extravaganza showcasing the best of local and international cuisines.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Live Cooking</li>
+                    <li>✓ Food Trucks</li>
+                    <li>✓ Music</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Nov 15-17, 2025</div>
+                    </div>
+                    <a href="event-details.html?event=bengaluru-food-fete" class="btn-know-more">Know More →</a>
+                </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Example 6 -->
-        <div class="event-card">
-          <div class="ev-img">
-            <img src="../assets/images/events/event-sample.svg" alt="Goa Carnival">
-            <div class="ev-badges">
-              <span class="ev-badge b-trend">Trending</span>
-              <button class="ev-fav" onclick="toggleFav(this)">♡</button>
+        <!-- Event: Intl Kite Festival -->
+        <article class="event-card" data-city="Ahmedabad" data-id="international-kite-festival">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/ahmedabad/international-kite-festival/1.webp" alt="Intl Kite Festival">
+              <div class="ev-badges">
+                <span class="ev-badge b-trend">Popular</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Cultural</span><span class="ev-sep"></span><span class="ev-city">Ahmedabad</span></div>
+              <div class="ev-name">Intl Kite Festival</div>
+              <div class="ev-date">📅 Jan 14, 2026</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">Free</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=international-kite-festival'">Book Now</button>
+              </div>
             </div>
           </div>
-          <div class="ev-body">
-            <div class="ev-meta-row"><span class="ev-cat">Cultural</span><span class="ev-sep"></span><span class="ev-city">Goa</span></div>
-            <div class="ev-name">Goa Carnival 2026</div>
-            <div class="ev-date">📅 Feb 14–17, 2026 · All Day</div>
-            <div class="ev-footer">
-              <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹999</div></div>
-              <button class="btn-book">Book Now</button>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/ahmedabad/international-kite-festival/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/ahmedabad/international-kite-festival/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/ahmedabad/international-kite-festival/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/ahmedabad/international-kite-festival/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Cultural</span> • <span class="exp-city">Ahmedabad</span>
+                </div>
+                <h3 class="exp-title">Intl Kite Festival</h3>
+                <div class="exp-rating">⭐ 4.9/5</div>
+                <p class="exp-desc">The sky fills with millions of colorful kites celebrating Makar Sankranti.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Global Kite Flyers</li>
+                    <li>✓ Night Kites</li>
+                    <li>✓ Gujarati Food</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Jan 14, 2026</div>
+                    </div>
+                    <a href="event-details.html?event=international-kite-festival" class="btn-know-more">Know More →</a>
+                </div>
             </div>
           </div>
-        </div>
+        </article>
 
+        <!-- Event: Chennai Marathon -->
+        <article class="event-card" data-city="Chennai" data-id="chennai-marathon">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/chennai/chennai-marathon/1.webp" alt="Chennai Marathon">
+              <div class="ev-badges">
+                <span class="ev-badge b-new">New</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Sports</span><span class="ev-sep"></span><span class="ev-city">Chennai</span></div>
+              <div class="ev-name">Chennai Marathon</div>
+              <div class="ev-date">📅 Jan 5, 2026</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹1,200</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=chennai-marathon'">Book Now</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/chennai/chennai-marathon/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/chennai/chennai-marathon/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/chennai/chennai-marathon/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/chennai/chennai-marathon/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Sports</span> • <span class="exp-city">Chennai</span>
+                </div>
+                <h3 class="exp-title">Chennai Marathon</h3>
+                <div class="exp-rating">⭐ 4.7/5</div>
+                <p class="exp-desc">One of India's largest running events spanning the beautiful coastline of Chennai.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Scenic Route</li>
+                    <li>✓ Medical Support</li>
+                    <li>✓ Finisher Medal</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Jan 5, 2026</div>
+                    </div>
+                    <a href="event-details.html?event=chennai-marathon" class="btn-know-more">Know More →</a>
+                </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Event: Numaish Exhibition -->
+        <article class="event-card" data-city="Hyderabad" data-id="numaish-exhibition">
+          <!-- COMPACT STATE -->
+          <div class="card-compact">
+            <div class="ev-img">
+              <img src="../assets/images/events/hyderabad/numaish-exhibition/1.webp" alt="Numaish Exhibition">
+              <div class="ev-badges">
+                <span class="ev-badge b-trend">Trending</span>
+                <button class="ev-fav" onclick="event.preventDefault();event.stopPropagation();toggleFav(this)">♡</button>
+              </div>
+            </div>
+            <div class="ev-body">
+              <div class="ev-meta-row"><span class="ev-cat">Mela</span><span class="ev-sep"></span><span class="ev-city">Hyderabad</span></div>
+              <div class="ev-name">Numaish Exhibition</div>
+              <div class="ev-date">📅 Jan 1 - Feb 15, 2026</div>
+              <div class="ev-footer">
+                <div><div class="ev-price-label">Starting from</div><div class="ev-price-val">₹50</div></div>
+                <button class="btn-book" onclick="event.preventDefault();event.stopPropagation();window.location.href='event-details.html?event=numaish-exhibition'">Book Now</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EXPANDED STATE -->
+          <div class="card-expanded">
+            <div class="expanded-carousel">
+                <img src="../assets/images/events/hyderabad/numaish-exhibition/1.webp" class="carousel-img active" data-index="0">
+                <img src="../assets/images/events/hyderabad/numaish-exhibition/2.webp" class="carousel-img" data-index="1">
+                <img src="../assets/images/events/hyderabad/numaish-exhibition/3.webp" class="carousel-img" data-index="2">
+                <img src="../assets/images/events/hyderabad/numaish-exhibition/4.webp" class="carousel-img" data-index="3">
+                
+                <button class="carousel-btn prev-btn">‹</button>
+                <button class="carousel-btn next-btn">›</button>
+                
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+            <div class="expanded-info">
+                <button class="btn-close-expand">×</button>
+                <div class="exp-meta">
+                    <span class="exp-cat">Mela</span> • <span class="exp-city">Hyderabad</span>
+                </div>
+                <h3 class="exp-title">Numaish Exhibition</h3>
+                <div class="exp-rating">⭐ 4.5/5</div>
+                <p class="exp-desc">A massive 45-day all-India industrial exhibition and consumer fair.</p>
+                <ul class="exp-highlights">
+                    <li>✓ Amusement Rides</li>
+                    <li>✓ Shopping</li>
+                    <li>✓ Hyderabadi Cuisine</li>
+                </ul>
+                <div class="exp-bottom">
+                    <div class="exp-date-loc">
+                        <div>📅 Jan 1 - Feb 15, 2026</div>
+                    </div>
+                    <a href="event-details.html?event=numaish-exhibition" class="btn-know-more">Know More →</a>
+                </div>
+            </div>
+          </div>
+        </article>
     </div>
   </div>
 </section>
@@ -342,6 +863,34 @@
   </div>
 </section>
 
+<!-- PARTNERS SECTION -->
+<section class="partners-section reveal">
+  <div class="container">
+    <h2 class="partners-title">Trusted By Our Food & Event Partners</h2>
+  </div>
+  <div class="partners-carousel">
+    <div class="partners-track">
+      <!-- Original set -->
+      <img src="../assets/logo/agrawals.svg" alt="Agrawals Restaurant & Banquet" class="partner-logo">
+      <img src="../assets/logo/Spotify.svg" alt="Spotify" class="partner-logo">
+      <img src="../assets/logo/Zomato.svg" alt="Zomato" class="partner-logo">
+      <img src="../assets/logo/BookMyShow.svg" alt="BookMyShow" class="partner-logo">
+      <img src="../assets/logo/Paytm.svg" alt="Paytm" class="partner-logo">
+      <img src="../assets/logo/Swiggy.svg" alt="Swiggy" class="partner-logo">
+      <img src="../assets/logo/RedBull.svg" alt="Red Bull" class="partner-logo">
+      
+      <!-- Duplicate set for infinite scroll -->
+      <img src="../assets/logo/agrawals.svg" alt="Agrawals Restaurant & Banquet" class="partner-logo" aria-hidden="true">
+      <img src="../assets/logo/Spotify.svg" alt="Spotify" class="partner-logo" aria-hidden="true">
+      <img src="../assets/logo/Zomato.svg" alt="Zomato" class="partner-logo" aria-hidden="true">
+      <img src="../assets/logo/BookMyShow.svg" alt="BookMyShow" class="partner-logo" aria-hidden="true">
+      <img src="../assets/logo/Paytm.svg" alt="Paytm" class="partner-logo" aria-hidden="true">
+      <img src="../assets/logo/Swiggy.svg" alt="Swiggy" class="partner-logo" aria-hidden="true">
+      <img src="../assets/logo/RedBull.svg" alt="Red Bull" class="partner-logo" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
 <!-- APP CTA -->
 <div class="app-cta-wrap reveal">
   <div class="app-cta">
@@ -361,7 +910,7 @@
       </div>
     </div>
     <div class="cta-right">
-      <img src="../assets/images/placeholder-landscape.svg" alt="Concert" onerror="this.onerror=null;this.src='../assets/images/placeholder-landscape.svg';">
+      <img src="../assets/images/dynamic/Concert_crowd_at_sunset.webp" alt="Concert crowd at sunset">
     </div>
   </div>
 </div>
@@ -371,9 +920,21 @@
   <div class="container">
     <h2 class="newsletter-title">Never miss a moment.</h2>
     <p class="newsletter-sub">Weekly roundup of the best events near you. No spam, just stories worth showing up for.</p>
-    <div class="nl-form">
-      <input type="email" placeholder="you@example.com">
-      <button class="btn-subscribe">Subscribe</button>
+    <form id="newsletterForm" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="nl-form" style="width: 100%;">
+        <input type="email" id="nlEmail" placeholder="you@example.com" required>
+        <button type="submit" class="btn-subscribe" id="nlSubmitBtn">Subscribe</button>
+      </div>
+      <div class="nl-whatsapp-group" style="margin-top: 15px; text-align: left; max-width: 400px; width: 100%;">
+        <label style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9em; cursor: pointer; color: var(--ink-soft); margin-bottom: 8px;">
+          <input type="checkbox" id="nlWantsWhatsapp" style="width: auto; cursor: pointer; margin: 0;">
+          Also send me updates on WhatsApp
+        </label>
+        <input type="tel" id="nlWhatsapp" placeholder="WhatsApp Number (e.g. +91...)" style="display: none; width: 100%; padding: 12px 20px; border-radius: 30px; border: 1.4px solid var(--line); background: var(--paper); text-align: center; color: var(--ink); font-family: 'Lato', sans-serif;">
+      </div>
+    </form>
+    <div id="nlSuccessMsg" style="display:none; color: var(--maroon); font-weight: 600; text-align: center; margin-top: 16px;">
+      Thanks for subscribing! Check your inbox for updates.
     </div>
   </div>
 </section>
@@ -383,21 +944,29 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href="#" class="nav-logo" style="display:inline-flex;">
-          <span class="logo-text">Eventra</span>
-          <span class="logo-mark">Bharat</span>
-        </a>
+        <a href="home.html" class="nav-logo dynamic-logo-container">
+      <span class="logo-text">Eventra</span>
+      <span class="logo-mark dynamic-bharat">Bharat</span>
+    </a>
         <p class="footer-tagline">India's premium event discovery and ticketing platform. Discover experiences. Create memories.</p>
         <div class="socials">
-          <a href="#" class="soc-btn">✉</a>
-          <a href="#" class="soc-btn">📸</a>
-          <a href="#" class="soc-btn">▶</a>
-          <a href="#" class="soc-btn">in</a>
+          <a href="#" class="soc-btn" aria-label="YouTube">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="soc-btn" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="soc-btn" aria-label="Facebook">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="soc-btn" aria-label="X (Twitter)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+          </a>
         </div>
       </div>
-      <div class="fc"><div class="fc-title">Discover</div><a href="#">Concerts</a><a href="#">Festivals</a><a href="#">Melas</a><a href="#">Cultural</a><a href="#">Sports</a><a href="#">Workshops</a></div>
-      <div class="fc"><div class="fc-title">Cities</div><a href="#">Mumbai</a><a href="#">Delhi</a><a href="#">Bengaluru</a><a href="#">Hyderabad</a><a href="#">Pune</a><a href="#">Kolkata</a></div>
-      <div class="fc"><div class="fc-title">For Organizers</div><a href="#">List your event</a><a href="#">Pricing</a><a href="#">Analytics</a><a href="#">Help center</a><a href="#">Partner stories</a></div>
+      <div class="fc"><div class="fc-title">Discover</div><a href="events.html?cat=concerts">Concerts</a><a href="events.html?cat=festivals">Festivals</a><a href="events.html?cat=melas">Melas</a><a href="events.html?cat=cultural">Cultural</a><a href="events.html?cat=sports">Sports</a><a href="events.html?cat=workshops">Workshops</a></div>
+      <div class="fc"><div class="fc-title">Cities</div><a href="explore.html?city=Mumbai">Mumbai</a><a href="explore.html?city=Delhi">Delhi</a><a href="explore.html?city=Bengaluru">Bengaluru</a><a href="explore.html?city=Hyderabad">Hyderabad</a><a href="explore.html?city=Pune">Pune</a><a href="explore.html?city=Kolkata">Kolkata</a></div>
+      <div class="fc"><div class="fc-title">For Organizers</div><a href="registration.html">List your event</a><a href="#">Pricing</a><a href="#">Analytics</a><a href="#">Help center</a><a href="#">Partner stories</a></div>
       <div class="fc"><div class="fc-title">Company</div><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Contact</a><a href="#">Trust &amp; Safety</a></div>
     </div>
     <div class="footer-bottom">
@@ -411,7 +980,12 @@
   </div>
 </footer>
 
+
+
+
+<script src="../js/config.js"></script>
+<script src="../js/logo.js"></script>
 <script src="../js/home.js"></script>
+    <script src="../js/footer.js"></script>
 </body>
 </html>
-

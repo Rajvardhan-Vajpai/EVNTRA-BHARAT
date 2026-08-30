@@ -8,7 +8,19 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open login.html",
-            "file": "c:\\Users\\hp\\OneDrive\\Desktop\\eventra india\\login.html"
+            "url": "http://127.0.0.1:3000/html/login.html"
+        },
+        {
+            "type": "msedge",
+            "name": "http://127.0.0.1:3000/html/home.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/html/home.html"
+        },
+        {
+            "type": "msedge",
+            "name": "http://127.0.0.1:3000/html/events.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/html/events.html"
         }
     ]
 }

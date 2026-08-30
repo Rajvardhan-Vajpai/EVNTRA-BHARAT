@@ -3,141 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Login | Eventra Bharat</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <link rel="stylesheet" href="../css/login.css">
+    <title>Eventra Bharat | Authentication</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/auth.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../css/logo.css">
     <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
+    <div class="bg-glow"></div>
     
-    <img src="../assets/images/dynamic/Rajasthan.webp" class="birds birds-1" alt="" onerror="this.onerror=null;this.src='../assets/images/dynamic/Rajasthan.webp';">
-    <img src="../assets/images/dynamic/Rajasthan.webp" class="birds birds-2" alt="" onerror="this.onerror=null;this.src='../assets/images/dynamic/Rajasthan.webp';">
-
     <div class="auth-container">
-
-        <div class="auth-left">
-            <div class="overlay"></div>
-            <img src="../assets/images/dynamic/Taj_Mahal_Moonlight_Heritage_Connoisseur.webp" alt="Heritage Architecture" class="heritage-bg" onerror="this.onerror=null;this.src='../assets/images/dynamic/Taj_Mahal_Moonlight_Heritage_Connoisseur.webp';">
-
-            <div class="left-content">
-                <a href="home.html" class="nav-logo dynamic-logo-container">
-      <span class="logo-text">Eventra</span>
-      <span class="logo-mark dynamic-bharat">Bharat</span>
-    </a>
-                <div class="gold-line"></div>
-
-                <h2>
-                    Discover India's Finest
-                    Events, Festivals &
-                    Experiences
-                </h2>
-
-                <p>
-                    From cultural festivals and grand melas
-                    to concerts, heritage walks and spiritual
-                    journeys — explore Bharat like never before.
-                </p>
-            </div>
+        <div class="auth-header">
+            <h2>Eventra<span>Bharat</span></h2>
+            <p id="authSubtitle">Log in to your account</p>
         </div>
 
-        <div class="auth-right">
-            <div class="form-wrapper">
+        <div id="alertBox" class="auth-alert"></div>
 
-                <span class="welcome-tag">
-                    Welcome Back
-                </span>
-
-                <h2 class="form-title">
-                    Sign In
-                </h2>
-
-                <p class="form-subtitle">
-                    Continue your journey with Eventra Bharat.
-                </p>
-
-                <form id="loginForm">
-                    <div class="input-group">
-                        <label>Email Address</label>
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Enter your email"
-                            required
-                        >
-                    </div>
-
-                    <div class="input-group">
-                        <label>Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Enter your password"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-options">
-                        <label class="remember">
-                            <input type="checkbox">
-                            Remember Me
-                        </label>
-
-                        <a href="#" class="forgot-link">
-                            Forgot Password?
-                        </a>
-                    </div>
-
-                    <button type="submit" class="primary-btn">
-                        Login
-                    </button>
-                </form>
-
-                <div class="divider">
-                    <span>OR</span>
-                </div>
-
-                <div id="googleBtn"></div>
-
-                <div class="bottom-text">
-                    Don't have an account?
-                    <a href="signup.html">
-                        Create Account
-                    </a>
-                </div>
-
+        <!-- LOGIN FORM -->
+        <form id="loginForm" class="auth-form">
+            <div class="form-group">
+                <label for="loginEmail">Email Address</label>
+                <input type="email" id="loginEmail" required placeholder="you@example.com">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-submit" id="loginBtn">Log In</button>
+            <div class="auth-toggle">
+                Don't have an account? <a href="#" id="showRegister">Sign up</a>
+            </div>
+        </form>
 
+        <!-- REGISTER FORM -->
+        <form id="registerForm" class="auth-form" style="display: none;">
+            <div class="form-group">
+                <label for="registerName">Full Name</label>
+                <input type="text" id="registerName" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email Address</label>
+                <input type="email" id="registerEmail" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-submit" id="registerBtn">Create Account</button>
+            <div class="auth-toggle">
+                Already have an account? <a href="#" id="showLogin">Log in</a>
+            </div>
+        </form>
     </div>
 
-    <script src="../js/login.js"></script>
-
-    <script>
-    window.onload = function () {
-        google.accounts.id.initialize({
-            client_id: "879009883036-g3rc39qfs6uq6is171mpo9h0j6prv6hd.apps.googleusercontent.com",
-            callback: handleCredentialResponse
-        });
-
-        google.accounts.id.renderButton(
-            document.getElementById("googleBtn"),
-            {
-                theme: "outline",
-                size: "large",
-                shape: "pill",
-                text: "continue_with",
-                width: "400"
-            }
-        );
-    };
-    </script>
-
-  <script src="../js/config.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
   <script src="../js/logo.js"></script>
     <footer>
   <div class="container">

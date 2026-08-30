@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ==========================================================================
  * EVENTRA BHARAT - CORE EVENTS DISCOVERY PLATFORM ENGINE
  * Architecture: Modular, Cached DOM, Decoupled Pure Functions & Event Loop
@@ -14,13 +14,13 @@
     // ==========================================================================
     const DOM = {
         // Search Control Interface Inputs
-        searchInput: document.getElementById("searchInput"),
-        locationSelect: document.getElementById("locationSelect"),
-        dateInput: document.getElementById("dateInput"),
-        categorySelect: document.getElementById("categorySelect"),
-        budgetSelect: document.getElementById("budgetSelect"),
-        ratingSelect: document.getElementById("ratingSelect"),
-        sortSelect: document.getElementById("sortSelect"),
+        searchInput: document.getElementById("searchInput") || document.getElementById("searchBarInput"),
+        locationSelect: document.getElementById("locationSelect") || document.getElementById("locationFilter"),
+        dateInput: document.getElementById("dateInput") || document.getElementById("dateFilter"),
+        categorySelect: document.getElementById("categorySelect") || document.getElementById("categoryFilter"),
+        budgetSelect: document.getElementById("budgetSelect") || document.getElementById("priceRangeFilter"),
+        ratingSelect: document.getElementById("ratingSelect") || document.getElementById("ratingFilter"),
+        sortSelect: document.getElementById("sortSelect") || document.getElementById("sortDropdown"),
         exploreBtn: document.getElementById("exploreBtn"),
         resetFiltersBtn: document.getElementById("resetFiltersBtn"),
 
@@ -60,7 +60,7 @@
         sortOption: "newest",
         pagination: {
             currentPage: 1,
-            itemsPerPage: 8
+            itemsPerPage: 9
         },
         events: [],
         filteredEvents: [],
@@ -70,702 +70,133 @@
     // ==========================================================================
     // 3. Realistic Indian Event Master Dataset (32 Premium Collections)
     // ==========================================================================
-    const MASTER_EVENT_DATA = [
+        // MASTER_EVENT_DATA is now fetched from the backend API.
+    const FALLBACK_EVENTS = [
         {
-            id: "ev-001",
-            title: "Sunburn Festival Goa 2026",
-            description: "Asia's premier electronic dance music extravaganza featuring global headliners on the sands of Vagator.",
+            id: "evt1",
+            title: "A.R. Rahman Live Symphony",
             category: "Music",
-            city: "Goa",
-            state: "Goa",
-            venue: "Vagator Beach Arena",
-            date: "2026-12-28",
-            time: "16:00",
-            price: 4999,
-            rating: 4.9,
-            reviews: 1420,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: true,
-            organizer: "Percept Live",
-            capacity: 50000,
-            availableTickets: 3200,
-            tags: ["EDM", "Beach", "Festival", "Nightlife"]
-        },
-        {
-            id: "ev-002",
-            title: "Zomaland Food & Culture Festival",
-            description: "A culinary wonderland showcasing top gastronomic destinations, premium acts, and artisanal installations.",
-            category: "Food",
-            city: "Mumbai",
-            state: "Maharashtra",
-            venue: "Jio World Garden",
-            date: "2026-11-14",
-            time: "12:00",
-            price: 699,
-            rating: 4.7,
-            reviews: 890,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: true,
-            organizer: "Zomato Live",
-            capacity: 15000,
-            availableTickets: 2100,
-            tags: ["Culinary", "Family", "Carnival", "Gourmet"]
-        },
-        {
-            id: "ev-003",
-            title: "Vir Das: Mind Fool India Tour",
-            description: "International Emmy winner Vir Das delivers an explosive evening of sharp societal satire and razor-sharp storytelling.",
-            category: "Comedy",
-            city: "Delhi NCR",
-            state: "Delhi",
-            venue: "Sirifort Auditorium",
-            date: "2026-10-05",
-            time: "19:30",
-            price: 1500,
-            rating: 4.8,
-            reviews: 650,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Weirdass Comedy",
-            capacity: 2000,
-            availableTickets: 120,
-            tags: ["Standup", "Adult", "Satire", "Humor"]
-        },
-        {
-            id: "ev-004",
-            title: "Rajasthan Heritage Desert Safari & Sufi Beats",
-            description: "Immersive luxury dunes camping matched with timeless desert mystical music under stargazing night skies.",
-            category: "Heritage",
-            city: "Jaisalmer",
-            state: "Rajasthan",
-            venue: "Sam Sand Dunes Enclave",
-            date: "2026-11-20",
-            time: "17:00",
+            location: "Mumbai",
+            date: "2026-10-15",
             price: 8500,
             rating: 4.9,
-            reviews: 410,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: false,
-            organizer: "Marwar Tourism Royalties",
-            capacity: 500,
-            availableTickets: 45,
-            tags: ["Sufi", "Royal", "Desert", "Culture"]
+            image: "../assets/images/dynamic/A_R__Rahman_Live_Symphony_Orchestra.webp"
         },
         {
-            id: "ev-005",
-            title: "Indian Tech Leadership Summit 2026",
-            description: "The marquee destination for technologists, venture capitals, innovators, and AI engineering framework deep dives.",
-            category: "Technology",
-            city: "Bengaluru",
-            state: "Karnataka",
-            venue: "NIMHANS Convention Centre",
-            date: "2026-09-18",
-            time: "09:00",
-            price: 12000,
-            rating: 4.6,
-            reviews: 320,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "SiliconIndia Forums",
-            capacity: 3000,
-            availableTickets: 480,
-            tags: ["AI", "Networking", "SaaS", "Business"]
-        },
-        {
-            id: "ev-006",
-            title: "Himalayan Trekking & Survival Bootcamp",
-            description: "High-altitude wilderness mountaineering and survival mechanics masterclass across untamed ridges.",
-            category: "Adventure",
-            city: "Manali",
-            state: "Himachal Pradesh",
-            venue: "Solang Alpine Valley Base",
-            date: "2026-10-10",
-            time: "06:00",
-            price: 14500,
-            rating: 4.8,
-            reviews: 190,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: false,
-            organizer: "Into The Wild India",
-            capacity: 80,
-            availableTickets: 12,
-            tags: ["Trek", "Mountains", "Extreme", "Fitness"]
-        },
-        {
-            id: "ev-007",
-            title: "Pro Kabaddi League Championship Finals",
-            description: "Witness historical gladiatorial sporting intensity live as the top premium Indian franchises clash.",
-            category: "Sports",
-            city: "Hyderabad",
-            state: "Telangana",
-            venue: "Gachibowli Indoor Stadium",
-            date: "2026-11-05",
-            time: "19:00",
-            price: 450,
-            rating: 4.7,
-            reviews: 2100,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Mashal Sports Entertainment",
-            capacity: 8000,
-            availableTickets: 650,
-            tags: ["Kabaddi", "Live Sports", "Matches", "Thrilling"]
-        },
-        {
-            id: "ev-008",
-            title: "Contemporary Fine Arts Global Biennale",
-            description: "A prestigious curated retrospective showcasing avant-garde canvas sculpture and generative digital installations.",
-            category: "Art",
-            city: "Kochi",
-            state: "Kerala",
-            venue: "Aspinwall House Heritage Zone",
-            date: "2026-12-12",
-            time: "10:00",
-            price: 300,
-            rating: 4.5,
-            reviews: 430,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Kochi Biennale Foundation",
-            capacity: 5000,
-            availableTickets: 3900,
-            tags: ["Exhibition", "Sculpture", "Galleries", "Creative"]
-        },
-        {
-            id: "ev-009",
-            title: "Angel Investors Startup Pitchfest",
-            description: "High-stakes elite roundtable matching early-stage technology innovations with enterprise syndicate funds.",
-            category: "Business",
-            city: "Bengaluru",
-            state: "Karnataka",
-            venue: "The Leela Palace Ballroom",
-            date: "2026-09-25",
-            time: "10:00",
-            price: 7500,
-            rating: 4.4,
-            reviews: 150,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "IndoVenture Partners",
-            capacity: 400,
-            availableTickets: 35,
-            tags: ["Funding", "Capital", "Sectors", "Growth"]
-        },
-        {
-            id: "ev-010",
-            title: "A.R. Rahman Live Symphony Orchestra",
-            description: "The musical maestro crafts a breathtaking panoramic score with eighty international orchestral multi-instrumentalists.",
+            id: "evt2",
+            title: "Sufi Symphony Night",
             category: "Music",
-            city: "Chennai",
-            state: "Tamil Nadu",
-            venue: "YMCA Grounds Nandanam",
-            date: "2026-10-18",
-            time: "18:30",
-            price: 2499,
-            rating: 5.0,
-            reviews: 4890,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: true,
-            organizer: "Mani Sharma Global Labs",
-            capacity: 35000,
-            availableTickets: 1200,
-            tags: ["Legend", "Symphony", "Concerts", "Bollywood"]
+            location: "Delhi NCR",
+            date: "2026-11-20",
+            price: 4500,
+            rating: 4.8,
+            image: "../assets/images/dynamic/Sufi_Symphony_Night.webp"
         },
         {
-            id: "ev-011",
-            title: "Zakir Khan Live: New Material Show",
-            description: "The uncontested king of Indian organic comedy returns to test unfiltered deeply personal anecdotal comedy stories.",
+            id: "evt3",
+            title: "Zakir Khan Live",
             category: "Comedy",
-            city: "Mumbai",
-            state: "Maharashtra",
-            venue: "Shanmukhananda Hall",
-            date: "2026-09-30",
-            time: "20:00",
-            price: 1800,
-            rating: 4.9,
-            reviews: 1340,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: true,
-            organizer: "OML Entertainment",
-            capacity: 2500,
-            availableTickets: 0,
-            tags: ["Sold Out", "Sakht Launda", "Poetry", "Relatable"]
-        },
-        {
-            id: "ev-012",
-            title: "Royal Awadhi Gastronomy Masterclass",
-            description: "Unlock secret culinary formulations of classic slow-cooked Dum Pukht biryanis alongside generation-old chefs.",
-            category: "Food",
-            city: "Lucknow",
-            state: "Uttar Pradesh",
-            venue: "The Taj Mahal Palace Courtyard",
-            date: "2026-10-22",
-            time: "13:00",
-            price: 3500,
-            rating: 4.8,
-            reviews: 280,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Nawabi Heritage Trust",
-            capacity: 120,
-            availableTickets: 42,
-            tags: ["Kebab", "Royal Dining", "Workshop", "Awadh"]
-        },
-        {
-            id: "ev-013",
-            title: "Scuba Diving Expedition & Coral Mapping",
-            description: "PADI certified deep marine dive ecosystems charting virgin reefs and aquatic biospheres.",
-            category: "Adventure",
-            city: "Andaman",
-            state: "Andaman and Nicobar",
-            venue: "Havelock Island Marine Reserve",
-            date: "2026-12-05",
-            time: "07:30",
-            price: 9000,
-            rating: 4.9,
-            reviews: 160,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Oceanic India Aquatics",
-            capacity: 50,
-            availableTickets: 8,
-            tags: ["Ocean", "Diving", "Eco Tourism", "Coral"]
-        },
-        {
-            id: "ev-014",
-            title: "Varanasi Dev Deepawali Spiritual Photography Cruise",
-            description: "A transcendental sunrise boat journey experiencing millions of floating lamps and high spiritual aesthetic energy.",
-            category: "Heritage",
-            city: "Varanasi",
-            state: "Uttar Pradesh",
-            venue: "Dashashwamedh Main Ghats",
-            date: "2026-11-23",
-            time: "05:00",
-            price: 4000,
-            rating: 5.0,
-            reviews: 740,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: true,
-            organizer: "Ganga Heritage Expediters",
-            capacity: 200,
-            availableTickets: 15,
-            tags: ["Ghats", "Spiritual", "Photography", "Ganga Aarti"]
-        },
-        {
-            id: "ev-015",
-            title: "International Yoga & Mindfulness Retreat",
-            description: "Deep ashram-based holistic alignment, transcendental breathwork, organic nutritional lifestyle structures.",
-            category: "Adventure",
-            city: "Rishikesh",
-            state: "Uttarakhand",
-            venue: "Satsang Anand Retreat Sanctuary",
-            date: "2026-10-02",
-            time: "05:30",
-            price: 5500,
-            rating: 4.7,
-            reviews: 310,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Rishikesh Yogshala Alliance",
-            capacity: 150,
-            availableTickets: 54,
-            tags: ["Meditation", "Wellness", "Peace", "Asanas"]
-        },
-        {
-            id: "ev-016",
-            title: "Global FinTech Disruption Expo",
-            description: "Next-generation banking infrastructure, decentralized smart ledgers, tokenized global compliance tracking models.",
-            category: "Technology",
-            city: "Mumbai",
-            state: "Maharashtra",
-            venue: "Nesco Exhibition Center",
-            date: "2026-09-22",
-            time: "09:30",
-            price: 3500,
-            rating: 4.5,
-            reviews: 820,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "FinTech Frontiers India",
-            capacity: 5000,
-            availableTickets: 1240,
-            tags: ["Crypto", "Banking", "Web3", "Investments"]
-        },
-        {
-            id: "ev-017",
-            title: "Delhi Comic Con 2026",
-            description: "The ultimate national pop-culture epicenter celebrating graphic novels, anime subcultures, and hyper-realistic cosplay tournaments.",
-            category: "Art",
-            city: "Delhi NCR",
-            state: "Delhi",
-            venue: "NSIC Exhibition Grounds",
-            date: "2026-12-04",
-            time: "11:00",
-            price: 999,
-            rating: 4.6,
-            reviews: 1980,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Comic Con India",
-            capacity: 25000,
-            availableTickets: 4200,
-            tags: ["Anime", "Gaming", "Cosplay", "Merch"]
-        },
-        {
-            id: "ev-018",
-            title: "ISL Football Derby Clash",
-            description: "Unrivaled tactical standard football sporting rivalries live in front of roaring stadiums.",
-            category: "Sports",
-            city: "Kolkata",
-            state: "West Bengal",
-            venue: "Salt Lake Stadium Block E",
-            date: "2026-10-29",
-            time: "19:30",
-            price: 350,
-            rating: 4.8,
-            reviews: 5600,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Football Sports Development Ltd",
-            capacity: 65000,
-            availableTickets: 12000,
-            tags: ["Football", "Soccer", "Derby", "Stadium"]
-        },
-        {
-            id: "ev-019",
-            title: "Ajanta & Ellora Classical Dance Convergence",
-            description: "World-class classical expressions of Kathak and Bharatanatyam backdropped by world heritage monolithic basalt rock architecture.",
-            category: "Heritage",
-            city: "Aurangabad",
-            state: "Maharashtra",
-            venue: "Ellora Caves Amphitheatre",
-            date: "2026-10-15",
-            time: "18:00",
-            price: 1200,
-            rating: 4.9,
-            reviews: 290,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: false,
-            organizer: "MTDC Tourism Corporation",
-            capacity: 1200,
-            availableTickets: 310,
-            tags: ["Dance", "Classical", "Ancient", "UNESCO"]
-        },
-        {
-            id: "ev-020",
-            title: "E-Commerce Logistics & Supply Optimization Summit",
-            description: "Enterprise operational deep dive into rapid sorting hubs, automated tracking analytics, and last-mile efficiency layers.",
-            category: "Business",
-            city: "Delhi NCR",
-            state: "Delhi",
-            venue: "The Taj Palace Convention Wing",
-            date: "2026-09-15",
-            time: "09:00",
-            price: 9500,
-            rating: 4.3,
-            reviews: 110,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Logistics Circle India",
-            capacity: 500,
-            availableTickets: 89,
-            tags: ["Supply Chain", "Retail", "B2B", "Automation"]
-        },
-        {
-            id: "ev-021",
-            title: "Prateek Kuhad: Silhouettes Acoustic Tour",
-            description: "An intimate, soulful stripped-back live set showcasing cinematic folk-pop original compositions.",
-            category: "Music",
-            city: "Bengaluru",
-            state: "Karnataka",
-            venue: "Manpho Convention Grounds",
-            date: "2026-11-08",
-            time: "19:00",
-            price: 1999,
-            rating: 4.8,
-            reviews: 2150,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Big Bad Wolf Agency",
-            capacity: 8000,
-            availableTickets: 420,
-            tags: ["Indie", "Acoustic", "Vocalist", "Romantic"]
-        },
-        {
-            id: "ev-022",
-            title: "Anubhav Singh Bassi: 'Kisi Ko Batana Mat'",
-            description: "High-octane anecdotal laughter riots documenting collegiate operational failures and courtroom disasters.",
-            category: "Comedy",
-            city: "Delhi NCR",
-            state: "Delhi",
-            venue: "Talkatora Indoor Stadium",
-            date: "2026-11-19",
-            time: "18:30",
-            price: 1200,
-            rating: 4.7,
-            reviews: 3100,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Bassi Comedy Outlets",
-            capacity: 4000,
-            availableTickets: 29,
-            tags: ["Desi Humor", "Storytelling", "Youth", "Blockbuster"]
-        },
-        {
-            id: "ev-023",
-            title: "Coastal Malvani Seafood Culinary Exposition",
-            description: "Experience hyper-authentic spice extraction profiles, traditional clay pot curries, and masterclass sessions.",
-            category: "Food",
-            city: "Goa",
-            state: "Goa",
-            venue: "Fontainhas Luxury Pavilion",
-            date: "2026-12-20",
-            time: "13:00",
-            price: 2200,
-            rating: 4.6,
-            reviews: 190,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Konkan Gastronomy Guild",
-            capacity: 150,
-            availableTickets: 60,
-            tags: ["Seafood", "Konkan", "Spicy", "Tasting Menu"]
-        },
-        {
-            id: "ev-024",
-            title: "Le Ladakh Photogenic Autumn Motorbike Tour",
-            description: "A legendary premium trans-Himalayan navigation crossing Khardung La passes, designed for seasoned riders.",
-            category: "Adventure",
-            city: "Leh",
-            state: "Jammu and Kashmir",
-            venue: "Leh Fort Assembly Point",
-            date: "2026-09-28",
-            time: "06:00",
-            price: 28000,
-            rating: 4.9,
-            reviews: 320,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: false,
-            organizer: "Royal Enfield Escapades",
-            capacity: 40,
-            availableTickets: 3,
-            tags: ["Biking", "Bullet", "Ladakh", "Glaciers"]
-        },
-        {
-            id: "ev-025",
-            title: "Khajuraho Dance & Monolithic Architectural Conclave",
-            description: "Sanskritic traditional performances rendered alongside intricate historic structural temples.",
-            category: "Heritage",
-            city: "Khajuraho",
-            state: "Madhya Pradesh",
-            venue: "Western Temple Compound Arena",
-            date: "2026-11-25",
-            time: "18:30",
-            price: 500,
-            rating: 4.8,
-            reviews: 210,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "MP Tourism Department",
-            capacity: 2500,
-            availableTickets: 840,
-            tags: ["Heritage Dance", "History", "Artifacts", "Elegance"]
-        },
-        {
-            id: "ev-026",
-            title: "National Cricket Elite League Double Header",
-            description: "High velocity absolute action cricket match under glowing state-of-the-art stadium light frameworks.",
-            category: "Sports",
-            city: "Mumbai",
-            state: "Maharashtra",
-            venue: "Wankhede Stadium Pavilions",
-            date: "2026-10-12",
-            time: "15:30",
-            price: 1800,
-            rating: 4.9,
-            reviews: 12400,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: true,
-            organizer: "BCCI Corporate League Engine",
-            capacity: 33000,
-            availableTickets: 120,
-            tags: ["Cricket", "T20", "Wankhede", "Live Match"]
-        },
-        {
-            id: "ev-027",
-            title: "Enterprise Cybersecurity Fortification Symposium",
-            description: "Analyzing architectural data breaches, zero-trust cryptographic models, and automated threat vector isolation pipelines.",
-            category: "Technology",
-            city: "Hyderabad",
-            state: "Telangana",
-            venue: "HITEX Exhibition Centre",
-            date: "2026-10-09",
-            time: "09:00",
-            price: 6000,
-            rating: 4.6,
-            reviews: 410,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Secured Systems Guild",
-            capacity: 1200,
-            availableTickets: 330,
-            tags: ["Cyber", "Security", "DevSecOps", "Cloud"]
-        },
-        {
-            id: "ev-028",
-            title: "Traditional Block-Printing & Indigo Dye Workshop",
-            description: "Hands-on structural organic pigment printing masterclass taught directly by authentic Rajasthani heritage craftsmen.",
-            category: "Art",
-            city: "Jaipur",
-            state: "Rajasthan",
-            venue: "Anokhi Craft Enclave",
-            date: "2026-11-02",
-            time: "11:00",
-            price: 1500,
-            rating: 4.7,
-            reviews: 180,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Jaipur Handcrafted Syndicate",
-            capacity: 30,
-            availableTickets: 5,
-            tags: ["Textiles", "Jaipur Art", "Handmade", "Organic"]
-        },
-        {
-            id: "ev-029",
-            title: "Global Healthcare Innovation & Biotech Summit",
-            description: "Precision medical data engineering, CRISPR gene modulation infrastructure, and robotic tracking methodologies.",
-            category: "Business",
-            city: "Chennai",
-            state: "Tamil Nadu",
-            venue: "ITC Grand Chola Ballroom",
-            date: "2026-09-19",
-            time: "10:00",
-            price: 11000,
-            rating: 4.4,
-            reviews: 240,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "BioMed Ventures India",
-            capacity: 600,
-            availableTickets: 142,
-            tags: ["Biotech", "Pharma", "Medical AI", "B2B"]
-        },
-        {
-            id: "ev-030",
-            title: "Divine Classical Sitar Mastery Conclave",
-            description: "Immerse your consciousness within meditative evening raagas masterfully performed across generational lineages.",
-            category: "Music",
-            city: "Varanasi",
-            state: "Uttar Pradesh",
-            venue: "Brij Rama Palace Terraces",
-            date: "2026-11-21",
-            time: "19:00",
+            location: "Bengaluru",
+            date: "2026-09-10",
             price: 2500,
+            rating: 4.7,
+            image: "../assets/images/dynamic/Zakir_Khan_Live__New_Material_Show.webp"
+        },
+        {
+            id: "evt4",
+            title: "Royal Awadhi Gastronomy",
+            category: "Food",
+            location: "Varanasi",
+            date: "2026-12-05",
+            price: 6000,
             rating: 4.9,
-            reviews: 370,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: false,
-            organizer: "Kashi Music Sangam",
-            capacity: 400,
-            availableTickets: 82,
-            tags: ["Sitar", "Classical Music", "Raga", "Tranquil"]
+            image: "../assets/images/dynamic/Royal_Awadhi_Gastronomy_Masterclass.webp"
         },
         {
-            id: "ev-031",
-            title: "Mumbai International Film Retrospective",
-            description: "Screening highly acclaimed cinematic achievements alongside interactive modern director debate panels.",
-            category: "Art",
-            city: "Mumbai",
-            state: "Maharashtra",
-            venue: "Regal Cinema Art Deco Hub",
-            date: "2026-10-08",
-            time: "14:00",
-            price: 800,
-            rating: 4.8,
-            reviews: 1150,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: true,
-            trending: false,
-            organizer: "Mumbai Cinema Alliance",
-            capacity: 1200,
-            availableTickets: 410,
-            tags: ["Cinema", "Indie Film", "Cannes", "Directors"]
-        },
-        {
-            id: "ev-032",
-            title: "Paragliding Cross-Country Flying Week",
-            description: "Elite thermalling aerodynamic flights launched across the world-famous geographic ridges of Bir Billing.",
+            id: "evt5",
+            title: "Himalayan Trekking Bootcamp",
             category: "Adventure",
-            city: "Bir Billing",
-            state: "Himachal Pradesh",
-            venue: "Billing Takeoff Ridge Sector 4",
+            location: "Himachal Pradesh",
             date: "2026-10-25",
-            time: "08:00",
+            price: 12000,
+            rating: 4.8,
+            image: "../assets/images/dynamic/Himalayan_Trekking___Survival_Bootcamp.webp"
+        },
+        {
+            id: "evt6",
+            title: "Taj Mahal Moonlight Heritage",
+            category: "Heritage",
+            location: "Agra",
+            date: "2026-11-15",
+            price: 3500,
+            rating: 4.9,
+            image: "../assets/images/dynamic/Taj_Mahal_Moonlight_Heritage_Connoisseur.webp"
+        },
+        {
+            id: "evt7",
+            title: "Pro Kabaddi Championship",
+            category: "Sports",
+            location: "Pune",
+            date: "2026-09-30",
+            price: 1500,
+            rating: 4.6,
+            image: "../assets/images/dynamic/Pro_Kabaddi_League_Championship_Finals.webp"
+        },
+        {
+            id: "evt8",
+            title: "Global FinTech Disruption Expo",
+            category: "Technology",
+            location: "Mumbai",
+            date: "2026-10-05",
+            price: 5000,
+            rating: 4.5,
+            image: "../assets/images/dynamic/Global_FinTech_Disruption_Expo.webp"
+        },
+        {
+            id: "evt9",
+            title: "Sunburn Festival Goa",
+            category: "Music",
+            location: "Goa",
+            date: "2026-12-28",
             price: 6500,
-            rating: 5.0,
-            reviews: 890,
-            image: "../assets/images/placeholder-landscape.svg",
-            featured: false,
-            trending: true,
-            organizer: "Aero Adventure Federation",
-            capacity: 250,
-            availableTickets: 67,
-            tags: ["Aviation", "Paragliding", "Sky", "Thrill"]
+            rating: 4.8,
+            image: "../assets/images/dynamic/Sunburn_Festival_Goa_2026.webp"
+        },
+        {
+            id: "evt10",
+            title: "BTS Live Symphony & Heritage Experience",
+            category: "Heritage",
+            location: "Kolkata",
+            date: "2026-08-19",
+            price: 8500,
+            rating: 4.9,
+            image: "../assets/images/dynamic/Taj_Mahal_Moonlight_Heritage_Connoisseur.webp"
         }
     ];
 
     // Premium Category Reference Registry
     const PLATFORM_CATEGORIES = [
-        { name: "All", icon: "💎" },
-        { name: "Music", icon: "🎵" },
-        { name: "Comedy", icon: "🎙️" },
-        { name: "Food", icon: "🍛" },
-        { name: "Adventure", icon: "🧗" },
-        { name: "Heritage", icon: "🏰" },
-        { name: "Sports", icon: "🏆" },
-        { name: "Technology", icon: "💻" },
-        { name: "Business", icon: "📈" },
-        { name: "Art", icon: "🎨" }
+        { name: "All", icon: "<i class='fa-solid fa-gem'></i>" },
+        { name: "Music", icon: "<i class='fa-solid fa-music'></i>" },
+        { name: "Comedy", icon: "<i class='fa-solid fa-microphone-lines'></i>" },
+        { name: "Food", icon: "<i class='fa-solid fa-utensils'></i>" },
+        { name: "Adventure", icon: "<i class='fa-solid fa-mountain-sun'></i>" },
+        { name: "Heritage", icon: "<i class='fa-solid fa-monument'></i>" },
+        { name: "Sports", icon: "<i class='fa-solid fa-trophy'></i>" },
+        { name: "Technology", icon: "<i class='fa-solid fa-microchip'></i>" },
+        { name: "Business", icon: "<i class='fa-solid fa-briefcase'></i>" },
+        { name: "Art", icon: "<i class='fa-solid fa-palette'></i>" }
     ];
 
     // Popular Cities Data Framework for Bento Grid
     const POPULAR_CITIES = [
-        { name: "Mumbai", count: "12+ Elite Events", img: "../assets/images/placeholder-landscape.svg", class: "span-2 row-2" },
-        { name: "Goa", count: "8+ Beach Festivals", img: "../assets/images/placeholder-landscape.svg", class: "" },
-        { name: "Bengaluru", count: "14+ Tech Summits", img: "../assets/images/placeholder-landscape.svg", class: "row-2" },
-        { name: "Delhi NCR", count: "19+ Cultural Gatherings", img: "../assets/images/placeholder-landscape.svg", class: "span-2" },
-        { name: "Varanasi", count: "6+ Heritage Rituals", img: "../assets/images/placeholder-landscape.svg", class: "" }
+        { name: "Mumbai", count: "12+ Elite Events", img: "../assets/images/dynamic/Mumbai.webp", class: "span-2 row-2" },
+        { name: "Goa", count: "8+ Beach Festivals", img: "../assets/images/dynamic/Goa.webp", class: "" },
+        { name: "Bengaluru", count: "14+ Tech Summits", img: "../assets/images/dynamic/Bengaluru.webp", class: "row-2" },
+        { name: "Jaipur", count: "9+ Heritage Shows", img: "../assets/images/dynamic/Hawa_Mahal_terracotta_architecture_in_Jaipur.webp", class: "" },
+        { name: "Delhi NCR", count: "19+ Cultural Gatherings", img: "../assets/images/dynamic/India_Gate.webp", class: "" },
+        { name: "Varanasi", count: "6+ Heritage Rituals", img: "../assets/images/dynamic/Varanasi.webp", class: "span-2" },
+        { name: "Kerala", count: "11+ Wellness Retreats", img: "../assets/images/dynamic/Kerala.webp", class: "" }
     ];
 
     // ==========================================================================
@@ -787,55 +218,69 @@
         return eventRating >= parseFloat(match[1]);
     };
 
-    const compileFilteredDataset = () => {
+    const compileFilteredDataset = async () => {
         const { searchQuery, category, location, date, budget, minRating } = AppState.filters;
-        let trackingPool = [...AppState.events];
-
-        // Global Text Matcher
-        if (searchQuery.trim() !== "") {
-            const queryToken = searchQuery.toLowerCase().trim();
-            trackingPool = trackingPool.filter(ev => 
-                ev.title.toLowerCase().includes(queryToken) ||
-                ev.city.toLowerCase().includes(queryToken) ||
-                ev.venue.toLowerCase().includes(queryToken) ||
-                ev.category.toLowerCase().includes(queryToken) ||
-                ev.organizer.toLowerCase().includes(queryToken) ||
-                ev.tags.some(tag => tag.toLowerCase().includes(queryToken))
-            );
+        
+        const params = new URLSearchParams();
+        if (searchQuery.trim()) params.append('search', searchQuery.trim());
+        if (category !== "All") params.append('category', category);
+        if (location !== "Anywhere") params.append('location', location);
+        if (date !== "") params.append('date', date);
+        if (budget !== "Any Price") {
+            if (budget.includes("Under")) { params.append('maxPrice', 1000); }
+            else if (budget.includes("1,000 -")) { params.append('minPrice', 1000); params.append('maxPrice', 5000); }
+            else if (budget.includes("Over")) { params.append('minPrice', 5000); }
         }
-
-        // Dropdown Metric Rules
-        if (category !== "All") {
-            trackingPool = trackingPool.filter(ev => ev.category.toLowerCase() === category.toLowerCase());
+        if (minRating !== "Any Rating") {
+            params.append('minRating', minRating);
         }
-        if (location !== "Anywhere") {
-            trackingPool = trackingPool.filter(ev => ev.city.toLowerCase() === location.toLowerCase());
-        }
-        if (date !== "") {
-            trackingPool = trackingPool.filter(ev => ev.date === date);
-        }
+        if (AppState.sortOption) params.append('sort', AppState.sortOption);
 
-        trackingPool = trackingPool.filter(ev => evaluateBudgetMatch(budget, ev.price));
-        trackingPool = trackingPool.filter(ev => evaluateRatingMatch(minRating, ev.rating));
-
-        applySortingPipeline(trackingPool);
+        try {
+            const response = await fetch(`${CONFIG.API.EVENTS}?${params.toString()}`);
+            if (!response.ok) throw new Error("Backend not available");
+            const data = await response.json();
+            AppState.filteredEvents = data;
+            AppState.pagination.currentPage = 1; 
+            executeDomRenderPass();
+        } catch (error) {
+            console.warn("Backend fetch failed. Falling back to local static dataset.");
+            
+            let result = FALLBACK_EVENTS;
+            if (category !== "All") result = result.filter(e => e.category === category);
+            if (location !== "Anywhere" && location !== "All") result = result.filter(e => e.location === location || e.location === "All Regions");
+            if (searchQuery.trim()) {
+                const lowerQuery = searchQuery.toLowerCase();
+                result = result.filter(e => e.title.toLowerCase().includes(lowerQuery));
+            }
+            
+            if (budget !== "Any Price" && budget !== "All") {
+                if (budget.includes("Under") || budget === "0-1000") result = result.filter(e => e.price <= 1000);
+                else if (budget.includes("1,000 -") || budget === "1000-3000") result = result.filter(e => e.price > 1000 && e.price <= 3000);
+                else if (budget === "3000-7000") result = result.filter(e => e.price > 3000 && e.price <= 7000);
+                else if (budget.includes("Over") || budget === "7000-plus") result = result.filter(e => e.price > 7000);
+            }
+            if (minRating !== "Any Rating" && minRating !== "All") {
+                const minR = parseFloat(minRating.replace(/[^\d.]/g, ''));
+                if (!isNaN(minR)) result = result.filter(e => e.rating >= minR);
+            }
+            if (date) {
+                result = result.filter(e => e.date === date);
+            }
+            if (AppState.sortOption === "trending" || AppState.sortOption === "highestRated") {
+                result.sort((a,b) => b.rating - a.rating);
+            } else if (AppState.sortOption === "priceLowHigh") {
+                result.sort((a,b) => a.price - b.price);
+            } else if (AppState.sortOption === "priceHighLow") {
+                result.sort((a,b) => b.price - a.price);
+            }
+            
+            AppState.filteredEvents = result;
+            AppState.pagination.currentPage = 1;
+            executeDomRenderPass();
+        }
     };
 
-    const applySortingPipeline = (dataset) => {
-        switch (AppState.sortOption) {
-            case "newest": dataset.sort((a, b) => new Date(a.date) - new Date(b.date)); break;
-            case "oldest": dataset.sort((a, b) => new Date(b.date) - new Date(a.date)); break;
-            case "price-low": dataset.sort((a, b) => a.price - b.price); break;
-            case "price-high": dataset.sort((a, b) => b.price - a.price); break;
-            case "highest-rated": dataset.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews); break;
-            case "most-popular": dataset.sort((a, b) => b.reviews - a.reviews); break;
-            default: dataset.sort((a, b) => new Date(a.date) - new Date(b.date));
-        }
-
-        AppState.filteredEvents = dataset;
-        AppState.pagination.currentPage = 1; 
-        executeDomRenderPass();
-    };
 
     // ==========================================================================
     // 5. DOM Generation & Interface Builders
@@ -857,9 +302,12 @@
         card.setAttribute("data-id", eventData.id);
 
         const isFavorited = AppState.favorites.has(eventData.id);
-        const ticketStatusHtml = eventData.availableTickets === 0 
+        const ticketStatusHtml = eventData.tickets_available === 0 
             ? `<button class="card-cta-btn" disabled style="background:#4a4242; opacity:0.6; cursor:not-allowed;">Sold Out</button>`
             : `<button class="card-cta-btn action-book" data-id="${eventData.id}">Book Now</button>`;
+        const urgencyHtml = (eventData.tickets_available > 0 && eventData.tickets_available <= 2000) 
+            ? `<div style="color: #d9534f; font-size: 0.8rem; font-weight: 600; margin-top: 5px; text-align: right;"><i class="fa-solid fa-fire"></i> Only ${eventData.tickets_available} left!</div>` 
+            : '';
 
         card.innerHTML = `
             <div class="card-media-shell">
@@ -880,12 +328,15 @@
                     </div>
                 </div>
                 <h3>${eventData.title}</h3>
-                <div class="card-billing-row">
+                <div class="card-billing-row" style="align-items: flex-end;">
                     <div class="price-stack">
                         <span class="lbl">Tickets From</span>
                         <span class="val">${formatToIndianCurrency(eventData.price)}</span>
                     </div>
-                    ${ticketStatusHtml}
+                    <div style="display: flex; flex-direction: column;">
+                        ${ticketStatusHtml}
+                        ${urgencyHtml}
+                    </div>
                 </div>
             </div>
         `;
@@ -895,7 +346,7 @@
     const renderFeaturedSection = () => {
         if (!DOM.featuredGrid) return;
         const fragment = document.createDocumentFragment();
-        const pool = AppState.events.filter(ev => ev.featured).slice(0, 4);
+        const pool = AppState.events.filter(ev => ev.is_featured).slice(0, 6);
 
         if (pool.length === 0) {
             DOM.featuredGrid.innerHTML = `
@@ -1134,6 +585,16 @@
                 return;
             }
 
+            // Card Navigation Interceptor
+            const cardElement = targetElement.closest(".premium-event-card");
+            if (cardElement && !targetElement.closest(".action-favorite") && !targetElement.closest(".action-book")) {
+                const eventId = cardElement.getAttribute("data-id");
+                if (eventId) {
+                    window.location.href = `event-details.html?id=${eventId}`;
+                    return;
+                }
+            }
+
             // Stepper Dynamic Triggers
             const pageControl = targetElement.closest(".pagination-stepper .step-node");
             if (pageControl) {
@@ -1169,39 +630,55 @@
         });
     };
 
-    const togglePlatformWishlistState = (eventId, interfaceNode) => {
-        const heartIcon = interfaceNode.querySelector("i");
-        
-        if (AppState.favorites.has(eventId)) {
-            AppState.favorites.delete(eventId);
-            interfaceNode.classList.remove("active");
-            if (heartIcon) { heartIcon.className = "fa-regular fa-heart"; heartIcon.style.color = ""; }
-        } else {
-            AppState.favorites.add(eventId);
-            interfaceNode.classList.add("active");
-            if (heartIcon) { heartIcon.className = "fa-solid fa-heart"; heartIcon.style.color = "#7C1F23"; }
-            interfaceNode.style.transform = "scale(1.25)";
-            setTimeout(() => interfaceNode.style.transform = "", 180);
+    const togglePlatformWishlistState = async (eventId, interfaceNode) => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'login.html';
+            return;
         }
 
-        localStorage.setItem("eventra_bharat_favs", JSON.stringify([...AppState.favorites]));
-        
-        document.querySelectorAll(`[data-id="${eventId}"] .card-fav-trigger, [data-id="${eventId}"] .discover-heart-trigger`).forEach(node => {
-            const alternativeIcon = node.querySelector("i");
-            if (AppState.favorites.has(eventId)) {
-                node.classList.add("active");
-                if (alternativeIcon) { alternativeIcon.className = "fa-solid fa-heart"; alternativeIcon.style.color = "#7C1F23"; }
+        try {
+            const response = await fetch(`${CONFIG.API.WISHLIST}/${eventId}`, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            
+            if (response.ok) {
+                const heartIcon = interfaceNode.querySelector("i");
+                if (AppState.favorites.has(eventId)) {
+                    AppState.favorites.delete(eventId);
+                    interfaceNode.classList.remove("active");
+                    if (heartIcon) { heartIcon.className = "fa-regular fa-heart"; heartIcon.style.color = ""; }
+                } else {
+                    AppState.favorites.add(eventId);
+                    interfaceNode.classList.add("active");
+                    if (heartIcon) { heartIcon.className = "fa-solid fa-heart"; heartIcon.style.color = "#7C1F23"; }
+                    interfaceNode.style.transform = "scale(1.25)";
+                    setTimeout(() => interfaceNode.style.transform = "", 180);
+                }
+                
+                document.querySelectorAll(`[data-id="${eventId}"] .card-fav-trigger, [data-id="${eventId}"] .discover-heart-trigger`).forEach(node => {
+                    const alternativeIcon = node.querySelector("i");
+                    if (AppState.favorites.has(eventId)) {
+                        node.classList.add("active");
+                        if (alternativeIcon) { alternativeIcon.className = "fa-solid fa-heart"; alternativeIcon.style.color = "#7C1F23"; }
+                    } else {
+                        node.classList.remove("active");
+                        if (alternativeIcon) { alternativeIcon.className = "fa-regular fa-heart"; alternativeIcon.style.color = ""; }
+                    }
+                });
             } else {
-                node.classList.remove("active");
-                if (alternativeIcon) { alternativeIcon.className = "fa-regular fa-heart"; alternativeIcon.style.color = ""; }
+                if (response.status === 401 || response.status === 403) {
+                     window.location.href = 'login.html';
+                }
             }
-        });
+        } catch (error) {
+            console.error("Wishlist error:", error);
+        }
     };
 
     const processPremiumTicketBooking = (eventId) => {
-        const match = AppState.events.find(ev => ev.id === eventId);
-        if (!match) return;
-        alert(`Initiating Premium Gateways for:\n\n📍 ${match.title}\n🎭 Venue: ${match.venue}, ${match.city}\n🎟️ Base Price: ${formatToIndianCurrency(match.price)}\n\nRedirecting to secure Airbnb-integrated transaction token...`);
+        window.location.href = `event-details.html?id=${eventId}`;
     };
 
     const processPaginationMovement = (directive) => {
@@ -1223,19 +700,59 @@
     const initializeNewsletterModule = () => {
         if (!DOM.newsletterForm) return;
 
-        DOM.newsletterForm.addEventListener("submit", (event) => {
+        const nlWantsWhatsapp = document.getElementById('nlWantsWhatsapp');
+        const nlWhatsapp = document.getElementById('nlWhatsapp');
+        const nlWhatsappContainer = document.getElementById('nlWhatsappContainer');
+
+        if (nlWantsWhatsapp && nlWhatsappContainer && nlWhatsapp) {
+            nlWantsWhatsapp.addEventListener('change', () => {
+                if (nlWantsWhatsapp.checked) {
+                    nlWhatsappContainer.style.display = 'block';
+                    nlWhatsapp.required = true;
+                } else {
+                    nlWhatsappContainer.style.display = 'none';
+                    nlWhatsapp.required = false;
+                }
+            });
+        }
+
+        DOM.newsletterForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             const absoluteInputStr = DOM.newsletterEmail?.value.trim() || "";
             const validEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const wants_whatsapp = nlWantsWhatsapp ? nlWantsWhatsapp.checked : false;
+            const whatsapp_number = nlWhatsapp ? nlWhatsapp.value.trim() : null;
 
             if (absoluteInputStr === "" || !validEmailRegex.test(absoluteInputStr)) {
-                alert("Please enter a valid electronic destination address format.");
+                alert("Please enter a valid email address.");
                 DOM.newsletterEmail?.focus();
                 return;
             }
 
-            alert(`🎉 Divine Connections Configured! Welcome to Eventra Bharat.\n\nPremium itineraries are now routed to: ${absoluteInputStr}`);
-            DOM.newsletterForm.reset();
+            try {
+                // Assume CONFIG is loaded globally
+                const apiUrl = window.CONFIG ? window.CONFIG.API.NEWSLETTER : 'http://localhost:8000/api/newsletter/subscribe';
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: absoluteInputStr,
+                        wants_whatsapp: wants_whatsapp,
+                        whatsapp_number: whatsapp_number
+                    })
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    alert(`🎉 ${data.message}`);
+                    DOM.newsletterForm.reset();
+                } else {
+                    alert(data.detail || data.message || 'Something went wrong. Please try again.');
+                }
+            } catch (err) {
+                console.error('Newsletter subscribe error:', err);
+                alert('Could not connect to the server. Please try again later.');
+            }
         });
     };
 
@@ -1269,22 +786,64 @@
     // ==========================================================================
     // 8. Bootstrap Engine Entry Point
     // ==========================================================================
-    const bootstrapPlatformApplicationEngine = () => {
-        AppState.events = [...MASTER_EVENT_DATA];
-
+    const bootstrapPlatformApplicationEngine = async () => {
         try {
-            const cachedFavs = localStorage.getItem("eventra_bharat_favs");
-            if (cachedFavs) AppState.favorites = new Set(JSON.parse(cachedFavs));
-        } catch (e) {
-            console.error("Local client sandbox prevented loading state cache.", e);
+            const response = await fetch(CONFIG.API.EVENTS);
+            const data = await response.json();
+            AppState.events = data;
+        } catch (error) {
+            console.error("Failed to fetch events from API:", error);
+            AppState.events = [];
+        }
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const response = await fetch(CONFIG.API.WISHLIST, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    AppState.favorites = new Set(data.map(ev => ev.id));
+                }
+            } catch (e) {
+                console.error("Failed to fetch wishlist", e);
+            }
+        } else {
+            try {
+                const cachedFavs = localStorage.getItem("eventra_bharat_favs");
+                if (cachedFavs) AppState.favorites = new Set(JSON.parse(cachedFavs));
+            } catch (e) {}
         }
 
         renderCategoryPills();
         renderFeaturedSection();
         renderPopularCitiesGrid();
+        
+        // Parse URL parameters from home.html search form
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("city")) AppState.filters.location = urlParams.get("city");
+        if (urlParams.has("cat")) AppState.filters.category = urlParams.get("cat");
+        if (urlParams.has("search")) AppState.filters.searchQuery = urlParams.get("search");
+        
+        // Update DOM inputs to match
+        if (DOM.locationSelect && AppState.filters.location !== "Anywhere") DOM.locationSelect.value = AppState.filters.location;
+        if (DOM.categorySelect && AppState.filters.category !== "All") DOM.categorySelect.value = AppState.filters.category;
+        if (DOM.searchInput && AppState.filters.searchQuery) DOM.searchInput.value = AppState.filters.searchQuery;
+
         compileFilteredDataset();
 
-        if (DOM.searchInput) DOM.searchInput.addEventListener("input", processLiveSearchInput);
+        if (DOM.searchInput) {
+            DOM.searchInput.addEventListener("input", processLiveSearchInput);
+            DOM.searchInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    compileFilteredDataset();
+                    const target = document.getElementById("upcomingEventsSection") || DOM.upcomingGrid;
+                    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        }
         if (DOM.exploreBtn) {
             DOM.exploreBtn.addEventListener("click", (e) => {
                 e.preventDefault();
@@ -1300,6 +859,16 @@
         initializeNewsletterModule();
         setupViewportRevealAnimations();
     };
+
+    // Navbar scroll transparency toggle
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const heroSection = document.querySelector('.hero-section');
+            const threshold = heroSection ? heroSection.offsetHeight * 0.35 : 80;
+            navbar.classList.toggle('scrolled', window.scrollY > threshold);
+        }
+    }, { passive: true });
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", bootstrapPlatformApplicationEngine);

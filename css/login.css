@@ -45,10 +45,10 @@ body{
     overflow:hidden;
     background:
     linear-gradient(
-        rgba(74,10,13,.82),
-        rgba(74,10,13,.92)
+        rgba(74,10,13,.32),
+        rgba(74,10,13,.52)
     ),
-    url("../assets/images/placeholder-landscape.svg");
+    url("../assets/images/dynamic/Royal_Palace_Architecture_in_Rajasthan.webp");
 
     background-size:cover;
     background-position:center;

@@ -1,0 +1,33 @@
+  /* Dynamic Logo Styles */
+  .dynamic-logo-container {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+  }
+  .dynamic-logo-container:hover {
+    transform: scale(1.02);
+  }
+  .dynamic-logo-container .logo-text {
+    color: #1f1f1f;
+  }
+  .dynamic-logo-container .dynamic-bharat {
+    background: linear-gradient(45deg, #7A1C29, #C79A2B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    min-width: 100px; /* Keep layout stable during animation */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .dynamic-bharat.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  .dynamic-bharat.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+  }

@@ -143,5 +143,31 @@ class SMSService:
             return False
 
 
+    def send_newsletter_welcome_sms(self, phone_number: str) -> bool:
+        """Send a WhatsApp welcome message for the newsletter subscription."""
+        if not self.enable_sms:
+            logger.info(f"WhatsApp disabled. Would send newsletter welcome to {phone_number}")
+            return True
+
+        try:
+            normalized = self._normalize_number(phone_number)
+            message = (
+                f"Hello from Eventra Bharat! 🎉\n\n"
+                f"You're now subscribed to our WhatsApp updates. "
+                f"We'll occasionally send you updates on the finest heritage events, "
+                f"festivals, and curated experiences across India.\n\n"
+                f"Stay tuned!"
+            )
+            msg = self.client.messages.create(
+                body=message,
+                from_=f"whatsapp:{self.phone_number}",
+                to=f"whatsapp:{normalized}",
+            )
+            logger.info(f"WhatsApp newsletter welcome sent to {normalized} (SID: {msg.sid})")
+            return True
+        except Exception as e:
+            logger.error(f"Error sending WhatsApp newsletter welcome to {phone_number}: {e}")
+            return False
+
 # Global instance
 sms_service = SMSService()

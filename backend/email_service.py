@@ -161,6 +161,59 @@ class EmailService:
             logger.error(f"Error sending test email: {e}")
             return False
 
+    def send_newsletter_email(self, recipient_email: str) -> bool:
+        """Send a welcome email for newsletter subscription"""
+        if not self.enable_email:
+            logger.info(f"Email disabled. Would send newsletter welcome to {recipient_email}")
+            return True
+        
+        try:
+            subject = "Welcome to Eventra Bharat!"
+            html_content = """
+            <html>
+                <body style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; margin: 0; padding: 0; background-color: #f9f7f4;">
+                    <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px; background-color: #ffffff; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <h1 style="color: #7c1f23; font-family: 'Playfair Display', serif; font-size: 32px; margin: 0;">Eventra <span style="color: #cda434;">Bharat</span></h1>
+                        </div>
+                        <h2 style="font-size: 24px; margin-bottom: 20px; font-weight: 500;">You're successfully subscribed! 🎉</h2>
+                        <p style="font-size: 16px; line-height: 1.6; color: #4a4a4a; margin-bottom: 20px;">
+                            Thank you for subscribing to our newsletter! We're thrilled to have you on board. 
+                            Get ready to discover the finest concerts, heritage walks, festivals, and cultural showcases happening across India.
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #4a4a4a; margin-bottom: 30px;">
+                            We'll drop a curated weekly roundup straight into your inbox so you never miss a moment worth showing up for.
+                        </p>
+                        <div style="text-align: center;">
+                            <a href="http://127.0.0.1:3000/html/home.html" style="display: inline-block; padding: 12px 30px; background-color: #7c1f23; color: #ffffff; text-decoration: none; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px;">Explore Experiences</a>
+                        </div>
+                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eeeeee; text-align: center; font-size: 12px; color: #999999;">
+                            <p>© 2025 Eventra Technologies Pvt. Ltd.</p>
+                            <p>You received this email because you subscribed to the Eventra newsletter.</p>
+                        </div>
+                    </div>
+                </body>
+            </html>
+            """
+            
+            msg = MIMEMultipart("alternative")
+            msg["Subject"] = subject
+            msg["From"] = self.sender_email
+            msg["To"] = recipient_email
+            msg.attach(MIMEText(html_content, "html"))
+            
+            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                server.starttls()
+                server.login(self.sender_email, self.sender_password)
+                server.send_message(msg)
+            
+            logger.info(f"Newsletter email sent to {recipient_email}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error sending newsletter email: {e}")
+            return False
 
 # Global instance
 email_service = EmailService()
+

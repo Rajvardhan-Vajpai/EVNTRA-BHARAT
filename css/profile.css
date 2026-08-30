@@ -37,3 +37,94 @@ body{
     border-radius:10px;
     cursor:pointer;
 }
+
+.profile-layout {
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+    gap: 40px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+.wishlist-section {
+    flex: 1;
+}
+
+.wishlist-section h2 {
+    font-family: 'Playfair Display', serif;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Event Card inside Profile */
+.profile-event-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.profile-event-card:hover {
+    transform: translateY(-5px);
+}
+
+.profile-event-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.profile-event-card-content {
+    padding: 15px;
+}
+
+.profile-event-card-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+}
+
+.profile-event-card-content p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.remove-wishlist-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: transparent;
+    border: 1px solid #d9534f;
+    color: #d9534f;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.remove-wishlist-btn:hover {
+    background: #d9534f;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .profile-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}

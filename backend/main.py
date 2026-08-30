@@ -13,7 +13,7 @@ from email_service import email_service
 from models import PaymentOrder, Visitor
 from payment_service import payment_service
 from sms_service import sms_service
-
+from api_routes import router as api_router
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -29,6 +29,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(api_router, prefix="/api")
 
 MAX_GROUP_SIZE = 20  # sanity cap so create-order can't be abused with a huge member list
 
@@ -113,7 +115,7 @@ class VerifyPaymentRequest(BaseModel):
 @app.on_event("startup")
 def startup_event():
     init_db()
-    print("✓ Database initialized")
+    print("[OK] Database initialized")
 
 
 @app.get("/")

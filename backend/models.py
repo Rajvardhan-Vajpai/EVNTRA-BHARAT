@@ -1,5 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime, Text
+import uuid
+from sqlalchemy import Column, Integer, String, DateTime, Text, Boolean, Float, JSON, Table, ForeignKey
 from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
 from database import Base
 
 
@@ -59,3 +61,67 @@ class PaymentOrder(Base):
 
     def __repr__(self):
         return f"<PaymentOrder(razorpay_order_id={self.razorpay_order_id}, status={self.status})>"
+
+
+user_event_wishlist = Table(
+    'wishlist',
+    Base.metadata,
+    Column('user_id', String(36), ForeignKey('users.id'), primary_key=True),
+    Column('event_id', String(100), ForeignKey('events.id'), primary_key=True)
+)
+
+
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    name = Column(String(100), nullable=False)
+    email = Column(String(150), nullable=False, unique=True, index=True)
+    password = Column(String(255), nullable=False)
+    role = Column(String(20), default='user')  # 'user', 'organizer', 'admin'
+    
+    wishlisted_events = relationship("Event", secondary=user_event_wishlist, back_populates="wishlisted_by")
+
+    def __repr__(self):
+        return f"<User(name={self.name}, email={self.email}, role={self.role})>"
+
+
+class Event(Base):
+    __tablename__ = 'events'
+
+    id = Column(String(100), primary_key=True)  # e.g., "burn-goa"
+    title = Column(String(255), nullable=False)
+    category = Column(String(100), nullable=True)
+    location = Column(String(255), nullable=True)
+    date = Column(String(100), nullable=True)
+    price = Column(String(100), nullable=True)
+    rating = Column(Float, nullable=True)
+    reviews = Column(Integer, nullable=True)
+    tags = Column(JSON, nullable=True)
+    image = Column(String(255), nullable=True)
+    description = Column(Text, nullable=True)
+    tickets_total = Column(Integer, default=100)
+    tickets_available = Column(Integer, default=100)
+    is_trending = Column(Boolean, default=False)
+    is_featured = Column(Boolean, default=False)
+    
+    wishlisted_by = relationship("User", secondary=user_event_wishlist, back_populates="wishlisted_events")
+
+    def __repr__(self):
+        return f"<Event(id={self.id}, title={self.title})>"
+
+
+class NewsletterSubscriber(Base):
+    """Stores newsletter email and WhatsApp subscriptions."""
+
+    __tablename__ = "newsletter_subscribers"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String(150), nullable=False, unique=True, index=True)
+    whatsapp_number = Column(String(20), nullable=True)
+    wants_whatsapp = Column(Boolean, default=False)
+    subscribed_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    is_active = Column(Boolean, default=True)
+
+    def __repr__(self):
+        return f"<NewsletterSubscriber(email={self.email}, whatsapp={self.whatsapp_number})>"
